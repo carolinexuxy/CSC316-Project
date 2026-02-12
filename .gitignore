@@ -1,0 +1,9 @@
+# Raw datasets (too large for repo)
+data/avatar.csv
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
