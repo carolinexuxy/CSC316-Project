@@ -32,7 +32,7 @@
     },
   ];
 
-  d3.json("data/element_bending.json").then(function (data) {
+  d3.json("data/processed/element_bending.json").then(function (data) {
     const totals = data.totals;
 
     const svg = d3
@@ -48,7 +48,7 @@
     svg.append("rect")
       .attr("width", CONFIG.width)
       .attr("height", CONFIG.height)
-      .attr("fill", "#1a1a2e")
+      // .attr("fill", "#1a1a2e")
       .attr("rx", 12);
 
     // Title
@@ -59,7 +59,7 @@
       .attr("font-family", "'Georgia', 'Times New Roman', serif")
       .attr("font-size", "32px")
       .attr("font-style", "italic")
-      .attr("fill", "#e0d6c8")
+      // .attr("fill", "#e0d6c8")
       .text("Meet the Elements");
 
     // Subtitle
@@ -69,7 +69,7 @@
       .attr("text-anchor", "middle")
       .attr("font-family", "'Georgia', serif")
       .attr("font-size", "13px")
-      .attr("fill", "#9e9e9e")
+      // .attr("fill", "#9e9e9e")
       .text("How often each element's bending is referenced across all 61 episodes");
 
     // Grid layout
@@ -117,7 +117,7 @@
         .attr("fill", "none")
         .attr("stroke", element.color)
         .attr("stroke-width", 0.5)
-        .attr("stroke-opacity", 0.15);
+        .attr("stroke-opacity", 0.1);
 
       // Element name
       group.append("text")
@@ -152,14 +152,14 @@
       .text("* Each dot represents a time that element's bending was referenced in the transcript");
 
     // Source
-    svg.append("text")
-      .attr("x", CONFIG.width / 2)
-      .attr("y", CONFIG.height - 8)
-      .attr("text-anchor", "middle")
-      .attr("font-family", "'Helvetica Neue', Arial, sans-serif")
-      .attr("font-size", "10px")
-      .attr("fill", "#555")
-      .text("Data: Avatar: The Last Airbender transcripts (Kaggle) · Visualization by Jodhvir");
+    // svg.append("text")
+    //   .attr("x", CONFIG.width / 2)
+    //   .attr("y", CONFIG.height - 8)
+    //   .attr("text-anchor", "middle")
+    //   .attr("font-family", "'Helvetica Neue', Arial, sans-serif")
+    //   .attr("font-size", "10px")
+    //   .attr("fill", "#555")
+    //   .text("Data: Avatar: The Last Airbender transcripts (Kaggle) · Visualization by Jodhvir");
 
     hiddenGroup.remove();
   });

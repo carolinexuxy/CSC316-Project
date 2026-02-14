@@ -16,8 +16,8 @@ import pandas as pd
 # -----------------------------
 # Configuration
 # -----------------------------
-CSV_PATH = "avatar.csv"
-OUTPUT_PATH = "character_data.json"
+CSV_PATH = "data/raw/avatar.csv"
+OUTPUT_PATH = "data/processed/character_data.json"
 IGNORE_WORDS = {
     "back", "away", "again", "still", "up", "down", "around", "forward", "slightly", "somewhat", "further",
     "upward", "closer", "far", "anyway", "voiceover", "motionless", "nearby", "offcamera", "beside", "once",

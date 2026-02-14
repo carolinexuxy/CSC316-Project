@@ -5,7 +5,7 @@
 const config = {
     width: 1400,
     height: 900,
-    backgroundColor: '#1a1a2e',
+    // backgroundColor: '#1a1a2e',
     fireColor: '#E94D40',
     waterColor: '#4DA6FF',
     bubbleScale: {
@@ -171,9 +171,9 @@ function generateDefaultPositions(fights, polygons, sizeScale) {
 
 // Load data
 Promise.all([
-    d3.json('data/fire-nation-data.json'),
-    d3.json('data/water-nation-data.json'),
-    d3.json('data/fights.json')
+    d3.json('data/processed/fire-nation-data.json'),
+    d3.json('data/processed/water-nation-data.json'),
+    d3.json('data/processed/fights.json')
 ]).then(([fireNationData, waterNationData, fightData]) => {
 
     const fireNationTerritory = {
@@ -195,7 +195,7 @@ Promise.all([
         territoriesGroup.append('path')
             .attr('d', pathData)
             .attr('fill', config.fireColor)
-            .attr('opacity', 0.12)
+            .attr('opacity', 0.27)
             .attr('stroke', config.fireColor)
             .attr('stroke-width', 2.5)
             .attr('stroke-dasharray', '6,3')
@@ -212,7 +212,7 @@ Promise.all([
         waterTerritoriesGroup.append('path')
             .attr('d', pathData)
             .attr('fill', config.waterColor)
-            .attr('opacity', 0.12)
+            .attr('opacity', 0.27)
             .attr('stroke', config.waterColor)
             .attr('stroke-width', 2.5)
             .attr('stroke-dasharray', '6,3')

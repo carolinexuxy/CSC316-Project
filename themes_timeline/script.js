@@ -1,12 +1,17 @@
-const svg = d3.select("svg");
-const width = +svg.attr("width");
-const height = +svg.attr("height");
+const width = 1200;
+const height = 900;
+const f5_container = d3.select("#frame5");
+const f5_svg = f5_container
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
 
 const margin = { top: 140, right: 120, bottom: 140, left: 220 };
 const rowHeight = 170;
 const animationDuration = 15000;
 
-const defs = svg.append("defs");
+const defs = f5_svg.append("defs");
 
 const themes = [
     { name: "balance", element: "Air", color: "#cbd5e1" },
@@ -122,7 +127,7 @@ function backgroundParticles() {
 
     for (let i = 0; i < 80; i++) {
 
-        const p = svg.append("circle")
+        const p = f5_svg.append("circle")
             .attr("cx", Math.random() * width)
             .attr("cy", Math.random() * height)
             .attr("r", Math.random() * 2 + 1)
@@ -150,7 +155,7 @@ backgroundParticles();
 function elementParticles(type, xPos, yPos, color) {
 
     if (type === "Fire") {
-        svg.append("circle")
+        f5_svg.append("circle")
             .attr("cx", xPos)
             .attr("cy", yPos)
             .attr("r", 3)
@@ -164,7 +169,7 @@ function elementParticles(type, xPos, yPos, color) {
     }
 
     if (type === "Water") {
-        svg.append("circle")
+        f5_svg.append("circle")
             .attr("cx", xPos)
             .attr("cy", yPos)
             .attr("r", 2)
@@ -177,7 +182,7 @@ function elementParticles(type, xPos, yPos, color) {
     }
 
     if (type === "Air") {
-        svg.append("circle")
+        f5_svg.append("circle")
             .attr("cx", xPos)
             .attr("cy", yPos)
             .attr("r", 4)
@@ -191,7 +196,7 @@ function elementParticles(type, xPos, yPos, color) {
     }
 
     if (type === "Earth") {
-        svg.append("circle")
+        f5_svg.append("circle")
             .attr("cx", xPos)
             .attr("cy", yPos)
             .attr("r", 3)
@@ -211,7 +216,7 @@ function elementParticles(type, xPos, yPos, color) {
 
 function createRider(type, color) {
 
-    const g = svg.append("g");
+    const g = f5_svg.append("g");
 
     if (type === "Air") {
         g.append("path")
@@ -278,14 +283,14 @@ themes.forEach((themeObj, i) => {
         .attr("width", 0)
         .attr("height", rowHeight);
 
-    const ribbon = svg.append("path")
+    const ribbon = f5_svg.append("path")
         .datum(data)
         .attr("d", area)
         .attr("fill", themeObj.color)
         .attr("opacity", 0.6)
         .attr("clip-path", `url(#${clipId})`);
 
-    const topLine = svg.append("path")
+    const topLine = f5_svg.append("path")
         .datum(data)
         .attr("d", line)
         .attr("fill", "none")
@@ -316,7 +321,7 @@ themes.forEach((themeObj, i) => {
             };
         });
 
-    svg.append("text")
+    f5_svg.append("text")
         .attr("x", margin.left - 160)
         .attr("y", yOffset - 60)
         .text(`${themeObj.element} — ${themeObj.name}`)
@@ -329,7 +334,7 @@ themes.forEach((themeObj, i) => {
 ========================== */
 
 for (let i = 1; i <= maxGlobalChapter; i++) {
-    svg.append("line")
+    f5_svg.append("line")
         .attr("x1", x(i))
         .attr("x2", x(i))
         .attr("y1", margin.top - 40)
@@ -342,7 +347,7 @@ for (let i = 1; i <= maxGlobalChapter; i++) {
    X AXIS
 ========================== */
 
-svg.append("g")
+f5_svg.append("g")
     .attr("transform", `translate(0,${height - margin.bottom + 40})`)
     .call(d3.axisBottom(x).ticks(25))
     .attr("opacity", 0.3);

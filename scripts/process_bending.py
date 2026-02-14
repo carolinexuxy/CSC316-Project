@@ -14,7 +14,7 @@ import os
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, '..', 'data')
-INPUT_CSV = os.path.join(DATA_DIR, 'avatar.csv')
+INPUT_CSV = os.path.join(DATA_DIR, 'raw','avatar.csv')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'element_bending.json')
 
 # Patterns for each element's bending keywords (includes sub-skills)
