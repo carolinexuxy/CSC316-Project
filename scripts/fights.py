@@ -4,7 +4,7 @@ import re
 from collections import defaultdict
 
 # Read the CSV file with proper encoding handling
-df = pd.read_csv('data/avatar.csv', encoding='latin-1')
+df = pd.read_csv('data/raw/avatar.csv', encoding='latin-1')
 
 # Strong fight indicators - these strongly suggest combat
 STRONG_FIGHT_INDICATORS = [
@@ -253,7 +253,7 @@ output_data = {
     'fights': fights
 }
 
-output_path = 'data/fights.json'
+output_path = 'data/processed/fights.json'
 with open(output_path, 'w', encoding='utf-8') as f:
     json.dump(output_data, f, indent=2, ensure_ascii=False)
 

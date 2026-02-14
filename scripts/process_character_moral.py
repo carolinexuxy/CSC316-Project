@@ -24,7 +24,7 @@ import pandas as pd
 # -----------------------------
 # CONFIG
 # -----------------------------
-INPUT_CSV = "avatar.csv"
+INPUT_CSV = "data/raw/avatar.csv"
 ENCODING = "latin1"          # matches your previous pipeline
 OUTPUT_DIR = "data/processed"
 OUTPUT_FILE = "moral_counts_tidy.csv"
