@@ -1,0 +1,27 @@
+/* CSC316 Project Styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f0f1a;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.canvas {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Frame 2: Element Bending Visualization */
+#frame2 {
+  min-height: 780px;
+}
+
+#frame2 svg {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}

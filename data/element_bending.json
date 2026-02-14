@@ -1,0 +1,620 @@
+{
+  "totals": {
+    "water": 439,
+    "earth": 708,
+    "fire": 518,
+    "air": 512
+  },
+  "episodes": [
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Boy in the Iceberg",
+      "chapter_num": 1,
+      "water": 26,
+      "earth": 0,
+      "fire": 24,
+      "air": 36
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Avatar Returns",
+      "chapter_num": 2,
+      "water": 12,
+      "earth": 0,
+      "fire": 18,
+      "air": 22
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Southern Air Temple",
+      "chapter_num": 3,
+      "water": 4,
+      "earth": 0,
+      "fire": 24,
+      "air": 48
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Warriors of Kyoshi",
+      "chapter_num": 4,
+      "water": 2,
+      "earth": 0,
+      "fire": 4,
+      "air": 20
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The King of Omashu",
+      "chapter_num": 5,
+      "water": 0,
+      "earth": 30,
+      "fire": 2,
+      "air": 28
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Imprisoned",
+      "chapter_num": 6,
+      "water": 4,
+      "earth": 64,
+      "fire": 4,
+      "air": 8
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Winter Solstice, Part 1: The Spirit World",
+      "chapter_num": 7,
+      "water": 2,
+      "earth": 4,
+      "fire": 0,
+      "air": 8
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Winter Solstice, Part 2: Avatar Roku",
+      "chapter_num": 8,
+      "water": 2,
+      "earth": 0,
+      "fire": 36,
+      "air": 16
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Waterbending Scroll",
+      "chapter_num": 9,
+      "water": 30,
+      "earth": 0,
+      "fire": 2,
+      "air": 10
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Jet",
+      "chapter_num": 10,
+      "water": 4,
+      "earth": 0,
+      "fire": 2,
+      "air": 8
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Great Divide",
+      "chapter_num": 11,
+      "water": 1,
+      "earth": 10,
+      "fire": 0,
+      "air": 2
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Storm",
+      "chapter_num": 12,
+      "water": 0,
+      "earth": 2,
+      "fire": 2,
+      "air": 8
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Blue Spirit",
+      "chapter_num": 13,
+      "water": 2,
+      "earth": 2,
+      "fire": 6,
+      "air": 20
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Fortuneteller",
+      "chapter_num": 14,
+      "water": 0,
+      "earth": 8,
+      "fire": 0,
+      "air": 10
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Bato of the Water Tribe",
+      "chapter_num": 15,
+      "water": 2,
+      "earth": 0,
+      "fire": 20,
+      "air": 14
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Deserter",
+      "chapter_num": 16,
+      "water": 4,
+      "earth": 2,
+      "fire": 34,
+      "air": 6
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Northern Air Temple",
+      "chapter_num": 17,
+      "water": 2,
+      "earth": 0,
+      "fire": 6,
+      "air": 38
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Waterbending Master",
+      "chapter_num": 18,
+      "water": 26,
+      "earth": 0,
+      "fire": 0,
+      "air": 0
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Siege of the North, Part 1",
+      "chapter_num": 19,
+      "water": 14,
+      "earth": 0,
+      "fire": 2,
+      "air": 6
+    },
+    {
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Siege of the North, Part 2",
+      "chapter_num": 20,
+      "water": 24,
+      "earth": 0,
+      "fire": 14,
+      "air": 6
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Avatar State",
+      "chapter_num": 1,
+      "water": 6,
+      "earth": 16,
+      "fire": 0,
+      "air": 2
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Cave of Two Lovers",
+      "chapter_num": 2,
+      "water": 2,
+      "earth": 18,
+      "fire": 0,
+      "air": 2
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Return to Omashu",
+      "chapter_num": 3,
+      "water": 6,
+      "earth": 16,
+      "fire": 0,
+      "air": 6
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Swamp",
+      "chapter_num": 4,
+      "water": 16,
+      "earth": 2,
+      "fire": 0,
+      "air": 12
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Avatar Day",
+      "chapter_num": 5,
+      "water": 4,
+      "earth": 4,
+      "fire": 6,
+      "air": 12
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Blind Bandit",
+      "chapter_num": 6,
+      "water": 0,
+      "earth": 44,
+      "fire": 0,
+      "air": 2
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Zuko Alone",
+      "chapter_num": 7,
+      "water": 0,
+      "earth": 6,
+      "fire": 8,
+      "air": 0
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Chase",
+      "chapter_num": 8,
+      "water": 2,
+      "earth": 22,
+      "fire": 6,
+      "air": 2
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Bitter Work",
+      "chapter_num": 9,
+      "water": 14,
+      "earth": 36,
+      "fire": 14,
+      "air": 12
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Library",
+      "chapter_num": 10,
+      "water": 8,
+      "earth": 24,
+      "fire": 6,
+      "air": 4
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Desert",
+      "chapter_num": 11,
+      "water": 0,
+      "earth": 32,
+      "fire": 4,
+      "air": 0
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Serpent's Pass",
+      "chapter_num": 12,
+      "water": 2,
+      "earth": 6,
+      "fire": 0,
+      "air": 0
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Drill",
+      "chapter_num": 13,
+      "water": 8,
+      "earth": 36,
+      "fire": 6,
+      "air": 10
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "City of Walls and Secrets",
+      "chapter_num": 14,
+      "water": 6,
+      "earth": 4,
+      "fire": 20,
+      "air": 2
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Tales of Ba Sing Se",
+      "chapter_num": 15,
+      "water": 4,
+      "earth": 12,
+      "fire": 4,
+      "air": 4
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Appa's Lost Days",
+      "chapter_num": 16,
+      "water": 0,
+      "earth": 50,
+      "fire": 18,
+      "air": 6
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Lake Laogai",
+      "chapter_num": 17,
+      "water": 2,
+      "earth": 6,
+      "fire": 0,
+      "air": 4
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Earth King",
+      "chapter_num": 18,
+      "water": 4,
+      "earth": 14,
+      "fire": 4,
+      "air": 0
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Guru",
+      "chapter_num": 19,
+      "water": 0,
+      "earth": 10,
+      "fire": 6,
+      "air": 4
+    },
+    {
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Crossroads of Destiny",
+      "chapter_num": 20,
+      "water": 6,
+      "earth": 32,
+      "fire": 12,
+      "air": 8
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Awakening",
+      "chapter_num": 1,
+      "water": 2,
+      "earth": 10,
+      "fire": 0,
+      "air": 0
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Headband",
+      "chapter_num": 2,
+      "water": 0,
+      "earth": 6,
+      "fire": 4,
+      "air": 2
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Painted Lady",
+      "chapter_num": 3,
+      "water": 16,
+      "earth": 6,
+      "fire": 2,
+      "air": 14
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sokka's Master",
+      "chapter_num": 4,
+      "water": 6,
+      "earth": 10,
+      "fire": 0,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Beach",
+      "chapter_num": 5,
+      "water": 2,
+      "earth": 8,
+      "fire": 0,
+      "air": 6
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Avatar and the Fire Lord",
+      "chapter_num": 6,
+      "water": 6,
+      "earth": 20,
+      "fire": 4,
+      "air": 32
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Runaway",
+      "chapter_num": 7,
+      "water": 12,
+      "earth": 18,
+      "fire": 0,
+      "air": 2
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Puppetmaster",
+      "chapter_num": 8,
+      "water": 74,
+      "earth": 4,
+      "fire": 2,
+      "air": 0
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Nightmares and Daydreams",
+      "chapter_num": 9,
+      "water": 2,
+      "earth": 0,
+      "fire": 4,
+      "air": 0
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Day of Black Sun, Part 1: The Invasion",
+      "chapter_num": 10,
+      "water": 20,
+      "earth": 20,
+      "fire": 10,
+      "air": 2
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Day of Black Sun, Part 2: The Eclipse",
+      "chapter_num": 11,
+      "water": 4,
+      "earth": 18,
+      "fire": 10,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Western Air Temple",
+      "chapter_num": 12,
+      "water": 2,
+      "earth": 2,
+      "fire": 26,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Firebending Masters",
+      "chapter_num": 13,
+      "water": 2,
+      "earth": 10,
+      "fire": 56,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Boiling Rock, Part 1",
+      "chapter_num": 14,
+      "water": 0,
+      "earth": 0,
+      "fire": 12,
+      "air": 0
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Boiling Rock, Part 2",
+      "chapter_num": 15,
+      "water": 0,
+      "earth": 0,
+      "fire": 0,
+      "air": 0
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Southern Raiders",
+      "chapter_num": 16,
+      "water": 24,
+      "earth": 4,
+      "fire": 10,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Ember Island Players",
+      "chapter_num": 17,
+      "water": 6,
+      "earth": 6,
+      "fire": 4,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 1: The Phoenix King",
+      "chapter_num": 18,
+      "water": 6,
+      "earth": 8,
+      "fire": 12,
+      "air": 4
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 2: The Old Masters",
+      "chapter_num": 19,
+      "water": 0,
+      "earth": 12,
+      "fire": 10,
+      "air": 8
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 3: Into the Inferno",
+      "chapter_num": 20,
+      "water": 4,
+      "earth": 14,
+      "fire": 18,
+      "air": 6
+    },
+    {
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 4: Avatar Aang",
+      "chapter_num": 21,
+      "water": 0,
+      "earth": 20,
+      "fire": 20,
+      "air": 6
+    }
+  ]
+}
