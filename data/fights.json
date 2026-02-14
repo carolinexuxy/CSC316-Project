@@ -1,0 +1,1255 @@
+{
+  "metadata": {
+    "total_fights": 67,
+    "books": [
+      "Water",
+      "Earth",
+      "Fire"
+    ],
+    "book_stats": {
+      "Water": {
+        "num": 1,
+        "fights": 27
+      },
+      "Earth": {
+        "num": 2,
+        "fights": 14
+      },
+      "Fire": {
+        "num": 3,
+        "fights": 26
+      }
+    }
+  },
+  "fights": [
+    {
+      "id": 1,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Cave of Two Lovers",
+      "chapter_num": 2,
+      "main_combatants": [
+        "Katara"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Katara"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "[Walks away and assumes a fighting stance.] Okay, let's see what you got. Aang bends the water, creating a globule which eventually transforms into eight whip-like water tentacles. He carefully maneuvers them, fending off shards of ice that Katara re..."
+    },
+    {
+      "id": 2,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Return to Omashu",
+      "chapter_num": 3,
+      "main_combatants": [
+        "Yung"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Yung"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Of course not! The day of the invasion, we readied ourselves for battle. We were prepared to defend our city ... to fight for our lives and for our freedom. But before we even had a chance, King Bumi surrendered. It doesn't matter now. [Cut to Aang w..."
+    },
+    {
+      "id": 3,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Return to Omashu",
+      "chapter_num": 3,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [
+        "King Bumi"
+      ],
+      "all_characters": [
+        "King Bumi",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "He sprints forward with his glider at the ready, increasing his speed with airbending. Azula tries to stop him by blocking his path with a mighty stream of blue flames. Aang dodges these by leaping high up into the air. Azula is completely shocked by..."
+    },
+    {
+      "id": 4,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Blind Bandit",
+      "chapter_num": 6,
+      "main_combatants": [
+        "The Boulder"
+      ],
+      "supporting_characters": [
+        "Toph"
+      ],
+      "all_characters": [
+        "The Boulder",
+        "Toph"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "The Boulder feels conflicted about fighting a young blind girl. Cut back to a shot from behind The Boulder who faces the Bandit, before shifting to a tilting down shot of The Boulder's head. Despite his bravado, he is sweating profusely. Switch to a ..."
+    },
+    {
+      "id": 5,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Blind Bandit",
+      "chapter_num": 6,
+      "main_combatants": [
+        "Toph"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Toph"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The Water Tribe siblings watch in surprise. She shakes the ring up, shooting back the oncoming wrestlers. She enters the resulting dust crowd, unnerving Lao.\nToph creates a large cloud of dust, walks in, and encounters the Fire Nation Man, who takes ..."
+    },
+    {
+      "id": 6,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Zuko Alone",
+      "chapter_num": 7,
+      "main_combatants": [
+        "Sela"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sela"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The real soldiers are off fighting the War, [Cuts to shot of Lee.] like Lee's big brother Sensu. [Pause.] Supper's going to be ready soon. Would you like to stay? Zuko is surprised at the question and swings down his hammer a little too hard. He stri..."
+    },
+    {
+      "id": 7,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Zuko Alone",
+      "chapter_num": 7,
+      "main_combatants": [
+        "Young Azula",
+        "Ozai"
+      ],
+      "supporting_characters": [
+        "Ursa"
+      ],
+      "all_characters": [
+        "Young Azula",
+        "Ozai",
+        "Ursa"
+      ],
+      "num_participants": 3,
+      "num_main_combatants": 2,
+      "description": "Oh yes he is! He found out his son died and he just fell apart! A real general would stay and burn Ba Sing Se to the ground, not lose the battle and come home crying. And how was it Great-Grandfather Sozin managed to win the Battle of Han Tui?"
+    },
+    {
+      "id": 8,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Chase",
+      "chapter_num": 8,
+      "main_combatants": [
+        "Azula",
+        "Zuko"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko",
+        "Azula"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "[Assumes a fighting stance.] I'm not going anywhere. Cuts to overhead shot of the street way where the three opponents stand, prepared for battle. Cuts to shot of Azula, confident as ever. Cuts to shot of Zuko, who averts his gaze first to Azula befo..."
+    },
+    {
+      "id": 9,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Drill",
+      "chapter_num": 13,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [
+        "Katara"
+      ],
+      "all_characters": [
+        "Katara",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "[Hatefully and tauntingly.] Why don't you try blocking my chi now, circus freak? Momo suddenly shrieks and Aang deflects a blue fire blast just in time."
+    },
+    {
+      "id": 10,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "City of Walls and Secrets",
+      "chapter_num": 14,
+      "main_combatants": [
+        "Customer"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Customer"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Joo Dee tries to push Sokka, but he blocks her with his tray. Wide-view of the room. Aang jumps out of his busboy clothes and lands on the long dining table as Sokka walks off into the crowd. Aang swings his arms over the guests' drinks, waterbending..."
+    },
+    {
+      "id": 11,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Appa's Lost Days",
+      "chapter_num": 16,
+      "main_combatants": [
+        "Azula"
+      ],
+      "supporting_characters": [
+        "Mai"
+      ],
+      "all_characters": [
+        "Azula",
+        "Mai"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "Cut to Appa's shackles and boar-q-pine quills on the ground and pan to Appa surrounded by the Kyoshi Warriors. Appa licks one of the warrior's faces. Close-up of Appa's ear as he hears footsteps thundering. Lightning strikes a nearby tree, causing it..."
+    },
+    {
+      "id": 12,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "Lake Laogai",
+      "chapter_num": 17,
+      "main_combatants": [
+        "Jet",
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang",
+        "Jet"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "The Dai Li agents jump off the ceiling and surround them. Two agents fire rock gloves, but Toph breaks them up and sends the two agents flying through the air with rock pillars. Jet runs toward the agents and breaks two other gloves fired by agents w..."
+    },
+    {
+      "id": 13,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Guru",
+      "chapter_num": 19,
+      "main_combatants": [
+        "Pathik"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Pathik"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Yes. But, if we open the ponds between the pools ... [He removes moss blocking the exit for the water.] Aang sees images of things that cause him great fear, including the Blue Spirit attacking him, General Fong sinking Katara into the ground, himsel..."
+    },
+    {
+      "id": 14,
+      "book": "Earth",
+      "book_num": 2,
+      "chapter": "The Crossroads of Destiny",
+      "chapter_num": 20,
+      "main_combatants": [
+        "Iroh"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Iroh"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Zuko yells as crystals grow to encase Iroh. He assumes a fighting position to prepare for the intruders. A different shot shows Azula along with two Dai Li agents sliding down from the sides of the chamber. A bolt of blue lightning attacks them from ..."
+    },
+    {
+      "id": 15,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Headband",
+      "chapter_num": 2,
+      "main_combatants": [
+        "Kwan",
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Kwan",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Since it's obviously hilarious to mock our national oath, we'll begin with a pop quiz on our great March of Civilization. [The class groans and picks up their pens.] Question one: What year did Fire Lord Sozin battle the Air Nation army? [Aang raises..."
+    },
+    {
+      "id": 16,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sokka's Master",
+      "chapter_num": 4,
+      "main_combatants": [
+        "Piandao"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Piandao"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "[Takes the brush and positions it correctly in Sokka's hand. Cut to a wide shot of both.] When you write your name, you stamp the paper with your identity. You must learn to use your sword to stamp your identity on a battlefield. [Sokka holds his sle..."
+    },
+    {
+      "id": 17,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sokka's Master",
+      "chapter_num": 4,
+      "main_combatants": [
+        "Piandao"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Piandao"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Sokka, when you first arrived, you were so unsure. You even seemed down on yourself. [Frontal view of Piandao as the camera pans across to the right revealing Fat.] But I saw something in you right away. [Side-view of Sokka.] I saw a heart as strong ..."
+    },
+    {
+      "id": 18,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Beach",
+      "chapter_num": 5,
+      "main_combatants": [
+        "Azula"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Azula"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Cut to a aerial view of a river as the messenger hawk sent by the guards flies past. Cut to a frontal view of the hawk as a raven hawk appears from behind it. Cut to aerial view looking down at the messenger hawk with the raven hawk in the foreground..."
+    },
+    {
+      "id": 19,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Avatar and the Fire Lord",
+      "chapter_num": 6,
+      "main_combatants": [
+        "Roku"
+      ],
+      "supporting_characters": [
+        "Aang"
+      ],
+      "all_characters": [
+        "Roku",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "Sozin and I didn't speak or see each other for twenty-five years after our battle. [Cut to Roku's house.] I spent most of my spare time here, at my home. Cut to Sozin's face, before cutting to an aerial shot of the volcano. Large columns of black smo..."
+    },
+    {
+      "id": 20,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Runaway",
+      "chapter_num": 7,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Toph is dragged away in the net, all the while glaring back at Katara. The screen fades to three days earlier. Toph and Katara are seen facing each other, each taking a fighting stance, the latter controlling two streams of water in her hands. Aang a..."
+    },
+    {
+      "id": 21,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Puppetmaster",
+      "chapter_num": 8,
+      "main_combatants": [
+        "Katara"
+      ],
+      "supporting_characters": [
+        "Aang"
+      ],
+      "all_characters": [
+        "Katara",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "[Determined.] You're not the only one who draws power from the moon! [Assumes a fighting stance.] My bending is more powerful than yours, Hama. Your technique is useless on me! A waterbending duel ensues between the two. Katara pulls a ring of water ..."
+    },
+    {
+      "id": 22,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Nightmares and Daydreams",
+      "chapter_num": 9,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Aang jumps out from behind the rock and starts shooting air blasts at the noodle picture of Fire Lord Ozai tied to a tree. One of the shots goes too far and hits Sokka, who is working on a golden arrow. [Standing in front of the \"Ozai\" tree in a figh..."
+    },
+    {
+      "id": 23,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Day of Black Sun, Part 1: The Invasion",
+      "chapter_num": 10,
+      "main_combatants": [
+        "Hakoda"
+      ],
+      "supporting_characters": [
+        "Aang"
+      ],
+      "all_characters": [
+        "Aang",
+        "Hakoda"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "[Interrupting.] Thank you, Sokka. It's okay why don't you take a break? [Sokka leaves the stage to sit down, disappointed in himself. Hakoda addresses the crowd.] Let me just clarify a few points for everyone. [Shot of Haru stroking his chin. Everyon..."
+    },
+    {
+      "id": 24,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Day of Black Sun, Part 1: The Invasion",
+      "chapter_num": 10,
+      "main_combatants": [
+        "Hakoda"
+      ],
+      "supporting_characters": [
+        "Aang"
+      ],
+      "all_characters": [
+        "Aang",
+        "Hakoda"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "The scene cuts to show Toph, the Boulder, and other earthbenders standing in a metal tank. Cut to Water Tribe warriors and foggy swamp waterbenders with Sokka among them, he lets out a sigh. Cut to the subs rising from the water, being instantly atta..."
+    },
+    {
+      "id": 25,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Day of Black Sun, Part 2: The Eclipse",
+      "chapter_num": 11,
+      "main_combatants": [
+        "Sokka"
+      ],
+      "supporting_characters": [
+        "Zuko"
+      ],
+      "all_characters": [
+        "Zuko",
+        "Sokka"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "Two Dai Li agents descend into the room. Aang sends an air swipe at them with his glider; however, the agents quickly conjure up an earth wall that blocks the attack. Cut to a view of the inside of the volcano. Cuts to Bato reaching the rim of the vo..."
+    },
+    {
+      "id": 26,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Day of Black Sun, Part 2: The Eclipse",
+      "chapter_num": 11,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [
+        "Bato"
+      ],
+      "all_characters": [
+        "Bato",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "She kicks her leg in a wide arc, sending a fire blast that nearly strikes Sokka. Sokka takes several steps back as he narrowly avoids Azula's attacks. She back-flips onto the tunnel wall and uses firebending to break free from Toph's earth cuffs. She..."
+    },
+    {
+      "id": 27,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Western Air Temple",
+      "chapter_num": 12,
+      "main_combatants": [
+        "Sokka",
+        "Katara"
+      ],
+      "supporting_characters": [
+        "Zuko"
+      ],
+      "all_characters": [
+        "Sokka",
+        "Katara",
+        "Zuko"
+      ],
+      "num_participants": 3,
+      "num_main_combatants": 2,
+      "description": "Like when you attacked our village? Look, I admit I've some awful things. I was wrong to try to capture you, and I'm sorry that I attacked the Water Tribe. And I never should have sent that Fire Nation assassin after you. [Toph and Sokka's eyes widen..."
+    },
+    {
+      "id": 28,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Western Air Temple",
+      "chapter_num": 12,
+      "main_combatants": [
+        "Zuko",
+        "Katara"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko",
+        "Katara"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Easy for you to say! You weren't there when he had us attacked by pirates! Let me help you! [Dodges another rock.] I'm sorry! [Tries to grab her.]"
+    },
+    {
+      "id": 29,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Western Air Temple",
+      "chapter_num": 12,
+      "main_combatants": [
+        "Zuko"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Combustion Man shoves him away and attacks again. If you keep attacking, I won't pay you! [Attempts to firebend at him, but Combustion Man grabs him.] All right, I'll pay you double to stop!"
+    },
+    {
+      "id": 30,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Boiling Rock, Part 1",
+      "chapter_num": 14,
+      "main_combatants": [
+        "Zuko"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Scene cuts to Zuko and Sokka in the air in the war balloon. Zuko blasts fire into the tank to keep it moving. A moment of awkward silence between the two follows. If there's one thing my dad's good at, it's war. [Blasts more fire into the tank.]"
+    },
+    {
+      "id": 31,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Boiling Rock, Part 1",
+      "chapter_num": 14,
+      "main_combatants": [
+        "Zuko"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "[Frantically blasting fire into the tank.] We're going down! The balloon's not working anymore! [Blasts fire up into the balloon.] The balloon skids along the boiling water, splashing Sokka's hand, which he shakes while blocking his mouth to prevent ..."
+    },
+    {
+      "id": 32,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Boiling Rock, Part 1",
+      "chapter_num": 14,
+      "main_combatants": [
+        "Male guard"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Male guard"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The bully guard walks away, but as he is leaving, he whips fire at Chit Sang. Chit Sang blocks it, and redirects it at him. The bully guard breaks the blast with a kick. Trust me, you don't want to. [The female guard throws a cup at him, which causes..."
+    },
+    {
+      "id": 33,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Boiling Rock, Part 2",
+      "chapter_num": 15,
+      "main_combatants": [
+        "Azula"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Azula"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The riot begins. Several blasts of fire go off. Zuko blasts fire at the guard and starts to run toward the door. The guard jumps in front of Mai to shield her."
+    },
+    {
+      "id": 34,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Southern Raiders",
+      "chapter_num": 16,
+      "main_combatants": [
+        "Young Katara"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Young Katara"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Katara gazes into the menacing eyes of the Southern Raiders commander and runs off. The scene changes to her sprinting across the snowy battlefield. [Arrives to where her father is battling Fire Nation soldiers.] Dad, Dad! Please, I think Mom's in tr..."
+    },
+    {
+      "id": 35,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Southern Raiders",
+      "chapter_num": 16,
+      "main_combatants": [
+        "Yon Rha"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Yon Rha"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Nobody sneaks up on me without getting burned! [Drops basket of vegetables and firebends at a nearby bush.] Lightning strikes, darkening the screen and flashing back to the incident in the igloo with the young Katara, her mother and Yon Rha."
+    },
+    {
+      "id": 36,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "The Ember Island Players",
+      "chapter_num": 17,
+      "main_combatants": [
+        "Actress Azula"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Actress Azula"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "A stagehand offers Actress Aang a rock prop, which she throws at Actress Azula. [Blocks the rock prop.] Haha, yes! Continue drilling! The city of Ba Sing Se can hide no longer!"
+    },
+    {
+      "id": 37,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 1: The Phoenix King",
+      "chapter_num": 18,
+      "main_combatants": [
+        "Sokka",
+        "Katara"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sokka",
+        "Katara"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "He is cut off by a fire blast that destroys the sculpture. Zuko appears and chases after Aang, blasting at him with firebending. Aang jumps over the sand replica of Ba Sing Se and Zuko destroys the replica. Aang hides behind his Appa sand sculpture. ..."
+    },
+    {
+      "id": 38,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 3: Into the Inferno",
+      "chapter_num": 20,
+      "main_combatants": [
+        "Azula"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Azula"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "What a shame ... there's only one way to resolve this. You two must duel each other. I order you to fight an Agni Kai! Iroh inhales deeply. Cut to a shot of the Sozin's Comet. Scene changes back to Iroh exhaling as a ring of fire appears around. The ..."
+    },
+    {
+      "id": 39,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 4: Avatar Aang",
+      "chapter_num": 21,
+      "main_combatants": [
+        "Sokka"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sokka"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The episode opens with a reddish sky due to Sozin's Comet as the camera pans to the left. The scene cuts to Ozai throwing a left-curved fire blast, followed with a right-curved blast. He fires a straight blast. Cuts to inside Aang's earth sphere shie..."
+    },
+    {
+      "id": 40,
+      "book": "Fire",
+      "book_num": 3,
+      "chapter": "Sozin's Comet, Part 4: Avatar Aang",
+      "chapter_num": 21,
+      "main_combatants": [
+        "Zuko"
+      ],
+      "supporting_characters": [
+        "Ty Lee"
+      ],
+      "all_characters": [
+        "Zuko",
+        "Ty Lee"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "Yeah, the girls and I really bonded in prison. And after a few chi blocking lessons, they said I could join their group. We're going to be best friends forever. [She hugs two other warriors and they all smile.] Please. The real hero is the Avatar. [A..."
+    },
+    {
+      "id": 41,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Boy in the Iceberg",
+      "chapter_num": 1,
+      "main_combatants": [
+        "Katara"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Katara"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Katara ponders over that remark for a moment and walks toward Aang with a scared look upon her face. The two venture closer toward the ship. Aang helps Katara to climb some of the blocks of ice that lay beside the ship and they crawl through a hole i..."
+    },
+    {
+      "id": 42,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Avatar Returns",
+      "chapter_num": 2,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "She marches away furiously, leaving Kanna looking saddened. Meanwhile, Sokka coaches the young boys to prepare for battle just outside the village. Appa responds by merely grunting lazily. The scene changes to where Sokka prepares for battle inside a..."
+    },
+    {
+      "id": 43,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Warriors of Kyoshi",
+      "chapter_num": 4,
+      "main_combatants": [
+        "Sokka",
+        "Suki"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sokka",
+        "Suki"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "The camera pans upward to where several female warriors clad in green kimonos descend from the treetops ambushing the trio. The women quickly encircle the group and take them out. Cut to Sokka who is being pulled back and knocked over. Switch to a sh..."
+    },
+    {
+      "id": 44,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Warriors of Kyoshi",
+      "chapter_num": 4,
+      "main_combatants": [
+        "Suki"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Suki"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "[Peeks her head around the door to look at the hit tree before turning back to Sokka. Friendly.] It's not about strength. Our technique is about using your opponents' force against them. Loosen up. [Retracts her own fan from her belt and points it at..."
+    },
+    {
+      "id": 45,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The King of Omashu",
+      "chapter_num": 5,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [
+        "Bumi"
+      ],
+      "all_characters": [
+        "Bumi",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "Aang puts his arm in the hole up to the shoulder trying to grab hold of the frightened rabbit. The light dawns on his face. The snarling goat gorilla bounds toward Aang but instead of attacking, picks him up and licks him. The snarling goat gorilla b..."
+    },
+    {
+      "id": 46,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Imprisoned",
+      "chapter_num": 6,
+      "main_combatants": [
+        "Haru"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Haru"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "My father was very courageous. When the Fire Nation invaded, he and the other earthbenders were outnumbered ten to one. But they fought back anyway. The scene switches to Katara and Haru who have continued their walk along the dirt trail. A loud boom..."
+    },
+    {
+      "id": 47,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Imprisoned",
+      "chapter_num": 6,
+      "main_combatants": [
+        "Warden"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Warden"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The warden finishes his speech by turning to take leave of the facility. As he does so, a single piece of coal sails through the air and pelts the back of his head. Outraged, the warden spins back to see who dared to attack him. Haru stands defiantly..."
+    },
+    {
+      "id": 48,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Winter Solstice, Part 1: The Spirit World",
+      "chapter_num": 7,
+      "main_combatants": [
+        "Sokka",
+        "Old wanderer"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sokka",
+        "Old wanderer"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Our village is in crisis, he's our only hope! [To Aang.] For the last few days at sunset, a spirit monster comes and attacks our village. He is Hei Bai, the black and white spirit. Why is it attacking you?"
+    },
+    {
+      "id": 49,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Winter Solstice, Part 2: Avatar Roku",
+      "chapter_num": 8,
+      "main_combatants": [
+        "Sokka",
+        "Shyu"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sokka",
+        "Shyu"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "No. Only a fully realized Avatar is powerful enough to open this door alone. Otherwise, the sages must open this door together, [Sokka shown in deep thought.] with five simultaneous fire blasts. [Ponderously states.] Five fire blasts, huh? [Zoom out ..."
+    },
+    {
+      "id": 50,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Winter Solstice, Part 2: Avatar Roku",
+      "chapter_num": 8,
+      "main_combatants": [
+        "Zuko"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Everyone looks away as the door seals with a blinding flash of white light. Inside, Aang is kneeling and looks up to a tall statue of Avatar Roku. A beam of red sunlight enters the room and strikes a glistening red jewel held by the statue. [He and f..."
+    },
+    {
+      "id": 51,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Winter Solstice, Part 2: Avatar Roku",
+      "chapter_num": 8,
+      "main_combatants": [
+        "Zhao"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zhao"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Fire! [He and his guards cooperate in blasting fire onto the unseen target.] Avatar Roku draws the circling fire together in one motion. He sends it forward in one powerful wave that sears the room, blasting the offenders off their feet and melting t..."
+    },
+    {
+      "id": 52,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Waterbending Scroll",
+      "chapter_num": 9,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Cuts to peaceful scene of the cabbage merchant with his cart of cabbages in an alleyway. Sokka, Katara, and Aang run past him and almost knock his cart over. Aang sends a blast of wind that throws the cart into the group of pirates behind them. No th..."
+    },
+    {
+      "id": 53,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Jet",
+      "chapter_num": 10,
+      "main_combatants": [
+        "Sokka",
+        "Jet"
+      ],
+      "supporting_characters": [
+        "The Duke"
+      ],
+      "all_characters": [
+        "Sokka",
+        "Jet",
+        "The Duke"
+      ],
+      "num_participants": 3,
+      "num_main_combatants": 2,
+      "description": "[Throws arms into the air.] No! Besides Gran-Gran. Look, my instincts tell me we have a better chance of slipping through on foot, and a leader has to trust his instincts. Run! [They turn to run but a firebender blocks them off by setting the plants ..."
+    },
+    {
+      "id": 54,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Jet",
+      "chapter_num": 10,
+      "main_combatants": [
+        "Sokka"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Sokka"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Aang retreats back into the forest, as Jet hooks the branch and pulls himself up. Katara follows on the ground. Jet attacks; Aang defends himself with balls of air, which Jet ducks. Jet attacks head on, but Aang blocks with his arms and sends his opp..."
+    },
+    {
+      "id": 55,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Great Divide",
+      "chapter_num": 11,
+      "main_combatants": [
+        "Katara",
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Katara",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Oh yeah? Well, you're Mister Lazy Bum, King of the [Picks up and throws a twig at Sokka's head.] Tents! [Sokka turns around, looking angrily at her.] [Grinning while gloating.] You see that? Settling feuds and making peace, all in a day's work for th..."
+    },
+    {
+      "id": 56,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Great Divide",
+      "chapter_num": 11,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The camera cuts to show Aang fighting off the canyon crawlers, and soon has them all in a pile. The crawlers pick themselves up and target the refugees. Though Aang, Katara, Sokka, and the tribe leaders fight hard to hold them off, they are vastly ou..."
+    },
+    {
+      "id": 57,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Storm",
+      "chapter_num": 12,
+      "main_combatants": [
+        "Jee",
+        "Iroh"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Jee",
+        "Iroh"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Agni Kai. A fire duel. That's right. Zuko looked upon the old general he had insulted and declared that he was not afraid. But Zuko misunderstood. [Flashback shows an overview of the chamber; the camera cuts to show Zuko preparing for the Agni Kai.] ..."
+    },
+    {
+      "id": 58,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Storm",
+      "chapter_num": 12,
+      "main_combatants": [
+        "Iroh",
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Iroh",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "And then the Fire Nation attacked our temple. My people needed me and I wasn't there to help. When Prince Zuko saw that it was his father who had come to duel him, he begged for mercy."
+    },
+    {
+      "id": 59,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Blue Spirit",
+      "chapter_num": 13,
+      "main_combatants": [
+        "Shinu"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Shinu"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "The scene opens on a messenger hawk flying toward an imposing Fire Nation fortress as the scene changes to its tower. The camera pans across the tri-level fortress and it's tall balconies before settling on a courtyard where a group of archers stand ..."
+    },
+    {
+      "id": 60,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Fortuneteller",
+      "chapter_num": 14,
+      "main_combatants": [
+        "Aang",
+        "Calm man"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Aang",
+        "Calm man"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "[Urgently.] Someone's being attacked by a platypus bear! The camera focuses on a large, ferocious creature having dark brown fur, the body and head of a bear, the tail and bill of a platypus and bearing a white \"V\" across its chest. The creature stan..."
+    },
+    {
+      "id": 61,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Fortuneteller",
+      "chapter_num": 14,
+      "main_combatants": [
+        "Wu"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Wu"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "[Her and Aang shielding their faces in surprise.] Oh my! [Cuts to shot of the bone lying in the fire and back to Aunt Wu who is fascinated.] Your destiny! This is incredible. You will be involved in a great battle, an awesome conflict between the for..."
+    },
+    {
+      "id": 62,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Bato of the Water Tribe",
+      "chapter_num": 15,
+      "main_combatants": [
+        "Sokka"
+      ],
+      "supporting_characters": [
+        "Hakoda"
+      ],
+      "all_characters": [
+        "Sokka",
+        "Hakoda"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "Sokka walks on for a little while, before he stops, not too far from Aang, to study the weapon closely. Cut to a shot of the scimitar in his hand. The scene switches into a flashback; Southern Water Tribe warriors are preparing their ships, loading t..."
+    },
+    {
+      "id": 63,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "Bato of the Water Tribe",
+      "chapter_num": 15,
+      "main_combatants": [
+        "Aang",
+        "Sokka"
+      ],
+      "supporting_characters": [
+        "Bato"
+      ],
+      "all_characters": [
+        "Sokka",
+        "Bato",
+        "Aang"
+      ],
+      "num_participants": 3,
+      "num_main_combatants": 2,
+      "description": "[To Bato.] Is this the boat he took you ice dodging in? Yep! It's got the scar to prove it. Ha. How 'bout you Sokka? You must have some good stories from your first time ice dodging. [Sokka begins to look saddened.]"
+    },
+    {
+      "id": 64,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Deserter",
+      "chapter_num": 16,
+      "main_combatants": [
+        "Zhao",
+        "Katara"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zhao",
+        "Katara"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Don't worry, men. My old teacher gave up fighting a long time ago. [The screen pans to Jeong Jeong. Suddenly, Zhao parts through the wall.] Haven't you, Master Jeong Jeong? I'll explain later. But right now, we have to get out here. Zhao and his sold..."
+    },
+    {
+      "id": 65,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Deserter",
+      "chapter_num": 16,
+      "main_combatants": [
+        "Zhao",
+        "Aang"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zhao",
+        "Aang"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 2,
+      "description": "Zhao throws a fireball at Aang. I see he taught you how to duck and run like a coward. But I doubt he showed you what a firebender is truly capable of! [Throws another intense fireball.]"
+    },
+    {
+      "id": 66,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Siege of the North, Part 1",
+      "chapter_num": 19,
+      "main_combatants": [
+        "Aang"
+      ],
+      "supporting_characters": [
+        "Arnook"
+      ],
+      "all_characters": [
+        "Aang",
+        "Arnook"
+      ],
+      "num_participants": 2,
+      "num_main_combatants": 1,
+      "description": "The day we have feared for so long has arrived. The Fire Nation is on our doorstep. It is with great sadness I call my family here before me, knowing well that some of these faces are about to vanish from our tribe, [While saying this line, the scene..."
+    },
+    {
+      "id": 67,
+      "book": "Water",
+      "book_num": 1,
+      "chapter": "The Siege of the North, Part 2",
+      "chapter_num": 20,
+      "main_combatants": [
+        "Zuko"
+      ],
+      "supporting_characters": [],
+      "all_characters": [
+        "Zuko"
+      ],
+      "num_participants": 1,
+      "num_main_combatants": 1,
+      "description": "Cut to wide-view of oasis as Momo flies away toward the camera. Panning view of Momo landing on Aang's arm and running to his shoulder, with Katara and Sokka are behind him. Cut to Zhao and his soldiers, readying themselves for battle. Cut to Aang, S..."
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+/* Avatar Bubble Chart Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.canvas {
+    background-color: white;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1250px;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Bubble styles */
+.bubble {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bubble:hover {
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+}
+
+/* Chart title */
+.chart-title {
+    fill: #333;
+}
+
+/* Book labels */
+.book-label {
+    opacity: 0.7;
+}
+
+/* Tooltip - styles are mostly inline in JS, but adding some backup */
+.tooltip {
+    line-height: 1.6;
+}
+
+.tooltip strong {
+    color: #fff;
+}
+
+/* Legend */
+.legend text {
+    fill: #333;
+}
+
+/* Optional: Add controls container */
+.controls {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.controls button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background: #f0f0f0;
+    border-color: #999;
+}
+
+.controls button.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 1280px) {
+    svg {
+        max-width: 100%;
+        height: auto;
+    }
+}
