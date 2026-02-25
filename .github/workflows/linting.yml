@@ -1,0 +1,65 @@
+name: Compile Linting
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  linting:
+    name: Run Super-Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Run Super-Linter
+        uses: super-linter/super-linter@v8.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Lint only changed files (faster)
+          VALIDATE_ALL_CODEBASE: false
+
+          # Enable only what you want
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_HTML: true
+          VALIDATE_CSS: true
+
+          # Disable everything else (optional but cleaner)
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_JSON: false
+          VALIDATE_YAML: false
+          VALIDATE_MARKDOWN: false
+
+  browser-console-check:
+    name: Browser DevTools Console Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Start local server
+        run: python3 -m http.server 8080 --bind 127.0.0.1 &
+
+      - name: Run Playwright test
+        env:
+          CHECK_URL: http://127.0.0.1:8080/index.html
+        run: npx playwright test tests/console.spec.js --reporter=line
