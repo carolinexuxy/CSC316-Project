@@ -30,7 +30,7 @@ OUTPUT_DIR = "../data/processed"
 OUTPUT_FILE = "moral_counts_tidy.csv"
 
 REMOVE_BRACKETS = True
-MAIN_CHARACTERS = ["aang", "katara", "sokka", "toph", "zuko", "iroh", "azula", "zhao", "roku", "suki", "jet"]
+MAIN_CHARACTERS = ["aang", "katara", "sokka", "toph", "zuko", "iroh", "azula", "zhao", "ozai", "roku", "suki", "jet"]
 
 # avatar.csv column names
 COL_CHARACTER = "character"
