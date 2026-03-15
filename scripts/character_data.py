@@ -16,8 +16,9 @@ import pandas as pd
 # -----------------------------
 # Configuration
 # -----------------------------
-CSV_PATH = "data/raw/avatar.csv"
-OUTPUT_PATH = "data/processed/character_data.json"
+CSV_PATH = "../data/raw/avatar.csv"
+OUTPUT_PATH = "../data/processed/character_traits.json"
+RELEVANT_CHARACTERS = { "Aang", "Sokka", "Katara", "Zuko", "Suki", "Toph"}
 IGNORE_WORDS = {
     "back", "away", "again", "still", "up", "down", "around", "forward", "slightly", "somewhat", "further",
     "upward", "closer", "far", "anyway", "voiceover", "motionless", "nearby", "offcamera", "beside", "once",
@@ -145,14 +146,17 @@ df = pd.read_csv(CSV_PATH, encoding="latin1")
 
 # Structure: data[character][element][chapter] = Counter()
 data = defaultdict(lambda: {elem: defaultdict(Counter) for elem in ELEMENT_MAP.keys()})
-unique_characters = df["character"].unique().tolist() 
+# unique_characters = df["character"].unique().tolist() 
 
 # iterate each row of data
 for _, row in df.iterrows():
     character = row["character"]
+    if character not in RELEVANT_CHARACTERS:
+        continue
+    
     full_text = row["full_text"]
     # flatten chapters across books/seasons
-    chapter = int(row["chapter_num"] + (row["book_num"] - 1) * 20)
+    chapter = int(int(row["chapter_num"]) + (int(row["book_num"]) - 1) * 20)
 
     # Skip non-character rows if desired
     if character.lower() == "scene description":
@@ -180,7 +184,7 @@ for _, row in df.iterrows():
                 data[character][elem][chapter][word] += 1
 
 # accumulate counts across chapters
-for char in unique_characters:
+for char in RELEVANT_CHARACTERS:
     for elem, word_set in ELEMENT_MAP.items():
         cumulative = Counter({w: 0 for w in word_set})  # start with zeros
         for chap in range(1, 62):
