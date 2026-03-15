@@ -26,10 +26,21 @@ body {
   border-radius: 12px;
 }
 
-#frame3_1 {
-	overflow-x: auto;
-	overflow-y: auto;
-}/* Avatar Bubble Chart Styles */
+#frame3 {
+	display: flex;
+	justify-content: center;  
+	align-items: flex-start; 
+	gap: 40px;                
+	width: 100%;
+}
+
+#frame3 svg {
+  display: block;
+  width: 800px;
+  height: 800px;
+  margin: 0;
+}
+/* Avatar Bubble Chart Styles */
 
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
