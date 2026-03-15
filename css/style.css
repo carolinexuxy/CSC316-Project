@@ -14,7 +14,7 @@
 
 /* ── PAGE ── */
 html, body {
-	background-color: var(--parchment);
+	background-color: var(--parchment) !important;
 	font-family: 'Philosopher', serif;
 	color: var(--ink);
 	min-height: 100vh;
@@ -27,29 +27,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .canvas {
-  width: 100%;
-  max-width: 1500px;
-  margin: 40px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 100%;
+	max-width: 1500px;
+	margin: 40px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Frame 1:Intro */
+
+#frame1 {
+	min-height: 400px;
+	display: flex;
+	justify-content: center;
+	background-color: var(--parchment);
+	align-items: center;
 }
 
 /* Frame 2: Element Bending Visualization */
 #frame2 {
-  min-height: 780px;
+	min-height: 780px;
 }
 
 #frame2 svg {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+	border-radius: 12px;
 }
 
 #frame3_1 {
