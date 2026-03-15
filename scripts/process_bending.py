@@ -54,6 +54,7 @@ def count_bending_mentions(text, patterns):
 def process_data():
     element_totals = {'water': 0, 'earth': 0, 'fire': 0, 'air': 0}
     episodes = {}
+    by_character = {}
 
     with open(INPUT_CSV, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
@@ -63,6 +64,10 @@ def process_data():
             book_num = row.get('book_num', '')
             chapter = row.get('chapter', '')
             chapter_num = row.get('chapter_num', '')
+            character = row.get('character', '').strip()
+
+            if not book_num or not book_num.isdigit():
+                continue
 
             ep_key = f"{book_num}-{chapter_num}"
             if ep_key not in episodes:
@@ -74,14 +79,27 @@ def process_data():
                     'water': 0, 'earth': 0, 'fire': 0, 'air': 0,
                 }
 
+            if character and character != 'Scene Description':
+                if character not in by_character:
+                    by_character[character] = {'water': 0, 'earth': 0, 'fire': 0, 'air': 0}
+
             for element, patterns in BENDING_PATTERNS.items():
                 count = count_bending_mentions(text, patterns)
                 element_totals[element] += count
                 episodes[ep_key][element] += count
+                if character and character != 'Scene Description':
+                    by_character[character][element] += count
+
+    # Only keep characters with at least one bending mention
+    by_character = {
+        char: counts for char, counts in by_character.items()
+        if sum(counts.values()) > 0
+    }
 
     output = {
         'totals': element_totals,
         'episodes': sorted(episodes.values(), key=lambda x: (x['book_num'], x['chapter_num'])),
+        'by_character': by_character,
     }
 
     # Print summary
@@ -90,6 +108,7 @@ def process_data():
         print(f"  {element.capitalize():8s}: {count}")
     print(f"  {'Total':8s}: {sum(element_totals.values())}")
     print(f"\nProcessed {len(episodes)} unique episodes.")
+    print(f"Tracked {len(by_character)} characters with bending mentions.")
 
     with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
         json.dump(output, f, indent=2)
