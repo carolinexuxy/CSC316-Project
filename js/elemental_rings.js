@@ -184,6 +184,11 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 		// draw all ring elements while unfocusing elemIndex
 		var allElements = function(elemIndex) {
 
+			// link to element viz
+			if (window.filterElementViz) {
+				window.filterElementViz(vis.character, null)
+			}
+          		
 			// get the max domain of all 4 rings
 			const globalMax = d3.max(vis.displayData, element =>
 			d3.max(element, d =>
@@ -287,6 +292,11 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 
 		// enlarge element layer
 		var focusElement = function(elemIndex) {
+
+			// link to element viz
+			if (window.filterElementViz) {
+				window.filterElementViz(vis.character, elements[elemIndex].toLowerCase())
+			}
 
 			// erase current rings
 			erase()
