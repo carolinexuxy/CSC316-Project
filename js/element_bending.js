@@ -31,6 +31,11 @@
     },
   ];
 
+  const MAIN_CHARACTERS = [
+    "Aang", "Katara", "Sokka", "Toph", "Zuko",
+    "Iroh", "Azula", "Ozai", "Zhao", "Roku", "Suki", "Jet",
+  ];
+
   // Module-level state for re-rendering
   let allData = null;
   let dotsGroups = {};
@@ -100,45 +105,106 @@
 
   function buildControls(data) {
     const frame = document.getElementById("frame2");
+
+    const style = document.createElement("style");
+    style.textContent = [
+      "#eb-dropdown { position:relative; display:inline-block; }",
+      "#eb-btn {",
+      "  font-family:'Philosopher',serif; font-size:14px;",
+      "  padding:5px 32px 5px 12px; cursor:pointer;",
+      "  border:1px solid var(--ink-ghost); border-radius:4px;",
+      "  background:#f0e6cc; color:#2c1f0e;",
+      "  position:relative;",
+      "}",
+      "#eb-btn::after {",
+      "  content:'▾'; position:absolute; right:10px; top:50%;",
+      "  transform:translateY(-50%); pointer-events:none;",
+      "}",
+      "#eb-list {",
+      "  display:none; position:absolute; left:0;",
+      "  background:#f0e6cc; border:1px solid rgba(44,31,14,0.22);",
+      "  border-radius:4px; box-shadow:0 4px 12px rgba(44,31,14,0.15);",
+      "  min-width:160px; z-index:999; max-height:260px; overflow-y:auto;",
+      "}",
+      "#eb-list.open { display:block; }",
+      "#eb-list::-webkit-scrollbar { width:6px; }",
+      "#eb-list::-webkit-scrollbar-track { background:#f0e6cc; }",
+      "#eb-list::-webkit-scrollbar-thumb { background:rgba(44,31,14,0.3); border-radius:3px; }",
+      ".eb-item {",
+      "  padding:7px 14px; cursor:pointer;",
+      "  font-family:'Philosopher',serif; font-size:14px; color:var(--ink);",
+      "  transition:background 0.15s;",
+      "}",
+      ".eb-item:hover { background:#e8d9b5; }",
+      ".eb-item.selected { font-weight:bold; }",
+    ].join("\n");
+    document.head.appendChild(style);
+
     const wrapper = document.createElement("div");
     wrapper.style.cssText = "text-align:center; margin-bottom:12px;";
 
-    const label = document.createElement("label");
+    const label = document.createElement("span");
     label.textContent = "Filter by character: ";
     label.style.cssText = "font-family:'Philosopher',serif; font-size:14px; color:var(--ink); margin-right:6px;";
 
-    const select = document.createElement("select");
-    select.style.cssText = [
-      "font-family:'Philosopher',serif",
-      "font-size:14px",
-      "padding:4px 10px",
-      "border:1px solid var(--ink-ghost)",
-      "border-radius:4px",
-      "background:var(--parchment-lt)",
-      "color:var(--ink)",
-      "cursor:pointer",
-    ].join(";");
+    const dropdown = document.createElement("div");
+    dropdown.id = "eb-dropdown";
 
-    const allOption = document.createElement("option");
-    allOption.value = "";
-    allOption.textContent = "All Characters";
-    select.appendChild(allOption);
+    const btn = document.createElement("button");
+    btn.id = "eb-btn";
+    btn.textContent = "All Characters";
+    btn.type = "button";
 
-    Object.keys(data.by_character)
-      .sort()
-      .forEach(function (char) {
-        const opt = document.createElement("option");
-        opt.value = char;
-        opt.textContent = char;
-        select.appendChild(opt);
+    const list = document.createElement("div");
+    list.id = "eb-list";
+
+    const characters = [""].concat(
+      MAIN_CHARACTERS.filter(function (c) { return data.by_character[c]; })
+    );
+
+    characters.forEach(function (char) {
+      const item = document.createElement("div");
+      item.className = "eb-item" + (char === "" ? " selected" : "");
+      item.textContent = char || "All Characters";
+      item.dataset.value = char;
+      item.addEventListener("click", function () {
+        list.querySelectorAll(".eb-item").forEach(function (el) {
+          el.classList.remove("selected");
+        });
+        item.classList.add("selected");
+        btn.textContent = item.textContent;
+        list.classList.remove("open");
+        window.filterElementViz(char || null, null);
       });
-
-    select.addEventListener("change", function () {
-      window.filterElementViz(this.value || null, null);
+      list.appendChild(item);
     });
 
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const open = list.classList.toggle("open");
+      if (open) {
+        // flip upward if list would go below viewport
+        const btnRect = btn.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - btnRect.bottom;
+        const listHeight = Math.min(260, characters.length * 34);
+        if (spaceBelow < listHeight) {
+          list.style.bottom = btn.offsetHeight + "px";
+          list.style.top = "auto";
+        } else {
+          list.style.top = btn.offsetHeight + "px";
+          list.style.bottom = "auto";
+        }
+      }
+    });
+
+    document.addEventListener("click", function () {
+      list.classList.remove("open");
+    });
+
+    dropdown.appendChild(btn);
+    dropdown.appendChild(list);
     wrapper.appendChild(label);
-    wrapper.appendChild(select);
+    wrapper.appendChild(dropdown);
     frame.insertBefore(wrapper, frame.firstChild);
   }
 
@@ -206,13 +272,13 @@
         .attr("fill", "black")
         .node();
 
-      // Faint outline
+      // Outline
       group.append("path")
         .attr("d", element.path)
         .attr("fill", "none")
         .attr("stroke", element.color)
-        .attr("stroke-width", 0.5)
-        .attr("stroke-opacity", 0.25);
+        .attr("stroke-width", 1.5)
+        .attr("stroke-opacity", 0.6);
 
       // Dots group (cleared and re-populated on filter)
       dotsGroups[element.key] = group.append("g");
