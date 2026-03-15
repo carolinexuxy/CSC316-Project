@@ -171,8 +171,8 @@ function generateDefaultPositions(fights, polygons, sizeScale) {
 
 // Load data
 Promise.all([
-    d3.json('data/processed/fire-nation-data.json'),
-    d3.json('data/processed/water-nation-data.json'),
+    d3.json('data/processed/fire_nation_data.json'),
+    d3.json('data/processed/water_nation_data.json'),
     d3.json('data/processed/fights.json')
 ]).then(([fireNationData, waterNationData, fightData]) => {
 
