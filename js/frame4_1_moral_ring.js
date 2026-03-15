@@ -416,7 +416,7 @@
         .attr("class", d => `ring ring-${d.word}`);
 
       const traitGroup = g.append("g").attr("class", "traits")
-      const elementalRings = new ElementalRings(trait_data, traitGroup, WIDTH, HEIGHT, 80, rOuterAll - 80)
+      const elementalRings = new ElementalRings(trait_data, traitGroup, WIDTH, HEIGHT, 85, rOuterAll - 80)
       elementalRings.initVis()
 
       // Toggle buttons
