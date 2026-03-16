@@ -159,6 +159,39 @@ class Timeline {
             ? document.getElementById(this.mountId)
             : document.body;
 
+
+        // vis description
+        const description = document.createElement("div");
+
+        description.style.flexBasis = "100%";
+        description.style.order = "-1";
+
+        description.style.border = "1px solid var(--ink-faded)";
+        description.style.borderRadius = "8px";
+        description.style.padding = "10px 16px";
+        description.style.color = "var(--ink-faded)";
+        description.style.fontFamily = "'Papyrus','Times New Roman',serif";
+        description.style.fontSize = "14px";
+        description.style.boxShadow = "2px 2px 6px rgba(0,0,0,0.2)";
+        description.style.maxWidth = "900px";
+        description.style.margin = "0 auto 20px auto";
+        description.style.textAlign = "center";
+        description.style.lineHeight = "1.5";
+
+        description.textContent =
+            `In Avatar, the themes of war, balance, destiny, and redemption flow continuously through the story. They rise and fall across the chapters, shaping both the world and the journeys of its characters.
+
+As you explore the chapters, you can trace moments of conflict, the subtle pursuit of balance, the pressures of destiny, and the possibility of redemption emerging over time.
+
+Follow the timeline from left to right to see how each theme evolves throughout the series. Peaks highlight chapters where a theme is particularly strong, while lower points indicate moments where it recedes. Hover over the markers to view specific scenes and quotes from key moments.`;
+
+        const container = document.createElement("div");
+        container.style.width = "100%";
+        container.style.textAlign = "center";
+
+        container.appendChild(description);
+        mount.prepend(container);
+
         // filter buttons — one per theme
         const filters = document.createElement("div");
         filters.id = "atla-filters";
