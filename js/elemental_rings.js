@@ -31,6 +31,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 	let earthColors = ['#bfb198', '#b09f7f', '#a18d66', '#927c50', '#846b3d', '#76592f', '#664d28','#58421f','#493617', '#3c2b0f'];
 	let fireColors = ['#8b0000', '#990000', '#a60000', '#b30000', '#bf1a00','#cc3300','#d94c00', '#e66400', '#f07f00', '#ff9900'];
 	let airColors = ['#b7e7ed', '#a3e9ea', '#85ede8', '#7ae6e2', '#70dedc', '#64d5d4','#59ccc9', '#4fc2bf', '#44b8b4', '#3daeaa'];
+
 	this.colorScale = [waterColors, fireColors, earthColors, airColors]
 
 	// initialize categories and colour scale for each element
@@ -77,7 +78,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 				.attr("stroke", "#b9c754") 
 				.attr("fill", "none")
 				.attr("stroke-width", 1)
-				.attr("opacity", 1)
+				.attr("opacity", 0)
 		}
 
 		vis.ringLabel = vis.svg.append("text")
@@ -241,7 +242,8 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 							.style("top", event.pageY + "px")
 							.html(`
 								<div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-									<h4>Character: ${vis.character}
+									<h4>Character: ${vis.character}<h4>
+									<h6>Element: ${elements[i]}<h6>
 									<h6>Trait: ${d.key}<h3>    
 									<h6>Count: ${yValue}<h4> 
 									<h6>Book: ${chapterIndex === 60 ? 3 : Math.floor(chapterIndex / 20) + 1}<h4>  

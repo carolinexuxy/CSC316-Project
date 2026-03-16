@@ -40,7 +40,7 @@
 
   // User-selected fields
   var selectedCharacter = "aang"
-  var ringType = 'trait' // default ring type
+  var ringType = 'theme' // default ring type
   
   function getDiv() {
     const mount = d3.select(DIV_ID);
@@ -190,13 +190,14 @@
   // moralGroup - drawing area of moral rings
   function renderToggle(svg, toggle_g, elementalRings, updateMoral, moralGroup) {
 	const toggleButtons = [
-		{ text: "Theme", type: "moral" },
-		{ text: "Trait", type: "trait" }
+    { text: "Trait", type: "trait" },
+		{ text: "Theme", type: "moral" }
+		
 	];
 
 	toggleButtons.forEach(d => {
 		// "trait" selected by default
-		const isActive = d.type === "trait";
+		const isActive = d.type === "moral";
 
 		const btn = toggle_g.append("button")
 			.text(d.text)
@@ -245,7 +246,7 @@
       .append("g")
       .attr("class", "item")
       .attr("transform", (d, i) => `translate(0, ${i * 18})`)
-      .attr("opacity", 0)
+      .attr("opacity", 1)
 
     items.append("rect")
       .attr("width", 10)
