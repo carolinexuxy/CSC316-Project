@@ -149,7 +149,8 @@
               // Apply element-specific colors
               .style("background-color", d.bg)
               .style("border", `2px solid ${d.border}`)
-              .style("color", d.color);
+              .style("color", d.color)
+              .style("display", "none");
         });
 
     // annotation styling
