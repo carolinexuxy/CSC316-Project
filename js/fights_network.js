@@ -35,7 +35,8 @@ const characterImages = {
     'Ozai': 'img/ozai.png',
     'Jet': 'img/jet.png',
     'Zhao': 'img/zhao.png',
-    'Roku': 'img/roku.png'
+    'Roku': 'img/roku.png',
+    'Combustion Man': 'img/combustionman.png',
 };
 
 let selectedCharacters = new Set();

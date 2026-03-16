@@ -187,16 +187,16 @@ const manualPositions = {
     "y": 291
   },
   "43": {
-    "x": 143,
-    "y": 295
+    "x": 128,
+    "y": 299
   },
   "44": {
     "x": 92,
     "y": 173
   },
   "45": {
-    "x": 138,
-    "y": 321
+    "x": 105,
+    "y": 311
   },
   "46": {
     "x": 62,
@@ -235,8 +235,8 @@ const manualPositions = {
     "y": 276
   },
   "55": {
-    "x": 129,
-    "y": 299
+    "x": 131,
+    "y": 319
   },
   "56": {
     "x": 74,
@@ -273,18 +273,6 @@ const manualPositions = {
   "64": {
     "x": 142,
     "y": 147
-  },
-  "65": {
-    "x": 114,
-    "y": 319
-  },
-  "66": {
-    "x": 66,
-    "y": 272
-  },
-  "67": {
-    "x": 105,
-    "y": 303
   }
 };
 
@@ -566,59 +554,87 @@ Promise.all([
 
     window.mapBubbles = bubbles;
 
-    bubbles.append('circle')
-        .attr('r', d => d.radius)
-        .attr('fill', d => d.color)
-        .attr('stroke', '#e8d9b5')      // parchment ring
-        .attr('stroke-width', 1.5)
-        .attr('opacity', 0.82)
-        .style('cursor', 'move')
-        .style('filter', 'drop-shadow(0 1px 3px rgba(44,31,14,0.3))')
-        .on('mouseover', function(event, d) {
-            d3.select(this)
-                .attr('opacity', 1)
-                .attr('stroke-width', 3)
-                .attr('stroke', '#2c1f0e');
+bubbles.append('circle')
+    .attr('r', d => d.radius)
+    .attr('fill', d => d.color)
+    .attr('stroke', '#e8d9b5')
+    .attr('stroke-width', 1.5)
+    .attr('opacity', 0.82)
+    //.style('cursor', 'move')
+    .style('filter', 'drop-shadow(0 1px 3px rgba(44,31,14,0.3))')
+    .on('mouseover', function(event, d) {
+        const selected = Array.from(selectedCharacters);
+        const hasActiveFilter = selected.length > 0;
+        const isMatch = !hasActiveFilter || (
+            d.all_characters &&
+            d.all_characters.some(c => selected.includes(c))
+        );
 
-            const combatants = d.main_combatants && d.main_combatants.length > 0
-                ? d.main_combatants.join(', ')
-                : 'Unknown';
+        // Do not visually reveal filtered-out fights
+        if (!isMatch) {
+            return;
+        }
 
-            const supporting = d.supporting_characters && d.supporting_characters.length > 0
-                ? `<div style="font-size:11px;color:#5a3e22;margin-top:4px;">Also: ${d.supporting_characters.slice(0, 3).join(', ')}</div>`
-                : '';
+        d3.select(this)
+            .attr('opacity', 1)
+            .attr('stroke-width', 3)
+            .attr('stroke', '#2c1f0e');
 
-            tooltip.html(`
-                <div style="border-bottom:1px solid rgba(44,31,14,0.2);padding-bottom:7px;margin-bottom:7px;">
-                    <strong style="font-family:'Uncial Antiqua',cursive;font-size:13px;color:#2c1f0e;">${d.chapter}</strong><br>
-                    <span style="color:${d.color};font-weight:bold;font-size:12px;">Book ${d.book_num}: ${d.book}</span>
-                    <span style="font-size:10px;color:#5a3e22;margin-left:6px;">Fight #${d.id}</span>
-                </div>
-                <div style="margin-bottom:6px;">
-                    <span style="font-size:11px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Combatants</span><br>
-                    <span style="font-size:13px;color:#2c1f0e;">${combatants}</span>
-                    ${supporting}
-                </div>
-                <div style="font-size:11px;color:#5a3e22;font-style:italic;">
-                    ${d.num_participants} participant${d.num_participants !== 1 ? 's' : ''}
-                </div>
-            `)
-                .style('visibility', 'visible')
-                .style('opacity', 1);
-        })
-        .on('mousemove', function(event) {
-            tooltip
-                .style('top', (event.pageY + 15) + 'px')
-                .style('left', (event.pageX + 15) + 'px');
-        })
-        .on('mouseout', function() {
-            d3.select(this)
-                .attr('opacity', 0.82)
-                .attr('stroke-width', 1.5)
-                .attr('stroke', '#e8d9b5');
+        const combatants = d.main_combatants && d.main_combatants.length > 0
+            ? d.main_combatants.join(', ')
+            : 'Unknown';
 
-            tooltip.style('opacity', 0).style('visibility', 'hidden');
-        });
+        const supporting = d.supporting_characters && d.supporting_characters.length > 0
+            ? `<div style="font-size:11px;color:#5a3e22;margin-top:4px;">Also: ${d.supporting_characters.slice(0, 3).join(', ')}</div>`
+            : '';
+
+        tooltip.html(`
+            <div style="border-bottom:1px solid rgba(44,31,14,0.2);padding-bottom:7px;margin-bottom:7px;">
+                <strong style="font-family:'Uncial Antiqua',cursive;font-size:13px;color:#2c1f0e;">${d.chapter}</strong><br>
+                <span style="color:${d.color};font-weight:bold;font-size:12px;">Book ${d.book_num}: ${d.book}</span>
+                <span style="font-size:10px;color:#5a3e22;margin-left:6px;">Fight #${d.id}</span>
+            </div>
+            <div style="margin-bottom:6px;">
+                <span style="font-size:11px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Combatants</span><br>
+                <span style="font-size:13px;color:#2c1f0e;">${combatants}</span>
+                ${supporting}
+            </div>
+            <div style="font-size:11px;color:#5a3e22;font-style:italic;">
+                ${d.num_participants} participant${d.num_participants !== 1 ? 's' : ''}
+            </div>
+        `)
+        .style('visibility', 'visible')
+        .style('opacity', 1);
+    })
+    .on('mousemove', function(event, d) {
+        const selected = Array.from(selectedCharacters);
+        const hasActiveFilter = selected.length > 0;
+        const isMatch = !hasActiveFilter || (
+            d.all_characters &&
+            d.all_characters.some(c => selected.includes(c))
+        );
+
+        if (!isMatch) return;
+
+        tooltip
+            .style('top', (event.pageY + 15) + 'px')
+            .style('left', (event.pageX + 15) + 'px');
+    })
+    .on('mouseout', function(event, d) {
+        const selected = Array.from(selectedCharacters);
+        const hasActiveFilter = selected.length > 0;
+        const isMatch = !hasActiveFilter || (
+            d.all_characters &&
+            d.all_characters.some(c => selected.includes(c))
+        );
+
+        d3.select(this)
+            .attr('opacity', hasActiveFilter ? (isMatch ? 1 : 0.1) : 0.82)
+            .attr('stroke-width', hasActiveFilter ? (isMatch ? 2.5 : 0.8) : 1.5)
+            .attr('stroke', '#e8d9b5');
+
+        tooltip.style('opacity', 0).style('visibility', 'hidden');
+    });
 
     // Export button
     // mapGroup.append('foreignObject')
@@ -649,7 +665,6 @@ Promise.all([
     //         </div>
     //     `);
 
-    // // Export function
     // window.exportPositions = function() {
     //     const exportData = {};
     //     nodes.forEach(node => {
