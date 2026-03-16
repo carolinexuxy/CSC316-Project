@@ -91,7 +91,7 @@
 
     // left column for characters / ring type selection
 		const leftCol = row.append("div")
-			.attr("class", "col-md-1 d-flex text-center")
+			.attr("class", "col-md-2 d-flex text-center")
 
 		// toggle ring type pannel
 		const pannel = leftCol.append("div")
@@ -99,7 +99,7 @@
 
 		// center for main ring viz
 		const centre = row.append("div")
-			.attr("class", "col-md-11 text-center")
+			.attr("class", "col-md-10 text-center")
 
     // fields for element annotations and styles
     const elements = [
