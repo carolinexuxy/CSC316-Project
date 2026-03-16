@@ -1,17 +1,41 @@
 const networkConfig = {
     width: 600,
-    height: 600,
-    backgroundColor: '#e8d9b5',  
+    height: 560,
+    outerWidth: 640,
+    outerHeight: 660,
+    paddingX: 20,
+    paddingTop: 70,
+    paddingBottom: 20,
+    backgroundColor: '#e8d9b5',
 
     nodeColors: {
-        'Water': '#235e8c',        
-        'Earth': '#4a6a22',       
-        'Fire':  '#b84e10',        
-        'default': '#5a3e22'       
+        'Water': '#235e8c',
+        'Earth': '#4a6a22',
+        'Fire': '#b84e10',
+        'default': '#5a3e22'
     },
 
-    minFightsThreshold: 2,
+    minFightsThreshold: 3,
     minConnectionStrength: 1
+};
+
+// Map character names to image file paths here.
+// If a character is missing from this object, the node falls back to a colored circle.
+const characterImages = {
+    'Aang': 'img/aang.png',
+    'Katara': 'img/katara.png',
+    'Sokka': 'img/sokka.png',
+    'Toph': 'img/toph.png',
+    'Zuko': 'img/zuko.png',
+    'Azula': 'img/azula.png',
+    'Iroh': 'img/iroh.png',
+    'Suki': 'img/suki.png',
+    'Ty Lee': 'img/tylee.png',
+    'Mai': 'img/mai.png',
+    'Ozai': 'img/ozai.png',
+    'Jet': 'img/jet.png',
+    'Zhao': 'img/zhao.png',
+    'Roku': 'img/roku.png'
 };
 
 let selectedCharacters = new Set();
@@ -21,28 +45,47 @@ let simulation;
 let nodeElements;
 let linkElements;
 
-function createCharacterNetwork(fightsData) {
+function safeId(str) {
+    return String(str).replace(/[^a-zA-Z0-9_-]/g, '-');
+}
 
+function createCharacterNetwork(fightsData) {
     const networkContainer = d3.select('.frame3-viz-row')
-    .append('div')
-    .attr('id', 'network-container');
+        .append('div')
+        .attr('id', 'network-container');
 
     const networkSvg = networkContainer
         .append('svg')
-        .attr('width', networkConfig.width)
-        .attr('height', networkConfig.height)
+        .attr('width', networkConfig.outerWidth)
+        .attr('height', networkConfig.outerHeight)
+        .attr('viewBox', `0 0 ${networkConfig.outerWidth} ${networkConfig.outerHeight}`)
         .style('background-color', networkConfig.backgroundColor)
         .style('display', 'block');
 
-    // Parchment background
+    // Background
     networkSvg.append('rect')
-        .attr('width', networkConfig.width)
-        .attr('height', networkConfig.height)
+        .attr('width', networkConfig.outerWidth)
+        .attr('height', networkConfig.outerHeight)
         .attr('fill', networkConfig.backgroundColor);
+
+    // Border
+    networkSvg.append('rect')
+        .attr('x', 8)
+        .attr('y', 8)
+        .attr('width', networkConfig.outerWidth - 16)
+        .attr('height', networkConfig.outerHeight - 16)
+        .attr('rx', 10)
+        .attr('ry', 10)
+        .attr('fill', 'none')
+        .attr('stroke', '#5a3e22')
+        .attr('stroke-width', 2)
+        .attr('opacity', 0.7);
+
+    const titleCenterX = networkConfig.outerWidth / 2;
 
     // Title
     networkSvg.append('text')
-        .attr('x', networkConfig.width / 2)
+        .attr('x', titleCenterX)
         .attr('y', 30)
         .attr('text-anchor', 'middle')
         .style('font-size', '18px')
@@ -51,13 +94,19 @@ function createCharacterNetwork(fightsData) {
         .style('letter-spacing', '0.06em')
         .text('Character Fight Network');
 
-    // Decorative underline
+    // Underline
     networkSvg.append('line')
-        .attr('x1', networkConfig.width / 2 - 120)
-        .attr('x2', networkConfig.width / 2 + 120)
-        .attr('y1', 36).attr('y2', 36)
+        .attr('x1', titleCenterX - 120)
+        .attr('x2', titleCenterX + 120)
+        .attr('y1', 36)
+        .attr('y2', 36)
         .attr('stroke', 'rgba(44,31,14,0.2)')
         .attr('stroke-width', 1);
+
+    // Inner plotting group
+    const networkGroup = networkSvg.append('g')
+        .attr('class', 'network-content')
+        .attr('transform', `translate(${networkConfig.paddingX}, ${networkConfig.paddingTop})`);
 
     // Process fight data
     const characterStats = new Map();
@@ -115,7 +164,10 @@ function createCharacterNetwork(fightsData) {
 
     // Size scale
     const nodeSizeScale = d3.scaleSqrt()
-        .domain([networkConfig.minFightsThreshold, d3.max(significantCharacters, d => d.fights)])
+        .domain([
+            networkConfig.minFightsThreshold,
+            d3.max(significantCharacters, d => d.fights) || networkConfig.minFightsThreshold
+        ])
         .range([20, 50]);
 
     networkNodes = significantCharacters.map((char) => ({
@@ -126,6 +178,7 @@ function createCharacterNetwork(fightsData) {
         primaryBook: char.primaryBook,
         radius: nodeSizeScale(char.fights),
         color: networkConfig.nodeColors[char.primaryBook] || networkConfig.nodeColors.default,
+        image: characterImages[char.name] || null,
         x: Math.random() * networkConfig.width,
         y: Math.random() * networkConfig.height
     }));
@@ -137,30 +190,48 @@ function createCharacterNetwork(fightsData) {
         const [char1, char2] = key.split('-');
         if (significantCharNames.has(char1) && significantCharNames.has(char2)) {
             if (count >= networkConfig.minConnectionStrength) {
-                networkLinks.push({ source: char1, target: char2, strength: count });
+                networkLinks.push({
+                    source: char1,
+                    target: char2,
+                    strength: count
+                });
             }
         }
     });
 
+    const maxStrength = d3.max(networkLinks, d => d.strength) || 1;
+
     const linkWidthScale = d3.scaleLinear()
-        .domain([1, d3.max(networkLinks, d => d.strength)])
+        .domain([1, maxStrength])
         .range([2, 12]);
+
+    // Clip paths for round images
+    const defs = networkSvg.append('defs');
+
+    networkNodes.forEach(d => {
+        defs.append('clipPath')
+            .attr('id', `clip-${safeId(d.id)}`)
+            .append('circle')
+            .attr('cx', 0)
+            .attr('cy', 0)
+            .attr('r', d.radius);
+    });
 
     // Force simulation
     simulation = d3.forceSimulation(networkNodes)
         .force('link', d3.forceLink(networkLinks)
             .id(d => d.id)
-            .distance(d => 100 - linkWidthScale(d.strength) * 6)
+            .distance(d => Math.max(40, 100 - linkWidthScale(d.strength) * 6))
             .strength(d => linkWidthScale(d.strength) / 10)
         )
         .force('charge', d3.forceManyBody().strength(-350).distanceMax(500))
-        .force('center', d3.forceCenter(networkConfig.width / 2, networkConfig.height / 2 + 20))
+        .force('center', d3.forceCenter(networkConfig.width / 2, networkConfig.height / 2))
         .force('collision', d3.forceCollide().radius(d => d.radius + 14))
         .force('x', d3.forceX(networkConfig.width / 2).strength(0.05))
-        .force('y', d3.forceY(networkConfig.height / 2 + 20).strength(0.05));
+        .force('y', d3.forceY(networkConfig.height / 2).strength(0.05));
 
-    // Links — muted ink tone
-    linkElements = networkSvg.append('g')
+    // Links
+    linkElements = networkGroup.append('g')
         .attr('class', 'links')
         .selectAll('line')
         .data(networkLinks)
@@ -170,42 +241,83 @@ function createCharacterNetwork(fightsData) {
         .attr('stroke-width', d => linkWidthScale(d.strength));
 
     // Node groups
-    nodeElements = networkSvg.append('g')
+    nodeElements = networkGroup.append('g')
         .attr('class', 'nodes')
         .selectAll('g')
         .data(networkNodes)
         .join('g')
         .attr('class', 'node')
-        .call(d3.drag()
-            .on('start', dragStarted)
-            .on('drag', dragged)
-            .on('end', dragEnded)
+        .call(
+            d3.drag()
+                .on('start', dragStarted)
+                .on('drag', dragged)
+                .on('end', dragEnded)
         );
 
-    // Node circles
+    // Fallback/background ring
     nodeElements.append('circle')
+        .attr('class', 'node-ring')
         .attr('r', d => d.radius)
-        .attr('fill', d => d.color)
-        .attr('stroke', '#e8d9b5')      // parchment ring
+        .attr('fill', 'white')
+        .attr('stroke', '#e8d9b5')
         .attr('stroke-width', 1.5)
-        .attr('opacity', 0.85)
+        .attr('opacity', 0.85);
+
+    // colored ring (only visible when no image)
+    nodeElements.append('circle')
+        .attr('class', 'node-ring')
+        .attr('r', d => d.radius)
+        .attr('fill', d => d.image ? 'transparent' : d.color)
+        .attr('stroke', '#e8d9b5')
+        .attr('stroke-width', 1.5)
+        .attr('opacity', 0.85);
+
+    // Images only for nodes that have one
+    nodeElements.filter(d => d.image)
+        .append('image')
+        .attr('class', 'node-image')
+        .attr('href', d => d.image)
+        .attr('x', d => -d.radius * 0.9)
+        .attr('y', d => -d.radius * 0.9)
+        .attr('width', d => d.radius * 1.8)
+        .attr('height', d => d.radius * 1.8)
+        .attr('preserveAspectRatio', 'xMidYMid meet')
+        .attr('clip-path', d => `url(#clip-${safeId(d.id)})`)
+        .style('pointer-events', 'none');
+
+    // Top border ring
+    nodeElements.append('circle')
+        .attr('class', 'node-stroke')
+        .attr('r', d => d.radius)
+        .attr('fill', 'none')
+        .attr('stroke', '#e8d9b5')
+        .attr('stroke-width', 1.5)
+        .attr('opacity', 0.95)
+        .style('pointer-events', 'none');
+
+    // Invisible hit area for interaction
+    nodeElements.append('circle')
+        .attr('class', 'node-hitarea')
+        .attr('r', d => d.radius)
+        .attr('fill', 'transparent')
         .style('cursor', 'pointer')
         .on('mouseover', function(event, d) {
             if (selectedCharacters.size === 0) {
-                d3.select(this)
+                d3.select(this.parentNode).select('.node-stroke')
                     .attr('stroke', '#2c1f0e')
                     .attr('stroke-width', 2.5);
 
                 linkElements
                     .attr('stroke-opacity', l =>
-                        (l.source.id === d.id || l.target.id === d.id) ? 1 : 0.06)
+                        (l.source.id === d.id || l.target.id === d.id) ? 1 : 0.06
+                    )
                     .attr('stroke', l =>
                         (l.source.id === d.id || l.target.id === d.id)
                             ? d.color
                             : 'rgba(44,31,14,0.18)'
                     );
 
-                nodeElements.selectAll('circle')
+                nodeElements.selectAll('.node-ring, .node-image, .node-stroke')
                     .attr('opacity', n => {
                         if (n.id === d.id) return 1;
                         const isConnected = networkLinks.some(l =>
@@ -217,9 +329,12 @@ function createCharacterNetwork(fightsData) {
             }
             showTooltip(event, d);
         })
+        .on('mousemove', function(event) {
+            updateTooltipPosition(event);
+        })
         .on('mouseout', function() {
             if (selectedCharacters.size === 0) {
-                d3.select(this)
+                d3.select(this.parentNode).select('.node-stroke')
                     .attr('stroke', '#e8d9b5')
                     .attr('stroke-width', 1.5);
 
@@ -227,7 +342,10 @@ function createCharacterNetwork(fightsData) {
                     .attr('stroke-opacity', 1)
                     .attr('stroke', 'rgba(44,31,14,0.18)');
 
-                nodeElements.selectAll('circle').attr('opacity', 0.85);
+                nodeElements.selectAll('.node-ring, .node-image, .node-stroke')
+                    .attr('opacity', function() {
+                        return d3.select(this).classed('node-image') ? 0.98 : 0.85;
+                    });
             }
             hideTooltip();
         })
@@ -237,12 +355,13 @@ function createCharacterNetwork(fightsData) {
         });
 
     // Labels for top 10 characters
-    const topCharacters = networkNodes.slice(0, 10);
+    const topCharacters = networkNodes;
+
     nodeElements.filter(d => topCharacters.includes(d))
         .append('text')
-        .attr('dy', d => d.radius + 16)   // pushes text slightly lower
+        .attr('dy', d => d.radius + 16)
         .attr('text-anchor', 'middle')
-        .style('font-size', '13px')       // bigger label
+        .style('font-size', '13px')
         .style('font-family', "'Philosopher', serif")
         .style('fill', '#2c1f0e')
         .style('font-weight', 'bold')
@@ -256,27 +375,32 @@ function createCharacterNetwork(fightsData) {
     // Tick update
     simulation.on('tick', () => {
         linkElements
-            .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
-            .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+
         nodeElements.attr('transform', d => `translate(${d.x},${d.y})`);
     });
 
-    // Reset Filter button — ink/parchment style
+    // Reset button
     const resetButton = networkSvg.append('g')
         .attr('class', 'reset-button')
-        .attr('transform', `translate(${networkConfig.width - 118}, 14)`)
+        .attr('transform', `translate(${networkConfig.outerWidth - 126}, 14)`)
         .style('cursor', 'pointer')
         .on('click', resetFilters);
 
     resetButton.append('rect')
-        .attr('width', 104).attr('height', 28)
+        .attr('width', 104)
+        .attr('height', 28)
         .attr('fill', 'transparent')
         .attr('stroke', 'rgba(44,31,14,0.45)')
         .attr('stroke-width', 1.5)
         .attr('rx', 3);
 
     resetButton.append('text')
-        .attr('x', 52).attr('y', 18)
+        .attr('x', 52)
+        .attr('y', 18)
         .attr('text-anchor', 'middle')
         .style('fill', '#2c1f0e')
         .style('font-size', '11px')
@@ -285,23 +409,27 @@ function createCharacterNetwork(fightsData) {
         .style('pointer-events', 'none')
         .text('Reset Filter');
 
-    // Drag handlers
     function dragStarted(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
-        d.fx = d.x; d.fy = d.y;
+        d.fx = d.x;
+        d.fy = d.y;
     }
+
     function dragged(event, d) {
-        d.fx = event.x; d.fy = event.y;
+        d.fx = event.x;
+        d.fy = event.y;
     }
+
     function dragEnded(event, d) {
         if (!event.active) simulation.alphaTarget(0);
-        d.fx = null; d.fy = null;
+        d.fx = null;
+        d.fy = null;
     }
 
     return { nodes: networkNodes, links: networkLinks, simulation };
 }
 
-// Tooltip — parchment style
+// Tooltip
 const networkTooltip = d3.select('body')
     .append('div')
     .attr('class', 'network-tooltip')
@@ -366,7 +494,9 @@ function showTooltip(event, d) {
 }
 
 function hideTooltip() {
-    networkTooltip.style('opacity', 0).style('visibility', 'hidden');
+    networkTooltip
+        .style('opacity', 0)
+        .style('visibility', 'hidden');
 }
 
 function updateTooltipPosition(event) {
@@ -388,33 +518,67 @@ function toggleCharacterFilter(character) {
 
 function updateNetworkHighlights() {
     if (selectedCharacters.size === 0) {
-        nodeElements.selectAll('circle')
+        nodeElements.selectAll('.node-stroke')
             .attr('stroke', '#e8d9b5')
-            .attr('stroke-width', 1.5)
+            .attr('stroke-width', 1.5);
+
+        nodeElements.selectAll('.node-ring')
             .attr('opacity', 0.85);
+
+        nodeElements.selectAll('.node-image')
+            .attr('opacity', 0.98);
+
+        nodeElements.selectAll('.node-stroke')
+            .attr('opacity', 0.95);
 
         linkElements
             .attr('stroke', 'rgba(44,31,14,0.18)')
             .attr('stroke-opacity', 1);
     } else {
-        nodeElements.selectAll('circle')
+        nodeElements.selectAll('.node-stroke')
             .attr('stroke', d => selectedCharacters.has(d.id) ? '#2c1f0e' : '#e8d9b5')
-            .attr('stroke-width', d => selectedCharacters.has(d.id) ? 3 : 1.5)
+            .attr('stroke-width', d => selectedCharacters.has(d.id) ? 3 : 1.5);
+
+        nodeElements.selectAll('.node-ring')
             .attr('opacity', d => {
                 if (selectedCharacters.has(d.id)) return 1;
                 const isConnected = networkLinks.some(l => {
                     const isLinked = (l.source.id === d.id || l.target.id === d.id);
                     const hasSelectedNode = selectedCharacters.has(l.source.id) ||
-                                           selectedCharacters.has(l.target.id);
+                        selectedCharacters.has(l.target.id);
                     return isLinked && hasSelectedNode;
                 });
-                return isConnected ? 0.20 : 0.30;
+                return isConnected ? 0.2 : 0.3;
+            });
+
+        nodeElements.selectAll('.node-image')
+            .attr('opacity', d => {
+                if (selectedCharacters.has(d.id)) return 1;
+                const isConnected = networkLinks.some(l => {
+                    const isLinked = (l.source.id === d.id || l.target.id === d.id);
+                    const hasSelectedNode = selectedCharacters.has(l.source.id) ||
+                        selectedCharacters.has(l.target.id);
+                    return isLinked && hasSelectedNode;
+                });
+                return isConnected ? 0.2 : 0.3;
+            });
+
+        nodeElements.selectAll('.node-stroke')
+            .attr('opacity', d => {
+                if (selectedCharacters.has(d.id)) return 1;
+                const isConnected = networkLinks.some(l => {
+                    const isLinked = (l.source.id === d.id || l.target.id === d.id);
+                    const hasSelectedNode = selectedCharacters.has(l.source.id) ||
+                        selectedCharacters.has(l.target.id);
+                    return isLinked && hasSelectedNode;
+                });
+                return isConnected ? 0.2 : 0.3;
             });
 
         linkElements
             .attr('stroke', l => {
                 const hasSelected = selectedCharacters.has(l.source.id) ||
-                                   selectedCharacters.has(l.target.id);
+                    selectedCharacters.has(l.target.id);
                 return hasSelected ? 'rgba(44,31,14,0.7)' : 'rgba(44,31,14,0.08)';
             })
             .attr('stroke-opacity', 1);
@@ -432,7 +596,8 @@ function updateMapFilter() {
 
     if (window.mapBubbles) {
         window.mapBubbles.selectAll('circle')
-            .transition().duration(300)
+            .transition()
+            .duration(300)
             .attr('opacity', d => {
                 if (selected.length === 0) return 0.82;
                 const hasMatch = d.all_characters && d.all_characters.some(c => selected.includes(c));
