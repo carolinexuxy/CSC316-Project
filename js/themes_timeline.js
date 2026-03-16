@@ -233,13 +233,14 @@ Follow the timeline from left to right to see how each theme evolves throughout 
             .style("width", "100%")
 
 
+
         this.svg.append("text")
             .attr("x", this.W / 2)
             .attr("y", 20)
             .attr("text-anchor", "middle")
-            .attr("font-family", "Philosopher, serif")
+            .attr("font-family", "Uncial Antiqua, cursive")
             .attr("font-style", "italic")
-            .attr("font-size", 40)
+            .attr("font-size", 20)
             .attr("fill", "#5a3e22")
             .attr("opacity", 0.75)
             .text("Thematic Weight Across The Show");
