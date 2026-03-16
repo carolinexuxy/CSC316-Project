@@ -1,7 +1,7 @@
 const config = {
     // Map dimensions
-    mapWidth: 700,
-    mapHeight: 800,
+    mapWidth: 600,
+    mapHeight: 600,
     backgroundColor: '#e8d9b5',   
     nationColors: {
         'Fire': '#b84e10',         
@@ -302,19 +302,18 @@ const introBlock = d3.select('#frame3')
 introBlock.append('h2')
     .style('margin', '0 0 10px 0')
     .attr("font-family", "Philosopher, serif")
-    .attr("font-style", "italic")
-    .style('font-size', '40px')
     .attr("fill", "#5a3e22")
     .style('font-weight', 'normal')
     .style('letter-spacing', '0.05em')
-    .text('Conflict Across Avatar');
+    .text('Conflict Across The Show');
 
 introBlock.append('p')
     .style('margin', '0 auto')
     .style('max-width', '900px')
     .style('font-family', "'Philosopher', serif")
-    .style('font-size', '20px')
+    .style('font-size', '16px')
     .style('line-height', '1.7')
+    .style('color', 'var(--ink-faded)')
     .text(`While elemental bending is one
         of the most recognizable    
         aspects of Avatar: The Last
@@ -360,44 +359,37 @@ const svg = mapContainer
     .append('svg')
     .attr('width', config.mapWidth + 40)
     .attr('height', config.mapHeight + 60)
+    .attr('viewBox', `0 0 ${config.mapWidth + 40} ${config.mapHeight + 60}`)
     .style('background-color', config.backgroundColor)
     .style('display', 'block');
 
-// Parchment background rect
+// Background rect
 svg.append('rect')
     .attr('width', config.mapWidth + 40)
     .attr('height', config.mapHeight + 60)
     .attr('fill', config.backgroundColor);
 
-// Subtle parchment texture noise overlay
-const defs = svg.append('defs');
-const filter = defs.append('filter').attr('id', 'parchment-noise');
-filter.append('feTurbulence')
-    .attr('type', 'fractalNoise')
-    .attr('baseFrequency', '0.65')
-    .attr('numOctaves', '3')
-    .attr('stitchTiles', 'stitch');
-filter.append('feColorMatrix').attr('type', 'saturate').attr('values', '0');
-filter.append('feBlend')
-    .attr('in', 'SourceGraphic')
-    .attr('mode', 'multiply');
-
+// Border around map
 svg.append('rect')
-    .attr('width', config.mapWidth + 40)
-    .attr('height', config.mapHeight + 60)
-    .attr('fill', 'rgba(44,31,14,0.03)')
-    .attr('filter', 'url(#parchment-noise)')
-    .style('pointer-events', 'none');
-
+    .attr('x', 8)
+    .attr('y', 8)
+    .attr('width', config.mapWidth + 24)
+    .attr('height', config.mapHeight + 44)
+    .attr('rx', 10)
+    .attr('ry', 10)
+    .attr('fill', 'none')
+    .attr('stroke', '#5a3e22')
+    .attr('stroke-width', 2)
+    .attr('opacity', 0.7);
 
 // Create a group for the map content
 const mapGroup = svg.append('g')
     .attr('class', 'map-content')
-    .attr('transform', `translate(20, 30)`);
+    .attr('transform', `translate(-2, 30)`);
 
 // Title
 mapGroup.append('text')
-    .attr('x', config.mapWidth / 2 + 50)
+    .attr('x', config.mapWidth / 2 + 20)
     .attr('y', 0)
     .attr('text-anchor', 'middle')
     .style('font-size', '18px')
@@ -405,12 +397,12 @@ mapGroup.append('text')
     .style('font-family', "'Uncial Antiqua', cursive")
     .style('fill', '#2c1f0e')
     .style('letter-spacing', '0.06em')
-    .text('Fight Locations by Nation');
+    .text('Fights By Season');
 
 mapGroup.append('line')
-    .attr('x1', config.mapWidth / 2 - 120)
-    .attr('x2', config.mapWidth / 2 + 120)
-    .attr('y1', -2).attr('y2', -2)
+    .attr('x1', config.mapWidth / 2 - 100)
+    .attr('x2', config.mapWidth / 2 + 140)
+    .attr('y1', 5).attr('y2', 5)
     .attr('stroke', 'rgba(44,31,14,0.2)')
     .attr('stroke-width', 1);
 

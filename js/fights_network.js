@@ -1,6 +1,6 @@
 const networkConfig = {
-    width: 800,
-    height: 800,
+    width: 600,
+    height: 600,
     backgroundColor: '#e8d9b5',  
 
     nodeColors: {
@@ -259,43 +259,6 @@ function createCharacterNetwork(fightsData) {
             .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
             .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
         nodeElements.attr('transform', d => `translate(${d.x},${d.y})`);
-    });
-
-    // Legend — parchment card
-    const legend = networkSvg.append('g')
-        .attr('class', 'legend')
-        .attr('transform', `translate(14, ${networkConfig.height - 118})`);
-
-    legend.append('rect')
-        .attr('x', -4).attr('y', -4)
-        .attr('width', 148).attr('height', 108)
-        .attr('fill', 'rgba(240,230,204,0.95)')
-        .attr('stroke', 'rgba(44,31,14,0.2)')
-        .attr('stroke-width', 1)
-        .attr('rx', 3);
-
-    legend.append('text')
-        .attr('x', 0).attr('y', 11)
-        .style('font-size', '10px')
-        .style('font-family', "'Uncial Antiqua', cursive")
-        .style('fill', '#2c1f0e')
-        .text('Primary Book');
-
-    ['Water', 'Earth', 'Fire'].forEach((book, i) => {
-        const g = legend.append('g')
-            .attr('transform', `translate(0, ${28 + i * 26})`);
-
-        g.append('circle')
-            .attr('r', 5.5)
-            .attr('fill', networkConfig.nodeColors[book])
-            .attr('opacity', 0.85);
-
-        g.append('text')
-            .attr('x', 14).attr('y', 4)
-            .style('font-size', '11px')
-            .style('font-family', "'Philosopher', serif")
-            .style('fill', '#2c1f0e')
-            .text(`Book ${i + 1}: ${book}`);
     });
 
     // Reset Filter button — ink/parchment style
