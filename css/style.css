@@ -17,6 +17,8 @@ html, body {
 	background-color: var(--parchment) !important;
 	font-family: 'Philosopher', serif;
 	color: var(--ink);
+	margin: 0;
+	padding: 0;
 	min-height: 100vh;
 }
 
@@ -26,23 +28,17 @@ h1, h2, h3, h4, h5, h6 {
 	letter-spacing: 0.06em;
 }
 
-body {
-	margin: 0;
-	padding: 0;
-	background-color: #ffffff;
-	font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
 .canvas {
 	width: 100%;
 	max-width: 1500px;
 	margin: 40px auto;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-/* Frame 1:Intro */
+/* Frame 1: Intro */
 
 #frame1 {
 	min-height: 400px;
@@ -54,39 +50,19 @@ body {
 
 /* Frame 2: Element Bending Visualization */
 #frame2 {
-	min-height: 780px;
+	min-height: 820px;
+	flex-direction: column;
 }
 
-#frame2 svg {
-	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-	border-radius: 12px;
-}
 
 #frame3_1 {
 	overflow-x: auto;
 	overflow-y: auto;
 }/* Avatar Bubble Chart Styles */
 
-body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	margin: 0;
-	padding: 20px;
-	background-color: white;
-}
-
-.canvas {
-	background-color: white;
-	margin: 20px auto;
-	border-radius: 8px;
-	/* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
-	padding: 20px;
-	max-width: 1250px;
-}
-
 svg {
 	display: block;
 	margin: 0 auto;
-	background-color: white;
 }
 
 /* Bubble styles */
