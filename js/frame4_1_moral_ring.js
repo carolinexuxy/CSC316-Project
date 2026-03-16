@@ -93,8 +93,8 @@
 		const leftCol = row.append("div")
 			.attr("class", "col-md-2 d-flex text-center")
 
-		// toggle ring type pannel
-		const pannel = leftCol.append("div")
+		// toggle ring type panel
+		const panel = leftCol.append("div")
 			.attr("class", "d-flex flex-column justify-content-center align-items-center gap-4")
 
 		// center for main ring viz
@@ -180,7 +180,7 @@
 			.style("pointer-events", "none")
 			.style("opacity", 0);
 
-		return { container, pannel, centre, svg, tooltip };
+		return { container, panel, centre, svg, tooltip };
 	}
 
   // render buttons to toggle between moral and trait axes
@@ -330,7 +330,7 @@
 
   function main() {
     const mount = getDiv();
-    const { container, pannel, svg, tooltip } = buildLayout(mount);
+    const { container, panel, svg, tooltip } = buildLayout(mount);
 
     Promise.all([
       d3.csv(MORAL_DATA_PATH, d3.autoType),    // moral
@@ -373,8 +373,8 @@
         .attr("stroke", "#e5e5e5");
 
       // toggle panel group
-      const toggle_g = pannel.append("div")
-			                  .attr("class", "pannel")
+      const toggle_g = panel.append("div")
+			                  .attr("class", "panel")
                         .style("display", "flex")
                         .style("flex-direction", "column")
                         .style("gap", "8px");
@@ -425,7 +425,7 @@
       renderToggle(g, toggle_g, elementalRings, updateMoral, moralGroup)
       
       // Build left-side character buttons
-			const buttonWrap = pannel.append("div")
+			const buttonWrap = panel.append("div")
 			.attr("class", "col-auto d-flex flex-column scrollbox")
       .style("max-height", "70vh")
       .style("overflow-y", "auto");
