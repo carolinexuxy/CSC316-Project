@@ -29,19 +29,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .canvas {
-  width: 100%;
-  max-width: 1500px;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	width: 100%;
+	max-width: 1500px;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Frame 1: Intro */
+
+#frame1 {
+	min-height: 400px;
+	display: flex;
+	justify-content: center;
+	background-color: var(--parchment);
+	align-items: center;
 }
 
 /* Frame 2: Element Bending Visualization */
 #frame2 {
-  min-height: 820px;
-  flex-direction: column;
+	min-height: 820px;
+	flex-direction: column;
+}
+
+#frame2 svg {
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+	border-radius: 12px;
 }
 
 #frame3_1 {
