@@ -40,7 +40,7 @@
 
   // User-selected fields
   var selectedCharacter = "aang"
-  var ringType = 'theme' // default ring type
+  var ringType = 'moral' // default ring type
   
   function getDiv() {
     const mount = d3.select(DIV_ID);
@@ -66,15 +66,12 @@
         .style("padding", "8px 12px")
         .style("color", "var(--ink-faded)")
         .style("font-family", "'Papyrus', 'Times New Roman', serif")
-        .style("font-size", "14px")
+        .style("font-size", "18px")
         .style("box-shadow", "2px 2px 6px rgba(0,0,0,0.2)")
         .style("max-width", "800px")
         .style("margin", "0 auto")
         .style("text-align", "center")
-        .text(`Characters display a wide range of traits across each nation,
-               and contribute to the core themes throughout the story.
-               Select characters, toggle between "Theme" and "Trait" visualizations, and hover data
-               segmenets to show more information.`);
+        .text(`Characters develop complex TRAITS and explore central THEMES.`);
 
     // Title
 		container.append("div")
@@ -82,26 +79,9 @@
       .append("div")
       .attr("class", "col text-center") 
       .append("h2")
-      .text("Characters Grow Throughout the Show")
+      .text("Meet the Characters")
       .style("color", "var(--ink)");
-
-		// Bootstrap row
-		const row = container.append("div")
-			.attr("class", "row");
-
-    // left column for characters / ring type selection
-		const leftCol = row.append("div")
-			.attr("class", "col-md-2 d-flex text-center")
-
-		// toggle ring type panel
-		const panel = leftCol.append("div")
-			.attr("class", "d-flex flex-column justify-content-center align-items-center gap-4")
-
-		// center for main ring viz
-		const centre = row.append("div")
-			.attr("class", "col-md-10 text-center")
-
-    // fields for element annotations and styles
+      // fields for element annotations and styles
     const elements = [
       { 
         name: "Air", 
@@ -135,7 +115,7 @@
 
     // add element annotations
     const annotationRow = container.append("div")
-        .attr("class", "row justify-content-center mt-3");
+        .attr("class", "row justify-content-center mt-3 mb-3");
     const elementAnnotations = annotationRow.selectAll("div.annotation-col")
         .data(elements)
         .enter()
@@ -150,19 +130,36 @@
               .style("background-color", d.bg)
               .style("border", `2px solid ${d.border}`)
               .style("color", d.color)
-              .style("display", "none");
         });
 
     // annotation styling
     container.selectAll(".annotation")
         .style("border-radius", "8px")
-        .style("padding", "8px 12px")
+        .style("padding", "4px 4px")
         .style("font-family", "'Papyrus', 'Times New Roman', serif")
         .style("font-size", "14px")
         .style("box-shadow", "2px 2px 6px rgba(0,0,0,0.2)")
-        .style("max-width", "250px")
+        .style("max-width", "300px")
         .style("margin", "0 auto")
         .style("text-align", "center");
+
+		// Bootstrap row
+		const row = container.append("div")
+			.attr("class", "row");
+
+    // left column for characters / ring type selection
+		const leftCol = row.append("div")
+			.attr("class", "col-md-2 d-flex text-center")
+
+		// toggle ring type panel
+		const panel = leftCol.append("div")
+			.attr("class", "d-flex flex-column justify-content-center align-items-center gap-4")
+
+
+		// center for main ring viz
+		const centre = row.append("div")
+			.attr("class", "col-md-10 text-center")
+
 
 		// SVG
 		const svg = centre.append("svg")
@@ -183,57 +180,80 @@
 		return { container, panel, centre, svg, tooltip };
 	}
 
-  // render buttons to toggle between moral and trait axes
-  // svg - drawing area of the visualization
-  // toggle_g - drawing area of toggle buttons
-  // elementalRings - instance of ElementalRing class
-  // updateMoral - function to update moral rings
-  // moralGroup - drawing area of moral rings
-  function renderToggle(svg, toggle_g, elementalRings, updateMoral, moralGroup) {
-	const toggleButtons = [
-    { text: "Trait", type: "trait" },
-		{ text: "Theme", type: "moral" }
-		
-	];
+    // render buttons to toggle between moral and trait axes
+    // svg - drawing area of the visualization
+    // toggle_g - drawing area of toggle buttons
+    // elementalRings - instance of ElementalRing class
+    // updateMoral - function to update moral rings
+    // moralGroup - drawing area of moral rings
+  function renderToggle(svg, toggle_g, elementalRings, updateMoral, moralGroup) {          
+    // hint to tell user to select "trait" or "theme"
+    const hint = toggle_g.append("div")
+      .text("Click to toggle")
+      .attr("class", "toggle-hint")
+      .style("font-size", "12px")
+      .style("background-color", "#d16262")
+      .style("padding", "4px")
+      .style("border-radius", "8px")
+      .style("margin-top", "6px")
+      .style("opacity", 1);
+    
+    // flash hint
+    let flashInterval = setInterval(() => {
+        hint.transition()
+            .duration(400)
+            .style("opacity", hint.style("opacity") == 1 ? 0.3 : 1);
+    }, 400);
 
-	toggleButtons.forEach(d => {
-		// "trait" selected by default
-		const isActive = d.type === "moral";
+    const toggleButtons = [
+      { text: "Trait", type: "trait" },
+      { text: "Theme", type: "moral" }
+    ];
 
-		const btn = toggle_g.append("button")
-			.text(d.text)
-			.attr("class", "atla-btn")
-			.classed("inactive", !isActive)  // inactive class if not selected
+    const buttons = [];
+
+    function activateButton(d, btn) {
+      
+      toggle_g.selectAll("button")
+        .classed("inactive", true);
+
+      btn.classed("inactive", false);
+
+      if (d.type === "moral") {
+        ringType = "moral";
+        elementalRings.wrangleData(null);
+        updateMoral(selectedCharacter);
+        moralGroup.attr("display", "");
+        svg.selectAll(".legend").attr("opacity", 1);
+      } else {
+        ringType = "trait";
+        elementalRings.wrangleData(prettyChar(selectedCharacter));
+        moralGroup.attr("display", "none");
+        svg.selectAll(".legend").attr("opacity", 0);
+      }
+  }
+
+  // create buttons
+  toggleButtons.forEach((d) => {
+    const isActive = d.type === "moral";
+
+    const btn = toggle_g.append("button")
+      .text(d.text)
+      .attr("class", "atla-btn")
+      .classed("inactive", !isActive)
       .style("color", "var(--ink-faded)")
-      .style("width", "100%") 
-			.on("click", () => {
-				// reset all buttons
-				toggle_g.selectAll("button")
-					.classed("inactive", true);
+      .style("width", "100%")
+      .on("click", () => {
 
-				// highlight clicked button
-				btn.classed("inactive", false);
-
-				// switch visualizations
-				if (d.type === "moral") {
-					ringType = "moral";
-					elementalRings.wrangleData(null);
-					updateMoral(selectedCharacter);
-					moralGroup.attr("display", "");
-					svg.selectAll(".legend").attr("opacity", 1);
-					d3.selectAll(".annotation")
-						.style("display", "none");
-				} else {
-					ringType = "trait";
-					elementalRings.wrangleData(prettyChar(selectedCharacter));
-					moralGroup.attr("display", "none");
-					svg.selectAll(".legend").attr("opacity", 0);
-					d3.selectAll(".annotation")
-						.style("display", "");
-				}
-			});
-	});
-}
+        // remove hint if user toggles viz
+        if (hint && d.type !== ringType) {
+          hint.style("background-color", "")
+          clearInterval(flashInterval);
+        }
+        activateButton(d, btn);
+      });
+  });
+  }
   
   // render chart legend 
   function renderLegend(g) {
@@ -278,9 +298,8 @@
       .attr("y1", d => Math.sin((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter - 5))
       .attr("x2", d => Math.cos((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 10))
       .attr("y2", d => Math.sin((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 10))
-      .attr("stroke", "#999")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.8);
+      .attr("stroke", "var(--ink)")
+      .attr("stroke-width", 1);
 
     const labels = [
       { chap: 1, text: "Book 1" },
@@ -294,12 +313,12 @@
       .data(labels)
       .enter()
       .append("text")
-      .attr("x", d => Math.cos((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 40))
+      .attr("x", d => Math.cos((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 45))
       .attr("y", d => Math.sin((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 22))
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
-      .style("font-size", "11px")
-      .style("fill", "#666")
+      .style("font-size", "14px")
+      .style("fill", "var(--ink)")
       .text(d => d.text);
   }
 
@@ -310,7 +329,7 @@
 			<div>${ringLabel.get(d.word) || d.word}</div>
 			<div>Book ${d.book_num}, Chapter ${d.chapter_num}</div>
 			<div>(Global ${d.chap_global})</div>
-			<div>count_norm: ${(+d.count_norm).toFixed(2)} per 1k words</div>
+			<div>Normalized count: ${(+d.count_norm).toFixed(2)} per 1k words</div>
 		`;
 
 		// Position next to the cursor BUT relative to the container (not the page)
@@ -390,13 +409,14 @@
         .attr("height", 160)
         .attr("preserveAspectRatio", "xMidYMin meet")
 
-      // g.append("text")
-      //   .attr("text-anchor", "middle")
-      //   .attr("dominant-baseline", "hanging")
-      //   .attr("y", 18)
-      //   .style("font-size", "12px")
-      //   .style("fill", "#666")
-      //   .text("Hover for details");
+      g.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "hanging")
+        .attr("y", -HEIGHT / 2 + 40)
+        .attr("x", WIDTH / 2 - 100)
+        .style("font-size", "12px")
+        .style("fill", "#666")
+        .text("Hover for details");
 
       // Ring radii
       const rOuterAll = Math.min(WIDTH, HEIGHT) / 2 - margin - 20;
@@ -427,7 +447,7 @@
       // Build left-side character buttons
 			const buttonWrap = panel.append("div")
 			.attr("class", "col-auto d-flex flex-column scrollbox")
-      .style("max-height", "70vh")
+      .style("max-height", "60vh")
       .style("overflow-y", "auto");
 
 			const buttons = buttonWrap.selectAll("div.char-btn")

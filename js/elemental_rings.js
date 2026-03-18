@@ -1,5 +1,13 @@
 const elements = ["Water", "Fire", "Earth", "Air"]
 const ringGap = 1
+// colour palletes for each element
+const waterColors = ['#1A99FF','#1A80E6', '#1A66CC', '#4D99FF', '#3380FF', '#006BFF', '#005CCC', '#004D99', '#004080', '#003366'];
+const earthColors = ['#bfb198', '#b09f7f', '#a18d66', '#927c50', '#846b3d', '#76592f', '#664d28','#58421f','#493617', '#3c2b0f'];
+const fireColors = ['#8b0000', '#990000', '#a60000', '#b30000', '#bf1a00','#cc3300','#d94c00', '#e66400', '#f07f00', '#ff9900'];
+const airColors = ['#b7e7ed', '#a3e9ea', '#85ede8', '#7ae6e2', '#70dedc', '#64d5d4','#59ccc9', '#4fc2bf', '#44b8b4', '#3daeaa'];
+
+const colors = [waterColors, fireColors, earthColors, airColors]
+
 class ElementalRings {
 	
 // constructor method to initialize ElementalRings object
@@ -17,6 +25,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 	this.svg = svg;
 	this.width = width;
 	this.height = height;
+	this.colorScale = []
 
 	// attributes per ring
 	this.displayData = [];
@@ -26,13 +35,6 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 	this.angle = []; // same for all rings, may be redundant
 	this.stackedData = [];
 	
-	// colour palletes for each element
-	let waterColors = ['#1A99FF','#1A80E6', '#1A66CC', '#4D99FF', '#3380FF', '#006BFF', '#005CCC', '#004D99', '#004080', '#003366'];
-	let earthColors = ['#bfb198', '#b09f7f', '#a18d66', '#927c50', '#846b3d', '#76592f', '#664d28','#58421f','#493617', '#3c2b0f'];
-	let fireColors = ['#8b0000', '#990000', '#a60000', '#b30000', '#bf1a00','#cc3300','#d94c00', '#e66400', '#f07f00', '#ff9900'];
-	let airColors = ['#b7e7ed', '#a3e9ea', '#85ede8', '#7ae6e2', '#70dedc', '#64d5d4','#59ccc9', '#4fc2bf', '#44b8b4', '#3daeaa'];
-
-	this.colorScale = [waterColors, fireColors, earthColors, airColors]
 
 	// initialize categories and colour scale for each element
 	for (let i = 0; i < 4; i++) {
@@ -41,7 +43,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 
 		// prepare colors for range
 		let colorArray = this.dataCategories[i].map( (d,j) => {
-			return this.colorScale[i][j%10]
+			return colors[i][j%10]
 		})
 
 		// Set ordinal color scale
@@ -63,11 +65,12 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 		vis.height = 800;
 
 		vis.tooltip = d3.select("body").append('div')
-			.attr('class', "tooltip")
+			// .attr('class', "tooltip")
 			.attr('id', 'elementalRingsTooltip')
 			.style("position", "absolute")
 			.style("opacity", 0)
-			.style("pointer-events", "none");
+			.style("pointer-events", "none")
+			.style("max-width", "400px");
 
 		// initialize ring outlines and labels
 		for (let i = 0; i < 5; i++) {
@@ -88,7 +91,19 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			.attr("text-anchor", "middle")
 			.attr("font-size", "11px")
 			.attr("fill", "#999");
-		
+
+		vis.description = vis.svg.append('text')
+			.attr("text-anchor", "middle")
+			.attr("y", vis.height / 2 - 45)
+			.attr("display", "none")
+
+		vis.description.text(`Adverbs used to describe characters cumulated across chapters.`)
+
+		vis.description.append("tspan")
+		.attr("x", 0)
+		.attr("dy", "1em")
+		.text("Traits are grouped into four element categories described above.");
+			
 	}
     /**
 	 * Initializes each ring within the same svg element.
@@ -177,13 +192,16 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 						
 			}
 
+
 			// erase ring outlines and label
 			vis.ringOutlines.forEach(r => r.attr("opacity", 0).attr("stroke", "#b9c754"))
 			vis.ringLabel.attr("opacity", 0)
+
 		}
 
 		// draw all ring elements while unfocusing elemIndex
 		var allElements = function(elemIndex) {
+			vis.description.attr("display", "")
 
 			// link to element viz
 			if (window.filterElementViz) {
@@ -211,6 +229,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			// erase visualization if no character/data
 			if (vis.displayData.length === 0) {
 				erase()
+				vis.description.attr("display", "none")
 				return
 			}
 
@@ -219,7 +238,8 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 											.data(vis.displayData[i]);
 				categories.enter().append("path")
 					.attr("class", `ring${i}`)
-					.style("fill", "white")  
+					.style("fill", "white") 
+					.style("cursor", "pointer")
 					.merge(categories)
 					.on('mousemove', function(event, d){
 
@@ -242,12 +262,13 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 							.style("top", event.pageY + "px")
 							.html(`
 								<div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-									<h4>Character: ${vis.character}<h4>
-									<h6>Element: ${elements[i]}<h6>
-									<h6>Trait: ${d.key}<h3>    
-									<h6>Count: ${yValue}<h4> 
-									<h6>Book: ${chapterIndex === 60 ? 3 : Math.floor(chapterIndex / 20) + 1}<h4>  
-									<h6>Chapter: ${chapterIndex === 60 ? 21 : chapterIndex % 20 + 1}<h4>              
+									<h4>Character: ${vis.character}</h4>
+									<h6>Element: ${elements[i]}</h6>
+									<h6>Trait: ${d.key}</h3>    
+									<h6>Count: ${yValue}</h4> 
+									<h6>Book: ${chapterIndex === 60 ? 3 : Math.floor(chapterIndex / 20) + 1}</h6>  
+									<h6>Chapter: ${chapterIndex === 60 ? 21 : chapterIndex % 20 + 1}</h6> 
+									<h5 style="color: var(--ink); background-color: white; border-radius: 4px; text-align: center">Click to enlarge!</h5>            
 								</div>`);
 					})	
 					.on('mouseout', function(event, d){
@@ -341,10 +362,11 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 						.style("top", event.pageY + "px")
 						.html(`
 							<div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-								<h1>Character: ${vis.character}
-								<h3>Trait: ${d.key}<h3>    
-								<h4>Count: ${yValue}<h4>  
-								<h4>Chapter: ${chapterIndex + 1}<h4>              
+								<h4>Character: ${vis.character}</h4>
+								<h6>Trait: ${d.key}</h6>    
+								<h6>Count: ${yValue}</h6>  
+								<h6>Chapter: ${chapterIndex + 1}</h6>  
+								<h5 style="color: var(--ink); background-color: white; border-radius: 4px; text-align: center">Click to enlarge!</h5>               
 							</div>`);
 				})	
 				.on('mouseout', function(event, d){

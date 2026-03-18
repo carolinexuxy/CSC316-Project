@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 .canvas {
 	width: 100%;
 	max-width: 1500px;
-	margin: 40px auto;
+	margin: 8px auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
