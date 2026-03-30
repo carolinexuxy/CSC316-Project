@@ -1,187 +1,204 @@
-// js/frame1_placeholder.js
-// Frame 1 — Setting: Title + world map + intro text.
-// Appends to <div class="canvas" id="frame1">
-
 (function () {
     const mount = d3.select("#frame1");
     if (mount.empty()) return;
     mount.selectAll("*").remove();
 
-
-    // ── Dimensions ───────────────────────────────────────────────────────────────
-    const W = 900, H = 560;
-    const PAD = 40;
-
-    // Element palette
-    const C = {
-        water : "#3a7bd5",
-        earth : "#6b8c3e",
-        fire  : "#e05c1a",
-        air   : "#d4a843",
+    const content = {
+        sections: [
+            {
+                heading: 'Background',
+                type: 'text',
+                body: 'Avatar: The Last Airbender aired on Nickelodeon from 2005 to 2008. Set across four nations — each tied to a classical element — the story follows Aang, the last surviving Airbender, on his journey to master all four elements and end a century of war.',
+            },
+            {
+                heading: 'The Question',
+                type: 'quote',
+                body: 'Marketed to children, yet beloved by adults worldwide — explore the magic system, conflicts, character growth and thematic arcs to understand exactly how this show transcends its target audience ',
+            },
+        ],
+        nations: [
+            { name: 'Water', desc: 'Fluid & adaptive',    color: "#4A6E82", details: "The Water Tribes value community and change. Their bending style, based on Tai Chi, emphasizes fluidity and adaptability, requiring the bender to maintain balance, energy, and coordination. In battle, Waterbending often involves turning your opponent's attack into one of your own. This style of bending can also be used as a form of healing." },
+            { name: 'Earth', desc: 'Resolute & enduring', color: "#747849", details: "Earth is an element of substance, and the people of The Earth Kingdom are strong-willed and enduring. Earthbending requires a firm stance and 'neutral jing'—the ability to wait and listen before striking. The Toph, the Avatar's blind, Earthbending master, uses her abilities to see through vibrations in the ground." },
+            { name: 'Fire',  desc: 'Driven & intense',    color: "#A35232", details: "The Fire Nation army is the main antagonist of the story. Fire is the element of power, and people of the Fire Nation are proud, ambitious and unflinching. Firebending is the only element where the bender creates their own element from internal heat and breath. They have an intense and aggressive attacking style. The first firebenders were the dragons." },
+            { name: 'Air',   desc: 'Free & spiritual',    color: "#B89B5E", details: "The Air Nomads are known for their spiritual connections and were a peaceful culture, who valued all life and tried to rise above worldly concerns. Airbending, based on Baguazhang martial arts, is a highly defensive and incredibly mobile style where the bender, if adept enough, can behave like a leaf and find the path of least resistance, slipping through any conflict to rise above their opponents." },
+        ],
     };
 
-    // ── Root SVG ───
+    const W = 900, PAD = 50;
+    const textW = W - PAD * 2;
+
     const svg = mount.append("svg")
-        .attr("id", "frame1")
-        .attr('fill', '#f0e6cc')
-        .attr("width", W).attr("height", H);
+        .attr("viewBox", `0 0 ${W} 100`)  // height updated at end
+        .attr("width", "100%")
+        .attr("preserveAspectRatio", "xMidYMid meet");
 
     const defs = svg.append("defs");
 
-    // const vig = defs.append("radialGradient").attr("id","f1vig")
-    //     .attr("cx","50%").attr("cy","50%").attr("r","70%");
-    // vig.append("stop").attr("offset","0%").attr("stop-color","transparent");
-    // vig.append("stop").attr("offset","100%").attr("stop-color","rgba(0,0,0,0.55)");
+    // shadows / highlights
+    const shadow = defs.append("filter").attr("id", "rusticShadow");
+    shadow.append("feDropShadow").attr("dx", 0).attr("dy", 2).attr("stdDeviation", 2).attr("flood-opacity", 0.3);
 
-    // Thin gold border
-    // svg.append("rect")
-    //     .attr("x",1).attr("y",1).attr("width",W-2).attr("height",H-2)
-    //     .attr("fill","none").attr("stroke",C.air).attr("stroke-width",1.5)
-    //     .attr("stroke-opacity",0.4);
+    const glow = defs.append("filter").attr("id", "activeGlow")
+        .attr("x", "-20%").attr("y", "-20%").attr("width", "140%").attr("height", "140%");
+    glow.append("feGaussianBlur").attr("stdDeviation", "3").attr("result", "blur");
+    glow.append("feComposite").attr("in", "SourceGraphic").attr("in2", "blur").attr("operator", "over");
 
-    // Vignette overlay
-    // svg.append("rect").attr("width",W).attr("height",H).attr("fill","url(#f1vig)");
+    const titleGrad = defs.append("linearGradient").attr("id", "titleGrad")
+        .attr("gradientUnits", "userSpaceOnUse").attr("x1", PAD).attr("x2", PAD + 400);
+    titleGrad.append("stop").attr("offset", "0%").attr("stop-color", "#e05c1a");
+    titleGrad.append("stop").attr("offset", "100%").attr("stop-color", "#d4a843");
 
-    // ── Layout constants ─────────────────────────────────────────────────────────
-    const mapX = PAD, mapY = 100;
-    const mapW = 460, mapH = 340;
-    const textX = mapX + mapW + 36;
-    const textW = W - textX - PAD;
+    // title
+    svg.append("text").attr("x", PAD).attr("y", 46)
+        .attr("font-family", "Uncial Antiqua, cursive").attr("font-size", 28).attr("fill", "#5a3e22")
+        .text("Is");
+    svg.append("text").attr("x", PAD + 38).attr("y", 46)
+        .attr("font-family", "Uncial Antiqua, cursive").attr("font-size", 28).attr("fill", "url(#titleGrad)")
+        .text("Avatar: The Last Airbender");
+    svg.append("text").attr("x", PAD + 498).attr("y", 46)
+        .attr("font-family", "Uncial Antiqua, cursive").attr("font-size", 28).attr("fill", "#5a3e22")
+        .text("For Adults?");
 
-
-    const titleGrad = defs.append("linearGradient").attr("id","f1titleGrad")
-        .attr("x1","0%").attr("y1","0%").attr("x2","100%").attr("y2","0%");
-    titleGrad.append("stop").attr("offset","0%").attr("stop-color", C.fire);
-    titleGrad.append("stop").attr("offset","100%").attr("stop-color", C.air);
-
-    // Line 1: "Is Avatar: The Last Airbender"
-    svg.append("text")
-        .attr("x", PAD).attr("y", 52)
-        .attr("font-family", 'Philosopher, serif').attr("font-weight", 900)
-        .attr("font-size", 15).attr("letter-spacing", 3)
-        .attr("fill", "#2c1f0e").attr("opacity", 0.65)
-        .text("IS");
-
-    svg.append("text")
-        .attr("x", PAD + 34).attr("y", 52)
-        .attr("font-family",'Philosopher, serif').attr("font-weight",900)
-        .attr("font-size", 17).attr("letter-spacing", 3)
-        .attr("fill","url(#f1titleGrad)")
-        .text("AVATAR: THE LAST AIRBENDER");
-
-    svg.append("text")
-        .attr("x", PAD + 370).attr("y",52)
-        .attr("font-family", 'Philosopher, serif').attr("font-weight", 900)
-        .attr("font-size", 15).attr("letter-spacing", 3)
-        .attr("fill", "#2c1f0e").attr("opacity", 0.65)
-        .text("JUST FOR CHILDREN?");
-
-    // Divider line under title
     svg.append("line")
-        .attr("x1", PAD)
-        .attr("y1", 70)
-        .attr("x2", W - PAD)
-        .attr("y2", 70)
-        .attr("stroke", C.air).attr("stroke-width", 0.8).attr("opacity", 0.7);
+        .attr("x1", PAD).attr("x2", W - PAD).attr("y1", 58).attr("y2", 58)
+        .attr("stroke", "#5a3e22").attr("stroke-width", 0.7).attr("stroke-opacity", 0.35);
 
-    // ── Map area ─────────────────────────────────────────────────────────────────
-    // Dark backing rect
-    svg.append("rect")
-        .attr("x", mapX)
-        .attr("y", mapY)
-        .attr("width", mapW)
-        .attr("height", mapH)
-        .attr("fill","rgba(8,12,20,0.7)")
-        .attr("rx", 3);
-
-    // Map image
-    svg.append("image")
-        .attr("href", "img/atlamap.png")
-        .attr("x", mapX).attr("y", mapY)
-        .attr("width", mapW).attr("height", mapH)
-        .attr("preserveAspectRatio","xMidYMid meet")
-        .style("opacity", 0.95);
-
-    // Map border
-    svg.append("rect")
-        .attr("x", mapX).attr("y", mapY)
-        .attr("width", mapW).attr("height", mapH)
-        .attr("fill","none")
-        .attr("stroke", C.air).attr("stroke-width", 1).attr("opacity", 0.35)
-        .attr("rx", 3);
-
-
-    // ── Introduction text  ────────────────────────────────────────────────────
-    // Helper: append wrapped tspan lines to a <text> node
-    function appendWrapped(textNode, str, x, lineH, maxW, fontSize) {
-        const approxCharW = fontSize * 0.52;
-        const maxChars = Math.floor(maxW / approxCharW);
-        const words = str.split(/\s+/);
-        const lines = [];
-        let cur = [];
+    function wrap(textNode, str, x, lineH, maxW, fontSize, ratio) {
+        const charW = fontSize * (ratio || 0.54);
+        const maxChars = Math.floor(maxW / charW);
+        const words = str.split(" ");
+        let line = [], lines = [];
         words.forEach(w => {
-            const test = [...cur, w].join(" ");
-            if (test.length > maxChars) { lines.push(cur.join(" ")); cur = [w]; }
-            else cur.push(w);
+            const test = line.concat(w).join(" ");
+            if (line.length && test.length > maxChars) {
+                lines.push(line.join(" "));
+                line = [w];
+            } else {
+                line.push(w);
+            }
         });
-        if (cur.length) lines.push(cur.join(" "));
-        lines.forEach((l, i) => {
-            textNode.append("tspan")
-                .attr("x", x).attr("dy", i === 0 ? 0 : lineH)
-                .text(l);
-        });
+        if (line.length) lines.push(line.join(" "));
+        lines.forEach((l, i) =>
+            textNode.append("tspan").attr("x", x).attr("dy", i === 0 ? 0 : lineH).text(l)
+        );
         return lines.length;
     }
 
-    // Section heading
+    let curY = 100;
+
+    content.sections.forEach(sec => {
+        svg.append("text")
+            .attr("x", PAD)
+            .attr("y", curY)
+            .attr("font-size", 10)
+            .attr("letter-spacing", 2)
+            .attr("fill", "#5a3e22")
+            .attr("opacity", 0.6)
+            .text(sec.heading.toUpperCase());
+        curY += 16;
+        const node = svg.append("text")
+            .attr("x", PAD)
+            .attr("y", curY)
+            .attr("font-size", 13)
+            .attr("font-family", "Philosopher, serif")
+            .attr("fill", "#3b2a1a");
+
+        const lines = wrap(node, sec.body, PAD, 19, textW, 13, 0.52);
+        curY += lines * 19 + 22;
+    });
+
+    // Element section
+    curY += 6;
     svg.append("text")
-        .attr("x", textX).attr("y", mapY + 16)
-        .attr("font-family","Cinzel, serif").attr("font-weight",700)
-        .attr("font-size", 11).attr("letter-spacing", 3)
-        .attr("fill", "#2c1f0e").attr("opacity", 0.7)
-        .text("BACKGROUND");
-    // 	--ink:          #2c1f0e;
-    // 	--ink-faded:    #5a3e22;
-
-    // Accent bar
-    svg.append("rect")
-        .attr("x", textX).attr("y", mapY + 22)
-        .attr("width", 32).attr("height", 1.5)
-        .attr("fill", C.fire).attr("opacity", 0.7);
-
-    // Intro paragraph
-    const intro = "Avatar: The Last Airbender is an animated series that aired on Nickelodeon from 2005 to 2008. Set in a world of four nations — each tied to an element — the story follows Aang, the last surviving Airbender, on his journey to master all four elements and bring peace to a world consumed by war.";
-
-    const introNode = svg.append("text")
-        .attr("x", textX).attr("y", mapY + 46)
-        .attr("font-family","Crimson Text, Georgia, serif").attr("font-size", 14)
-        .attr("fill", "#2c1f0e").attr("opacity", 0.82);
-
-    const introLines = appendWrapped(introNode, intro, textX, 21, textW, 14);
-
-    // Second paragraph
-    const followY = mapY + 46 + introLines * 21 + 24;
+        .attr("x", PAD).attr("y", curY)
+        .attr("fill", "#5a3e22")
+        .attr("font-size", 18)
+        .attr("font-weight", 700)
+        .attr("font-family", "Uncial Antiqua, cursive")
+        .text("Meet the Elements");
 
     svg.append("text")
-        .attr("x", textX).attr("y", followY)
-        .attr("font-family","Cinzel, serif").attr("font-weight",700)
-        .attr("font-size", 11).attr("letter-spacing", 3)
-        .attr("fill", "#2c1f0e").attr("opacity", 0.7)
-        .text("THE QUESTION");
+        .attr("x", PAD + 232)
+        .attr("y", curY)
+        .attr("font-size", 9)
+        .attr("letter-spacing", 2)
+        .attr("fill", "#5a3e22")
+        .attr("opacity", 0.5)
+        .text("— SELECT TO EXPLORE EACH ELEMENTAL NATION");
 
-    svg.append("rect")
-        .attr("x", textX).attr("y", followY + 6)
-        .attr("width", 32).attr("height", 1.5)
-        .attr("fill", C.fire).attr("opacity", 0.7);
+    svg.append("line")
+        .attr("x1", PAD).attr("x2", W - PAD).attr("y1", curY + 8).attr("y2", curY + 8)
+        .attr("stroke", "#5a3e22").attr("stroke-width", 0.7).attr("stroke-opacity", 0.35);
 
-    const q = "Marketed to children, yet beloved by adults worldwide — can ATLA transcend its target audience?";
+    // element cards
+    const cardY = curY + 22;
+    const cardW = (textW - 30) / 4;
+    const cardH = 64;
 
-    const qNode = svg.append("text")
-        .attr("x", textX).attr("y", followY + 28)
-        .attr("font-family","Crimson Text, Georgia, serif")
-        .attr("font-size", 14).attr("font-style","italic")
-        .attr("fill", "#2c1f0e");
+    const infoY = cardY + cardH + 12;
+    const infoLineH = 18;
+    const infoFontSize = 12;
 
-    appendWrapped(qNode, q, textX, 21, textW, 14);
+    const infoInnerW = textW - 28;
+    const infoRatio = 0.51;
+
+    const infoSpot = svg.append("g").attr("class", "info-spot").style("opacity", 0);
+    const infoBg = infoSpot.append("rect")
+        .attr("x", PAD).attr("y", infoY)
+        .attr("width", textW).attr("height", 0)
+        .attr("rx", 4).attr("fill", "none");
+    const infoContent = infoSpot.append("text")
+        .attr("x", PAD + 14).attr("y", infoY + 22)
+        .attr("font-size", infoFontSize).attr("fill", "#3b2a1a")
+        .attr("font-family", "Philosopher, serif");
+
+    content.nations.forEach((n, i) => {
+        const x = PAD + i * (cardW + 10);
+        const group = svg.append("g").style("cursor", "pointer").attr("class", "card-container");
+
+        const rect = group.append("rect")
+            .attr("x", x).attr("y", cardY)
+            .attr("width", cardW).attr("height", cardH)
+            .attr("rx", 4).attr("fill", n.color).attr("opacity", 0.55)
+            .attr("filter", "url(#rusticShadow)");
+
+        group.append("text").attr("x", x + 12).attr("y", cardY + 24)
+            .attr("font-size", 13).attr("fill", "#3b2a1a")
+            .attr("font-family", "Uncial Antiqua, cursive").attr("font-weight", 700)
+            .text(n.name);
+
+        group.append("text").attr("x", x + 12).attr("y", cardY + 42)
+            .attr("font-size", 10).attr("fill", "#3b2a1a").attr("opacity", 0.8)
+            .attr("font-family", "Philosopher, serif")
+            .text(n.desc);
+
+        group.on("click", function () {
+            const isActive = rect.attr("filter") === "url(#activeGlow)";
+
+            // Reset
+            d3.selectAll(".card-container rect").transition().duration(200)
+                .attr("filter", "url(#rusticShadow)").attr("opacity", 0.55).attr("transform", "translate(0,0)");
+
+            if (isActive) {
+                infoSpot.transition().duration(200).style("opacity", 0);
+                svg.attr("viewBox", `0 0 ${W} ${infoY + 20}`);
+                return;
+            }
+
+            rect.transition().duration(200)
+                .attr("filter", "url(#activeGlow)").attr("opacity", 0.85).attr("transform", "translate(0,-4)");
+
+            infoContent.selectAll("*").remove();
+            const lineCount = wrap(infoContent, n.details, PAD + 14, infoLineH, infoInnerW, infoFontSize, infoRatio);
+
+            const infoH = 16 + lineCount * infoLineH + 16;
+            infoBg.attr("fill", n.color).attr("opacity", 0.15).attr("height", infoH);
+            svg.attr("viewBox", `0 0 ${W} ${infoY + infoH + 20}`);
+
+            infoSpot.transition().duration(250).style("opacity", 1);
+        });
+    });
+
+    svg.attr("viewBox", `0 0 ${W} ${infoY + 20}`);
 
 })();
