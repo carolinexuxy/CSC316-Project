@@ -221,14 +221,14 @@
       .style("margin", "0 auto");
 
     // Title
-    svg.append("text")
-      .attr("x", CONFIG.width / 2)
-      .attr("y", 50)
-      .attr("text-anchor", "middle")
-      .attr("font-family", "'Uncial Antiqua', cursive")
-      .attr("font-size", "28px")
-      .attr("fill", "var(--ink)")
-      .text("Meet the Elements");
+    // svg.append("text")
+    //   .attr("x", CONFIG.width / 2)
+    //   .attr("y", 50)
+    //   .attr("text-anchor", "middle")
+    //   .attr("font-family", "'Uncial Antiqua', cursive")
+    //   .attr("font-size", "28px")
+    //   .attr("fill", "var(--ink)")
+    //   .text("Meet the Elements");
 
     // Subtitle (stored so filterElementViz can update it)
     titleLabel = svg.append("text")

@@ -10,25 +10,20 @@
 
     <!-- loading  stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- TODO: Update title -->
-    <title>CSC316 PROJECT </title>
+    <title>CSC316 PROJECT</title>
 </head>
 <body>
 
 <!-- load boostrap script-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-
 <!-- containers for the visualization, one div per frame  -->
 <div class="canvas" id="frame1"></div>
 
 <div class="canvas" id="frame2-text" style="flex-direction:column; max-width:720px; text-align:center; padding: 0 24px;">
-  <h2>The Four Elements</h2>
   <p style="font-size:16px; line-height:1.8; color:var(--ink-faded);">
-    In the world of Avatar, every conflict, every alliance, and every act of courage is defined by the four elements —
-    Water, Earth, Fire, and Air. But how much do the characters themselves actually talk about bending?
-    Each dot below represents a single time a bending technique was mentioned in the show's transcripts.
-    Use the dropdown to zoom into any character and see which elements dominated their story.
+    In the world of Avatar, every conflict, trait, and alliance is defined by one's relationship to these four elements and what they represent.
+    Use the dropdown to observe any character and see which elements dominated their story.
   </p>
 </div>
 
@@ -46,6 +41,7 @@
 
 <div class="canvas" id="frame6"></div>
 
+<div class="vignette"></div>
 
 <!-- Load D3 -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
