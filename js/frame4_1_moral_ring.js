@@ -59,89 +59,110 @@
       .style("background-color", "var(--parchment)")
       .style("border-radius", "8px");
 
-    // vis description
-    const description = container.append("div")
-        .style("border", "1px solid var(--ink-faded)")
-        .style("border-radius", "8px")
-        .style("padding", "8px 12px")
-        .style("color", "var(--ink-faded)")
-        .style("font-family", "'Papyrus', 'Times New Roman', serif")
-        .style("font-size", "18px")
-        .style("box-shadow", "2px 2px 6px rgba(0,0,0,0.2)")
-        .style("max-width", "800px")
-        .style("margin", "0 auto")
-        .style("text-align", "center")
-        .text(`Characters develop complex TRAITS and explore central THEMES.`);
-
     // Title
 		container.append("div")
 		  .attr("class", "row mb-2 pt-4")
       .append("div")
       .attr("class", "col text-center") 
       .append("h2")
-      .text("Meet the Characters")
-      .style("color", "var(--ink)");
-      // fields for element annotations and styles
-    const elements = [
-      { 
-        name: "Air", 
-        text: "Creative, free-spirited, independent, flexible.", 
-        bg: "#a3e9a3", 
-        border: "#66c766", 
-        color: "#336633" 
-    },
-    { 
-        name: "Earth", 
-        text: "Stable, resilient, grounded, persistent.", 
-        bg: "#c69c6d", 
-        border: "#8b6b3d", 
-        color: "#5c3d1f" 
-    },
-    { 
-        name: "Fire", 
-        text: "Ambitious, passionate, bold, energetic.", 
-        bg: "#ff9999",  
-        border: "#cc3333", 
-        color: "#990000" 
-    },
-    { 
-        name: "Water", 
-        text: "Adaptable, empathetic, emotionally intelligent.", 
-        bg: "#99ccff",
-        border: "#3366cc", 
-        color: "#003399" 
-    }
-    ];
+      .text("Characters Growth Throughout the Show");
 
-    // add element annotations
-    const annotationRow = container.append("div")
-        .attr("class", "row justify-content-center mt-3 mb-3");
-    const elementAnnotations = annotationRow.selectAll("div.annotation-col")
-        .data(elements)
-        .enter()
-        .append("div")
-        .attr("class", "annotation-col col-md-3 text-center mb-3")
-        .each(function(d) {
-            d3.select(this)
-              .append("div")
-              .attr("class", "annotation text-center")
-              .html(`<strong>${d.name}</strong><br>${d.text}`)
-              // Apply element-specific colors
-              .style("background-color", d.bg)
-              .style("border", `2px solid ${d.border}`)
-              .style("color", d.color)
-        });
+    // element legend constants
+		const elements = [
+			{ 
+				name: "Air", 
+				text: "Creative, free-spirited, independent, flexible.", 
+				bg: "#a3e9a3", 
+				border: "#66c766", 
+				color: "#336633" 
+			},
+			{ 
+				name: "Earth", 
+				text: "Stable, resilient, grounded, persistent.", 
+				bg: "#c69c6d", 
+				border: "#8b6b3d", 
+				color: "#5c3d1f" 
+			},
+			{ 
+				name: "Fire", 
+				text: "Ambitious, passionate, bold, energetic.", 
+				bg: "#ff9999",  
+				border: "#cc3333", 
+				color: "#990000" 
+			},
+			{ 
+				name: "Water", 
+				text: "Adaptable, empathetic, emotionally intelligent.", 
+				bg: "#99ccff",
+				border: "#3366cc", 
+				color: "#003399" 
+			}
+			];
+    
+    const description = container.append("div")
+      .style("border", "1px solid var(--ink-faded)")
+      .style("border-radius", "8px")
+      .style("padding", "8px 12px")
+      .style("color", "var(--ink-faded)")
+      .attr("font-family", "Philosopher, serif")
+      .style("font-size", "18px")
+      .style("box-shadow", "2px 2px 6px rgba(0,0,0,0.2)")
+      .style("max-width", "80vw")
+      .style("margin", "0 auto 60px auto");
 
-    // annotation styling
-    container.selectAll(".annotation")
-        .style("border-radius", "8px")
-        .style("padding", "4px 4px")
-        .style("font-family", "'Papyrus', 'Times New Roman', serif")
-        .style("font-size", "14px")
-        .style("box-shadow", "2px 2px 6px rgba(0,0,0,0.2)")
-        .style("max-width", "300px")
-        .style("margin", "0 auto")
-        .style("text-align", "center");
+    // traits description
+    description.append("div")
+      .html(`<span style="font-weight: bold"> TRAITS </span> visualizes adverb descriptions of a character accumulated across chapters. <br>
+              Character traits are organized into elements (without inherent order) as follows: `);
+
+    // trait/element legend
+    const legend = description.append("div")
+      .attr("class", "legend")
+      .style("margin", "12px 0")
+      .style("padding", "8px 0")
+      .style("display", "flex")
+      .style("flex-direction", "column") 
+      .style("align-items", "center")  
+      .style("gap", "6px")
+
+    // legend items
+    elements.forEach(el => {
+      const row = legend.append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "8px");
+
+    // element label
+    row.append("span")
+      .style("padding", "4px 10px")
+      .style("border-radius", "999px")
+      .style("background-color", el.fill)
+      .style("border", `1.5px solid ${el.border}`)
+      .style("color", el.border)
+      .style("font-size", "14px")
+      .style("font-weight", "bold")
+      .style("white-space", "nowrap")
+      .text(el.name);
+
+    // element description
+    row.append("span")
+      .style("font-size", "15px")
+      .style("color", el.color)
+      .text(el.text);
+    });
+
+    // themes description
+    description.append("div")
+      .style("margin-top", "8px")
+      .html(`<span style="font-weight: bold"> THEMES </span> visualizes how frequently a character express a moral theme, normalized per 1,000 words of their dialogue in each chapter.`);
+
+    // instruction footer
+    description.append("div")
+      .style("font-style", "italic")
+      .style("font-size", "16px")
+      .style("text-align", "center")
+      .style("margin-top", "40px")
+      .text("Toggle between these two visualizations to explore the rich character development and the meaningful themes that make the story engaging for viewers of all ages.");
 
 		// Bootstrap row
 		const row = container.append("div")
@@ -155,16 +176,15 @@
 		const panel = leftCol.append("div")
 			.attr("class", "d-flex flex-column justify-content-center align-items-center gap-4")
 
-
 		// center for main ring viz
 		const centre = row.append("div")
 			.attr("class", "col-md-10 text-center")
-
 
 		// SVG
 		const svg = centre.append("svg")
 			.attr("width", WIDTH)
 			.attr("height", HEIGHT)
+      .attr("margin-top", "16px")
       .attr("viewBox", `0 0 ${WIDTH} ${HEIGHT}`)  // preserves aspect ratio
       .attr("preserveAspectRatio", "xMidYMid meet") // keep ratio, center it
       .style("background-color", "var(--parchment)")
@@ -172,7 +192,7 @@
 
 		// Tooltip (absolute within container)
 		const tooltip = container.append("div")
-			.attr("class", "bg-dark text-white p-2 rounded small")
+			.attr("class", "atla-tt-inner")
 			.style("position", "absolute")
 			.style("pointer-events", "none")
 			.style("opacity", 0);
@@ -192,7 +212,6 @@
       .text("Click to toggle")
       .attr("class", "toggle-hint")
       .style("font-size", "12px")
-      .style("background-color", "#d16262")
       .style("padding", "4px")
       .style("border-radius", "8px")
       .style("margin-top", "6px")
@@ -325,11 +344,22 @@
 	// render tooltip (on hover)
   function showTooltip(container, tooltip, event, d) {
 		const html = `
-			<div><strong>${prettyChar(d.character)}</strong></div>
-			<div>${ringLabel.get(d.word) || d.word}</div>
-			<div>Book ${d.book_num}, Chapter ${d.chapter_num}</div>
-			<div>(Global ${d.chap_global})</div>
-			<div>Normalized count: ${(+d.count_norm).toFixed(2)} per 1k words</div>
+    <div style="border-bottom:1px solid rgba(44,31,14,0.2);padding-bottom:6px;margin-bottom:6px;">
+      <strong style="font-family:'Uncial Antiqua',cursive;font-size:18px;">${prettyChar(d.character)}</strong>
+    </div>
+    <div style="font-size:14px; color:#2c1f0e; line-height:1.2;">
+      <p style="margin:4px 0;">
+        <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Theme:</span> ${prettyChar(d.word)}
+      </p>
+      <p style="margin:4px 0;">
+        <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Book:</span> ${d.book_num}
+      </p>
+      <p style="margin:4px 0;">
+        <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Chapter:</span> ${d.chapter_num}
+           <p style="margin:4px 0; font-size: 14px">
+        <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Normalized Count:</span> ${(+d.count_norm).toFixed(2)} per 1k words
+      </p>
+			</div>
 		`;
 
 		// Position next to the cursor BUT relative to the container (not the page)
@@ -458,7 +488,7 @@
         .style("padding", "8px");
       
 
-      // Circle placeholder (later you can put image inside)
+      // Circle placeholder
 			buttons.append("div")
 				.attr("class", "char-circle mx-auto atla-btn")
 				.style("width", "64px")
