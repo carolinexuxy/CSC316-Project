@@ -140,6 +140,20 @@ introBlock.append('p')
         recurring rivalries and
         relationships.`);
 
+introBlock.append('p')
+    .style('margin', '14px auto 0 auto')
+    .style('max-width', '900px')
+    .style('font-family', "'Philosopher', serif")
+    .style('font-size', '15px')
+    .style('line-height', '1.6')
+    .style('color', 'var(--ink-faded)')
+    .style('font-weight', 'bold')
+    .text(`This visualization lets you explore where fights happen
+        and which characters are involved by hovering over fight
+        bubbles on the map for details. Click characters in the
+        network graph to filter and see only the fights they
+        participate in.`);
+
 const vizRow = d3.select('#frame3')
     .append('div')
     .attr('class', 'frame3-viz-row');
