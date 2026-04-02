@@ -73,25 +73,25 @@
 				name: "Air", 
 				text: "creative • free-spirited • independent • flexible", 
 				color: "#64d5d4",
-        icon: "../img/air.png"
+        icon: "../img/air_icon.png"
 			},
 			{ 
 				name: "Earth", 
 				text: "stable • resilient • grounded • persistent", 
 				color: "#76592f",
-        icon: "../img/earth.png"
+        icon: "../img/earth_icon.png"
 			},
 			{ 
 				name: "Fire", 
 				text: "ambitious • passionate • bold • energetic", 
 				color: "#cc3300",
-        icon: "../img/fire.png"
+        icon: "../img/fire_icon.png"
 			},
 			{ 
 				name: "Water", 
 				text: "adaptable • empathetic • emotionally intelligent", 
 				color: "#003399",
-        icon: "../img/water.png"
+        icon: "../img/water_icon.png"
 			}
 			];
     
