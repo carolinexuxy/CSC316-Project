@@ -3,73 +3,73 @@ const characters = [
     name: "Aang",
     description: "The main protagonist and last surviving Airbender, burdened by the expectations of being the Avatar to restore balance to a divided world.",
     nationality: "Air Nomad",
-    image: "../img/aang.png"
+    image: "img/aang.png"
   },
   {
     name: "Katara",
     description: "A waterbender from the Southern Water Tribe and Aang's close ally, skilled in healing and combat.",
     nationality: "Water Tribe (Southern)",
-    image: "../img/katara.png"
+    image: "img/katara.png"
   },
   {
     name: "Sokka",
     description: "Katara’s brother and a strategic thinker; he supports the group with clever plans and humor.",
     nationality: "Water Tribe (Southern)",
-    image: "../img/sokka.png"
+    image: "img/sokka.png"
   },
   {
     name: "Zuko",
     description: "A banished Fire Nation prince tasked with capturing the Avatar to restore his honor.",
     nationality: "Fire Nation",
-    image: "../img/zuko.png"
+    image: "img/zuko.png"
   },
   {
     name: "Toph",
     description: "A blind earthbender from the prestigious Beifong family, whose true skill is underestimated by her family.",
     nationality: "Earth Kingdom",
-    image: "../img/toph.png"
+    image: "img/toph.png"
   },
   {
     name: "Iroh",
     description: "Zuko’s wise and compassionate uncle, a retired general who provides guidance and support.",
     nationality: "Fire Nation",
-    image: "../img/iroh.png"
+    image: "img/iroh.png"
   },
   {
     name: "Suki",
     description: "Leader of the Kyoshi Warriors, an elite group of female fighters from Kyoshi Island.",
     nationality: "Kyoshi Island",
-    image: "../img/suki.png"
+    image: "img/suki.png"
   },
   {
     name: "Jet",
     description: "A charismatic rebel leader from the Earth Kingdom who challenges the status quo with his bold actions.",
     nationality: "Earth Kingdom",
-    image: "../img/jet.png"
+    image: "img/jet.png"
   },
   {
     name: "Zhao",
     description: "A high-ranking Fire Nation admiral and primary antagonist, ambitious and relentless in pursuit of power.",
     nationality: "Fire Nation",
-    image: "../img/zhao.png"
+    image: "img/zhao.png"
   },
   {
     name: "Azula",
     description: "Zuko's sister, a prodigious Fire Nation princess who is a cunning and ruthless antagonist.",
     nationality: "Fire Nation",
-    image: "../img/azula.png"
+    image: "img/azula.png"
   },
   {
     name: "Ozai",
     description: "The Fire Lord and primary antagonist, seeking to expand the Fire Nation’s dominance and achieve supreme control over the world.",
     nationality: "Fire Nation",
-    image: "../img/ozai.png"
+    image: "img/ozai.png"
   },
   {
     name: "Roku",
     description: "The previous Avatar from the Fire Nation who guides the current Avatar through wisdom and example.",
     nationality: "Fire Nation",
-    image: "../img/roku.png"
+    image: "img/roku.png"
   }
 ];
 
