@@ -8,6 +8,10 @@ const fireColors = ['#8b0000', '#990000', '#a60000', '#b30000', '#bf1a00','#cc33
 const airColors = ['#b7e7ed', '#a3e9ea', '#85ede8', '#7ae6e2', '#70dedc', '#64d5d4','#59ccc9', '#4fc2bf', '#44b8b4', '#3daeaa'];
 
 const colors = [waterColors, fireColors, earthColors, airColors]
+const eb_characters = [
+    "All Characters", "Aang", "Katara", "Sokka", "Toph", "Zuko",
+    "Iroh", "Azula", "Ozai", "Zhao", "Roku", "Suki", "Jet",
+];
 
 class ElementalRings {
 	
@@ -209,9 +213,19 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 		// draw all ring elements while unfocusing elemIndex
 		var allElements = function(elemIndex) {
 
+
 			// link to element viz
 			if (window.filterElementViz) {
 				window.filterElementViz(vis.character, null)
+				// select character in element bending dropdown
+				const eb_selection = vis.character ? vis.character : "All Characters"
+				d3.select("#eb-btn").text(eb_selection)
+
+				// highlight selected option in dropdown list
+				d3.selectAll(".eb-item")
+					.classed("selected", function() {
+						return this.textContent === eb_selection;
+				});
 			}
           		
 			// get the max domain of all 4 rings
@@ -236,13 +250,11 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			if (vis.displayData.length === 0) {
 				erase()
 				vis.description_g.attr("display", "none")
-				// vis.legend.style("display", "none")
 				return
 			}
 
 			// otherwise show elemental ring vis
 			vis.description_g.attr("display", "")
-			// vis.legend.style("display", "none")
 
 			var drawRing = function(i) {
 				let categories = vis.svg.selectAll(`.ring${i}`)
@@ -342,7 +354,15 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			// link to element viz
 			if (window.filterElementViz) {
 				window.filterElementViz(vis.character, elements[elemIndex].toLowerCase())
+				d3.select("#eb-btn").text(vis.character)
+
+				// highlight selected option in dropdown list
+				d3.selectAll(".eb-item")
+					.classed("selected", function() {
+						return this.textContent === vis.character;
+				});
 			}
+			
 
 			// erase current rings
 			erase()

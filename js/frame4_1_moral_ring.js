@@ -164,7 +164,7 @@
         words: [
           "maybe", "confused", "torn", "doubt", "choice", "choose", "decide",
           "regret", "should", "shouldn't", "can't", "cannot", "won't",
-          "what if", "i don't know"
+          "what if", "I don't know"
         ],
         color: "#7b5cff"
       },
