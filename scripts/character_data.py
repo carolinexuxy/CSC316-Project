@@ -39,76 +39,73 @@ IGNORE_WORDS = {
     "aang", "sokka", "sokkas", "kataras", "zuko", "katara", "yue", "appa", "appas", "momo", "meng", "jeong",
     "iroh", "irohs", "hakoda", "tong",
     "here", "there", "then", "almost", "too", "so", "as", "well", "also", "really", "else", "more", "right",
-    "soon", "long", "actually"
+    "soon", "long", "actually", "anger", "afar", "subsequently", "particularly", "partially", "nasally"
 }
 
 ELEMENT_MAP = {
     "Water": {
         "sadly", "nervously", "hopelessly", "weakly", "disappointedly", "sorrowfully",
         "pensively", "supportively", "reassuringly", "thoughtfully", "anxiously",
-        "dreamily", "timidly", "humblly", "unsurely", "pleasantly", "calmly", "wistfully",
+        "dreamily", "timidly", "unsurely", "pleasantly", "calmly", "wistfully",
         "dreamingly", "softly", "sweetly", "hopefully", "regretfully", "tiredly",
         "tearfully", "sympathetically", "concernedly", "consolingly", "gently",
-        "approvingly", "warmly", "uncomfortably", "emotionally", "sheepishly",
+        "approvingly", "warmly", "uncomfortably", "emotionally",
         "desperately", "worriedly", "quietly", "innocently", "fearfully", "doubtfully",
         "confusedly", "lovingly", "peacefully", "contentedly", "comfortingly",
         "miserably", "resignedly", "apathetically", "dejectedly", "lazily",
         "peevishly", "formally", "alertly", "inconspicuously", "reluctantly",
         "hesitatingly", "pathetically", "gratefully", "admiringly",
-        "encouragingly", "moodily", "surprisingly", "brightly", "sleepily",
-        "uneasily", "understandingly", "practically", "humbly", "compassionately",
+        "encouragingly", "moodily", "sleepily",
+        "uneasily", "understandingly", "humbly", "compassionately",
         "sincerely", "meekly", "solicitously", "delicately", "correctly", "nostalgically", 
         "guiltily", "uselessly", "dubiously", "kindly", 
         "perfectly", "bemusedly", "pleadingly", "helplessly", "hesitantly",
-        "respectfully", "jovially"
+        "respectfully", "jovially",  "shamefully"
     },
 
     "Earth": {
         "stubbornly", "heavily", "firmly", "authoritatively", "ponderously", "seriously",
         "commandingly", "defensively", "confidently", "grumpily", "hungrily",
         "matteroffactly", "obstinately", "sternly", "neatly", "warily",
-        "blandly", "partially", "carefully", "unhappily", "casually", "comfortably",
+        "blandly", "carefully", "unhappily", "comfortably",
         "complacently", "tersely", "gravely",
-        "decisively", "defiantly", "overdramatically", "shamefully",
-        "smartly", "dismally", "roughly", "boldly", "readily", "briskly", "narrowly",
-        "condescendingly", "disdainfully", "impolitely", "grimly", "childishly",
-        "easily", "obviously", "dangerously", "monotonously", "hurredly",
-        "solemnly", "oddly", "creepily", "emotionlessly", "scornfully",
-        "maniacally",  "knowingly",
-        "loudly", "curtly", "despairingly", "subsequently", "sinisterly",
+        "decisively", "defiantly",
+        "smartly", "dismally", "roughly", "readily", "briskly", "narrowly",
+        "condescendingly", "disdainfully", "impolitely", "grimly",
+        "easily", "obviously", "dangerously", "monotonously",
+        "solemnly", "oddly", "creepily", "emotionlessly", "scornfully",  "knowingly",
+        "loudly", "curtly", "despairingly",
         "unsteadily", "sadistically", "unwillingly", "contemptuously", "craftily",
-        "assertively", "ravenously", "noisily", "patheically",  "intimidatingly",
-        "sourly", "causally", "particularly", "halfheartedly", "afar", "inadvertently",
-        "annoyed", "ominously", "respectively", "uncontrollably", "irritatingly",
-        "flatly", "unenthusiastically", "cautiously", "bluntly"
+        "assertively", "noisily",  "intimidatingly",
+        "sourly", "halfheartedly", "inadvertently",
+        "ominously", "respectively", "uncontrollably", "irritatingly",
+        "flatly", "unenthusiastically", "cautiously", "bluntly", "skeptically"
     },
 
     "Fire": {
-        "angrily", "indignantly", "dramatically", "aggressively", "hurriedly", "rapidly",
+        "angrily", "annoyed", "indignantly", "dramatically", "aggressively", "hurriedly", "rapidly",
         "enthusiastically", "triumphantly", "excitedly", "vigorously", "ecstatically",
         "painfully", "hysterically", "proudly", "frantically", "accusingly",
         "irritably", "harshly", "impatiently", "disgustedly", "crossly", "furiously",
-        "hatefully", "tauntingly", "threateningly", "emotionally", "actively",
-        "offensively", "wildly", "urgently", "sharply", "anger",
-        "agitatedly", "overdramatically", "menacingly", "sinisterly", "assertively",
+        "hatefully", "tauntingly", "threateningly", "actively",
+        "offensively", "wildly", "urgently", "sharply",
+        "agitatedly", "overdramatically", "menacingly", "sinisterly",
         "ravenously", "boldly", "swiftly", "frightfully", "theatrically", "brazenly",
-        "effortlessly", "bitterly", 'evilly', "suspiciously", "brazenly", "arrogantly",
-        "crazily", "insanely", "menacingly"
+        "bitterly", "evilly", "suspiciously", "arrogantly",
+        "crazily", "insanely",  "maniacally"
     },
 
     "Air": {
         "sarcastically", "mockingly", "lightly", "playfully", "nonchalantly",
         "smugly", "sly", "humorously", "amusingly", "breezily", "quizzically", "coolly",
         "joyfully", "exuberantly", "curiously", "questioningly", "persuasively",
-        "optimistically", "cheerfully", "eagerly", "nasally", "drowsily", "happily",
+        "optimistically", "cheerfully", "eagerly", "drowsily", "happily",
         "apologetically", "jokingly", "fakejokingly", "lightheartedly",
         "mischievously", "comically", "carelessly", "idly", "surreptitiously",
         "unconvincingly", "awkwardly", "teasingly", "dismissively",
-        "distantly", "joyously", "casually", "sheepishly", "strangely",
-        "inconspicuously", "secretly", "swfitly", "skeptically", "practically",
+        "distantly", "joyously", "casually", "sheepishly", "strangely", "secretly",
         "surprisingly", "brightly", "inquisitively", "flirtatiously", "openly",
-        "cunningly", "knowingly", "cleverly", "finely", "intricately",
-        "playfully", "joyously"
+        "cunningly", "cleverly", "finely", "intricately", "childishly",  "effortlessly"
     }
 }
 

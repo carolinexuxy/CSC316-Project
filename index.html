@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-bs-theme="light">
+<html>
 <head>
 <meta charset="utf-8">
     <meta name="description" content="">
@@ -20,27 +20,24 @@
 <!-- containers for the visualization, one div per frame  -->
 <div class="canvas" id="frame1"></div>
 
+<div class="canvas" id="frame4"></div>
+<div class="canvas" id="frame4-1"></div>
+
 <div class="canvas" id="frame2-text" style="flex-direction:column; max-width:720px; text-align:center; padding: 0 24px;">
   <p style="font-size:16px; line-height:1.8; color:var(--ink-faded);">
     In the world of Avatar, every conflict, trait, and alliance is defined by one's relationship to these four elements and what they represent.
     Use the dropdown to observe any character and see which elements dominated their story.
   </p>
 </div>
-
 <div class="canvas" id="frame2"></div>
 
 <div class="canvas" id="frame3"></div>
-
-<div class="canvas" id="frame4"></div>
-
-<div class="canvas" id="frame4-1"></div>
 
 <div class="canvas" id="frame5">
     <div class="tooltip" id="tooltip"></div>
 </div>
 
 <div class="canvas" id="frame6"></div>
-
 
 <div class="vignette"></div>
 
@@ -52,6 +49,7 @@
 <script src="js/frame1.js"></script>
 <script src="js/fights_network.js"></script>
 <script src="js/fights_bubbles.js"></script>
+<script src="js/character.js"></script>
 <script src="js/frame4_1_moral_ring.js"></script>
 <script src="js/elemental_rings.js"></script>
 <script src="js/element_bending.js"></script>

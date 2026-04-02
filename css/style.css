@@ -34,7 +34,7 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Uncial Antiqua", cursive;
+	font-family: 'Uncial Antiqua', cursive;
 	color: var(--ink-faded);
 	letter-spacing: 0.06em;
 }
@@ -49,13 +49,6 @@ h1, h2, h3, h4, h5, h6 {
 	align-items: center;
 }
 
-/* Avatar Bubble Chart Styles */
-
-svg {
-	display: block;
-	margin: 0 auto;
-}
-
 /* Frame 1: Intro */
 
 #frame1 {
@@ -64,11 +57,47 @@ svg {
 	align-items: center;
 }
 
+/* Avatar Bubble Chart Styles */
+
+svg {
+	display: block;
+	margin: 0 auto;
+}
+
 #frame1 svg {
 	display: block;
 	width: 100%;
-	height: 100%;
 	height: auto;
+}
+
+/* Frame 2: Element Bending Visualization */
+#frame2 {
+	min-height: 820px;
+	flex-direction: column;
+}
+
+
+#frame3 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 24px;
+	width: 100%;
+}
+
+#frame3 svg {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.frame3-viz-row {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 40px;
+	width: 100%;
 }
 
 /* Bubble styles */
@@ -134,7 +163,7 @@ svg {
 }
 
 /* Responsive design */
-@media (max-width: 1280px) {
+@media (width <= 1280px) {
 	svg {
 		max-width: 100%;
 		height: auto;
@@ -142,21 +171,24 @@ svg {
 }
 
 /* Frame 4: Character */
-#frame4-1 {
-	font-family: "Uncial Antiqua", cursive;
-}
+
+/* #frame4_1 {
+    font-family: 'Uncial Antiqua', cursive;
+} */
 
 .scrollbox::-webkit-scrollbar {
-	width: 0;
+  width: 0;
+  height: 0;
 }
 
 .scrollbox:hover::-webkit-scrollbar {
-	width: 6px;
+  width: 6px;
+  height: 8px;
 }
 
 .scrollbox::-webkit-scrollbar-thumb {
-	background: rgb(0 0 0 / 35%);
-	border-radius: 6px;
+  background: rgb(0 0 0 / 35%);
+  border-radius: 6px;
 }
 
 
@@ -164,7 +196,7 @@ svg {
 
 #frame6 {
 	background-color: var(--parchment);
-	padding:10px;
+	padding: 10px;
 }
 
 
@@ -173,10 +205,8 @@ svg {
 	display: flex;
 	justify-content: center;
 	gap: 10px;
-	flex-wrap: wrap;
-	margin: 0 auto 16px;
-	max-width: 1400px;
-	width: 100%;
+	flex-flow: row wrap;
+	margin-bottom: 16px;
 }
 
 .atla-btn {
@@ -204,10 +234,8 @@ svg {
 #atla-vis {
 	display: block;
 	width: 100%;
-	max-width: 1400px;
-	height: auto;
+	height: 600px;
 	background-color: var(--parchment);
-	margin: 0 auto;
 }
 
 /* themes hover tooltip */
@@ -220,7 +248,9 @@ svg {
 	max-width: 280px;
 }
 
-#atla-tooltip.visible { opacity: 1; }
+#atla-tooltip.visible {
+	opacity: 1;
+}
 
 .atla-tt-inner {
 	background: var(--parchment-lt);
@@ -258,73 +288,5 @@ svg {
 	color: var(--ink-faded);
 	margin: 0;
 	line-height: 1.5;
-}
-
-/* help icon */
-.atla-help-icon {
-	position: relative;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	width: 28px;
-	height: 28px;
-	border: 1.5px solid var(--ink-faded);
-	border-radius: 50%;
-	background: rgb(255 255 255 / 30%);
-	color: var(--ink-faded);
-	font-family: "Uncial Antiqua", cursive;
-	font-size: 16px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
-	margin-left: 8px;
-	user-select: none;
-}
-
-.atla-help-icon:hover {
-	transform: translateY(-1px);
-	background: rgb(255 255 255 / 50%);
-}
-
-.atla-help-icon.active {
-	background: rgb(255 255 255 / 60%);
-	box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
-}
-
-/* instructional tooltips on chart */
-.atla-instruction-tooltip rect {
-	opacity: 0.95;
-}
-
-.atla-instruction-tooltip text {
-	pointer-events: none;
-}
-
-/* Brush selection */
-.brush {
-	cursor: crosshair;
-}
-
-.brush .overlay {
-	cursor: crosshair;
-}
-
-.brush .selection {
-	stroke: #fff;
-	stroke-width: 1.5;
-	fill: rgb(90 62 34 / 45%);
-	opacity: 1;
-}
-
-.brush .handle {
-	display: none;
-}
-
-/* Stats panel */
-#atla-stats-panel {
-	line-height: 1.6;
-	font-size: 13px;
-	box-shadow: 2px 2px 6px rgb(0 0 0 / 20%);
-	margin: 0 auto;
 }
 

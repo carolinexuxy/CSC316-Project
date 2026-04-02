@@ -1,5 +1,14 @@
 const elements = ["Water", "Fire", "Earth", "Air"]
+
 const ringGap = 1
+// colour palletes for each element
+const waterColors = ['#1A99FF','#1A80E6', '#1A66CC', '#4D99FF', '#3380FF', '#006BFF', '#005CCC', '#004D99', '#004080', '#003366'];
+const earthColors = ['#bfb198', '#b09f7f', '#a18d66', '#927c50', '#846b3d', '#76592f', '#664d28','#58421f','#493617', '#3c2b0f'];
+const fireColors = ['#8b0000', '#990000', '#a60000', '#b30000', '#bf1a00','#cc3300','#d94c00', '#e66400', '#f07f00', '#ff9900'];
+const airColors = ['#b7e7ed', '#a3e9ea', '#85ede8', '#7ae6e2', '#70dedc', '#64d5d4','#59ccc9', '#4fc2bf', '#44b8b4', '#3daeaa'];
+
+const colors = [waterColors, fireColors, earthColors, airColors]
+
 class ElementalRings {
 	
 // constructor method to initialize ElementalRings object
@@ -17,6 +26,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 	this.svg = svg;
 	this.width = width;
 	this.height = height;
+	this.colorScale = []
 
 	// attributes per ring
 	this.displayData = [];
@@ -26,13 +36,6 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 	this.angle = []; // same for all rings, may be redundant
 	this.stackedData = [];
 	
-	// colour palletes for each element
-	let waterColors = ['#1A99FF','#1A80E6', '#1A66CC', '#4D99FF', '#3380FF', '#006BFF', '#005CCC', '#004D99', '#004080', '#003366'];
-	let earthColors = ['#bfb198', '#b09f7f', '#a18d66', '#927c50', '#846b3d', '#76592f', '#664d28','#58421f','#493617', '#3c2b0f'];
-	let fireColors = ['#8b0000', '#990000', '#a60000', '#b30000', '#bf1a00','#cc3300','#d94c00', '#e66400', '#f07f00', '#ff9900'];
-	let airColors = ['#b7e7ed', '#a3e9ea', '#85ede8', '#7ae6e2', '#70dedc', '#64d5d4','#59ccc9', '#4fc2bf', '#44b8b4', '#3daeaa'];
-
-	this.colorScale = [waterColors, fireColors, earthColors, airColors]
 
 	// initialize categories and colour scale for each element
 	for (let i = 0; i < 4; i++) {
@@ -41,7 +44,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 
 		// prepare colors for range
 		let colorArray = this.dataCategories[i].map( (d,j) => {
-			return this.colorScale[i][j%10]
+			return colors[i][j%10]
 		})
 
 		// Set ordinal color scale
@@ -63,11 +66,11 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 		vis.height = 800;
 
 		vis.tooltip = d3.select("body").append('div')
-			.attr('class', "tooltip")
-			.attr('id', 'elementalRingsTooltip')
+			.attr('class', 'atla-tt-inner')
 			.style("position", "absolute")
 			.style("opacity", 0)
-			.style("pointer-events", "none");
+			.style("pointer-events", "none")
+			.style("max-width", "400px");
 
 		// initialize ring outlines and labels
 		for (let i = 0; i < 5; i++) {
@@ -81,6 +84,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 				.attr("opacity", 0)
 		}
 
+
 		vis.ringLabel = vis.svg.append("text")
 			.attr("x", 0)
 			.attr("y", - (vis.innerRadius + vis.ringWidth * 4) - 4)
@@ -88,7 +92,24 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			.attr("text-anchor", "middle")
 			.attr("font-size", "11px")
 			.attr("fill", "#999");
+
+		vis.description_g = vis.svg.append("g")
+			.attr("display", "none")
+
+		vis.description = vis.description_g.append('text')
+			.attr("text-anchor", "middle")
+			.attr("y", vis.height / 2 - 30)
+			.attr("fill", "var(--ink-faded)")
+			.text(`Scroll down to see the character's element mentions!`)
+		vis.description_g.append("image")
+			.attr("href", "../img/down_arrow.svg")
+			.attr("width", "100px")
+			.attr("height", "80px")
+			.attr("x", -vis.width / 2 + 150) 
+			.attr("y", vis.height / 2 -85); 
 		
+
+			
 	}
     /**
 	 * Initializes each ring within the same svg element.
@@ -144,6 +165,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 		// if no character selected, erase visualization
 		if (character === null) {
 			vis.displayData = []
+
 		}
 
 		// else update vis with selected character
@@ -163,6 +185,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 	updateVis(){
 
 		let vis = this;
+		const capitalize = (c) => c.charAt(0).toUpperCase() + c.slice(1); // capitalize
 
 		var erase = function() {
 			// erase element rings with transition
@@ -180,6 +203,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			// erase ring outlines and label
 			vis.ringOutlines.forEach(r => r.attr("opacity", 0).attr("stroke", "#b9c754"))
 			vis.ringLabel.attr("opacity", 0)
+
 		}
 
 		// draw all ring elements while unfocusing elemIndex
@@ -211,15 +235,22 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			// erase visualization if no character/data
 			if (vis.displayData.length === 0) {
 				erase()
+				vis.description_g.attr("display", "none")
+				// vis.legend.style("display", "none")
 				return
 			}
+
+			// otherwise show elemental ring vis
+			vis.description_g.attr("display", "")
+			// vis.legend.style("display", "none")
 
 			var drawRing = function(i) {
 				let categories = vis.svg.selectAll(`.ring${i}`)
 											.data(vis.displayData[i]);
 				categories.enter().append("path")
 					.attr("class", `ring${i}`)
-					.style("fill", "white")  
+					.style("fill", "white") 
+					.style("cursor", "pointer")
 					.merge(categories)
 					.on('mousemove', function(event, d){
 
@@ -241,13 +272,26 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 							.style("left", event.pageX + 20 + "px")
 							.style("top", event.pageY + "px")
 							.html(`
-								<div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-									<h4>Character: ${vis.character}<h4>
-									<h6>Element: ${elements[i]}<h6>
-									<h6>Trait: ${d.key}<h3>    
-									<h6>Count: ${yValue}<h4> 
-									<h6>Book: ${chapterIndex === 60 ? 3 : Math.floor(chapterIndex / 20) + 1}<h4>  
-									<h6>Chapter: ${chapterIndex === 60 ? 21 : chapterIndex % 20 + 1}<h4>              
+								<div style="border-bottom:1px solid rgba(44,31,14,0.2);padding-bottom:6px;margin-bottom:6px;">
+									<strong style="font-family:'Uncial Antiqua',cursive;font-size:18px;">${vis.character}</strong>
+								</div>
+								<div style="font-size:14px; color:#2c1f0e; line-height:1.2;">
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;">ELEMENT: <span style="color:${colors[i][5]};font-weight:bold; font-size: 16px">${elements[i]}</span>
+									</p>
+									<p style="margin:4px 0; font-size: 14px">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Trait:</span> ${capitalize(d.key)}
+									</p>
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Count:</span> ${yValue}
+									</p>
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Book:</span> ${chapterIndex === 60 ? 3 : Math.floor(chapterIndex / 20) + 1}
+									</p>
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Chapter:</span> ${chapterIndex === 60 ? 21 : chapterIndex % 20 + 1}
+									</p>
+									<p style="margin:8px 0 0 0; font-size:10px;color:#5a3e22;font-style:italic;">Click to enlarge</p>
 								</div>`);
 					})	
 					.on('mouseout', function(event, d){
@@ -340,12 +384,27 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 						.style("left", event.pageX + 20 + "px")
 						.style("top", event.pageY + "px")
 						.html(`
-							<div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-								<h1>Character: ${vis.character}
-								<h3>Trait: ${d.key}<h3>    
-								<h4>Count: ${yValue}<h4>  
-								<h4>Chapter: ${chapterIndex + 1}<h4>              
-							</div>`);
+								<div style="border-bottom:1px solid rgba(44,31,14,0.2);padding-bottom:6px;margin-bottom:6px;">
+									<strong style="font-family:'Uncial Antiqua',cursive;font-size:18px;">${vis.character}</strong>
+								</div>
+								<div style="font-size:14px; color:#2c1f0e; line-height:1.2;">
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;">ELEMENT: <span style="color:${colors[elemIndex][5]};font-weight:bold; font-size: 16px">${elements[elemIndex]}</span>
+									</p>
+									<p style="margin:4px 0; font-size: 14px">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Trait:</span> ${capitalize(d.key)}
+									</p>
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Count:</span> ${yValue}
+									</p>
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Book:</span> ${chapterIndex === 60 ? 3 : Math.floor(chapterIndex / 20) + 1}
+									</p>
+									<p style="margin:4px 0;">
+										<span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Chapter:</span> ${chapterIndex === 60 ? 21 : chapterIndex % 20 + 1}
+									</p>
+									<p style="margin:8px 0 0 0; font-size:10px;color:#5a3e22;font-style:italic;">Click to shrink</p>
+								</div>`);
 				})	
 				.on('mouseout', function(event, d){
 					vis.ringOutlines[4].attr("stroke", "#b9c754");
