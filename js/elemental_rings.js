@@ -212,7 +212,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 
 		// draw all ring elements while unfocusing elemIndex
 		var allElements = function(elemIndex) {
-
+			elemIndex = elemIndex ? elemIndex : vis.focus
 
 			// link to element viz
 			if (window.filterElementViz) {
@@ -250,6 +250,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			if (vis.displayData.length === 0) {
 				erase()
 				vis.description_g.attr("display", "none")
+				vis.focus = undefined
 				return
 			}
 
@@ -331,6 +332,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			// unfocus element
 			if (elemIndex !== undefined) {
 				drawRing(elemIndex)
+				vis.focus = undefined
 			}
 
 			// draw rings with transitions by layers
@@ -350,6 +352,7 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 
 		// enlarge element layer
 		var focusElement = function(elemIndex) {
+			vis.focus = elemIndex
 
 			// link to element viz
 			if (window.filterElementViz) {
