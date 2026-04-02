@@ -34,16 +34,16 @@
 
                     <div style="display: flex; justify-content: center; gap: 12px; flex: 0 0 auto;">
                         <div style="text-align: center;">
-                            <img src="/img/water.png" alt="Water" style="width: 65px; height: auto;">
+                            <img src="/img/water_icon.png" alt="Water" style="width: 65px; height: auto;">
                         </div>
                         <div style="text-align: center;">
-                            <img src="/img/earth.png" alt="Earth" style="width: 65px; height: auto;">
+                            <img src="/img/earth_icon.png" alt="Earth" style="width: 65px; height: auto;">
                         </div>
                         <div style="text-align: center;">
-                            <img src="/img/fire.png" alt="Fire" style="width: 65px; height: auto;">
+                            <img src="/img/fire_icon.png" alt="Fire" style="width: 65px; height: auto;">
                         </div>
                         <div style="text-align: center;">
-                            <img src="/img/air.png" alt="Air" style="width: 65px; height: auto;">
+                            <img src="/img/air_icon.png" alt="Air" style="width: 65px; height: auto;">
                         </div>
                     </div>
                 </div>
