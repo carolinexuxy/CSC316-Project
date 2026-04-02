@@ -71,31 +71,27 @@
 		const elements = [
 			{ 
 				name: "Air", 
-				text: "Creative, free-spirited, independent, flexible.", 
-				bg: "#a3e9a3", 
-				border: "#66c766", 
-				color: "#336633" 
+				text: "creative • free-spirited • independent • flexible", 
+				color: "#64d5d4",
+        icon: "../img/air.png"
 			},
 			{ 
 				name: "Earth", 
-				text: "Stable, resilient, grounded, persistent.", 
-				bg: "#c69c6d", 
-				border: "#8b6b3d", 
-				color: "#5c3d1f" 
+				text: "stable • resilient • grounded • persistent", 
+				color: "#76592f",
+        icon: "../img/earth.png"
 			},
 			{ 
 				name: "Fire", 
-				text: "Ambitious, passionate, bold, energetic.", 
-				bg: "#ff9999",  
-				border: "#cc3333", 
-				color: "#990000" 
+				text: "ambitious • passionate • bold • energetic", 
+				color: "#cc3300",
+        icon: "../img/fire.png"
 			},
 			{ 
 				name: "Water", 
-				text: "Adaptable, empathetic, emotionally intelligent.", 
-				bg: "#99ccff",
-				border: "#3366cc", 
-				color: "#003399" 
+				text: "adaptable • empathetic • emotionally intelligent", 
+				color: "#003399",
+        icon: "../img/water.png"
 			}
 			];
     
@@ -112,17 +108,18 @@
 
     // traits description
     description.append("div")
-      .html(`<span style="font-weight: bold"> TRAITS </span> visualizes adverb descriptions of a character accumulated across chapters. <br>
-              Character traits are organized into elements (without inherent order) as follows: `);
+      .html(`<span style="font-weight: bold"> TRAITS </span> visualizes adverbial descriptions of a character accumulated across chapters. <br>
+              Character traits are organized into elements (without inherent order) where each element's core characteristics are: `);
 
     // trait/element legend
     const legend = description.append("div")
       .attr("class", "legend")
-      .style("margin", "12px 0")
+      .style("width", "fit-content")
+      .style("margin", "12px auto")
       .style("padding", "8px 0")
       .style("display", "flex")
       .style("flex-direction", "column") 
-      .style("align-items", "center")  
+      .style("align-items", "flex-start")  
       .style("gap", "6px")
 
     // legend items
@@ -132,29 +129,111 @@
         .style("align-items", "center")
         .style("gap", "8px");
 
-    // element label
-    row.append("span")
-      .style("padding", "4px 10px")
-      .style("border-radius", "999px")
-      .style("background-color", el.fill)
-      .style("border", `1.5px solid ${el.border}`)
-      .style("color", el.border)
-      .style("font-size", "14px")
-      .style("font-weight", "bold")
-      .style("white-space", "nowrap")
-      .text(el.name);
+      // element icon 
+      row.append("img")
+        .attr("src", el.icon)          // path to icon
+        .style("width", "30px")        // adjust size
+        .style("height", "30px")
+        .style("object-fit", "contain");
 
-    // element description
-    row.append("span")
-      .style("font-size", "15px")
-      .style("color", el.color)
-      .text(el.text);
-    });
+      // element label
+      row.append("span")
+        .style("padding", "4px 10px")
+        .style("font-size", "16px")
+        .style("color", el.color)
+        .style("font-family", "'Uncial Antiqua',cursive")
+        .style("font-weight", "extra-bold")
+        .style("white-space", "nowrap")
+        .text(el.name);
+
+      // element description
+      row.append("span")
+        .style("font-size", "15px")
+        .style("color", el.color)
+        .text(el.text);
+      });
 
     // themes description
     description.append("div")
       .style("margin-top", "8px")
-      .html(`<span style="font-weight: bold"> THEMES </span> visualizes how frequently a character express a moral theme, normalized per 1,000 words of their dialogue in each chapter.`);
+      .html(`<span style="font-weight: bold"> THEMES </span> visualizes how frequently a character express a moral theme, normalized per 1,000 words of their dialogue in each chapter. <br>
+            Phrases that define each moral theme in character dialogue:`);
+
+    const themes = {
+      "conflict_doubt": {
+        words: [
+          "maybe", "confused", "torn", "doubt", "choice", "choose", "decide",
+          "regret", "should", "shouldn't", "can't", "cannot", "won't",
+          "what if", "i don't know"
+        ],
+        color: "#7b5cff"
+      },
+      "identity":{ 
+        words: [
+          "who I am", "who we are", "myself", "yourself", "identity",
+          "change", "changed", "become", "meant to be", "I am", "I'm not"
+        ],
+        color: "#00b3b3"
+      },
+      "compassion": {
+        words: [
+          "help", "protect", "care", "friend", "trust", "together", "save",
+          "sorry", "understand", "hope", "believe", "family"
+        ],
+        color:"#2bb673"
+      },
+      "justice": {
+        words: [
+          "right", "wrong", "justice", "unfair", "mercy", "forgive",
+          "forgiveness", "revenge", "punish", "innocent", "guilty",
+          "consequence", "deserve"
+        ],
+        color: "#c76c00" // darker, more readable on beige
+      },
+      "duty_honor": { 
+        words: [
+          "honor", "destiny", "duty", "obligation", "responsibility",
+          "redeem", "redemption", "worthy", "shame", "pride", "legacy"
+        ],
+        color: "#e84a5f"
+      }
+    }
+
+    // theme legend
+    const themeLegend = description.append("div")
+      .attr("class", "legend")
+      .style("width", "fit-content")
+      .style("margin", "12px auto")
+      .style("padding", "8px 0")
+      .style("display", "flex")
+      .style("flex-direction", "column")
+      .style("align-items", "flex-start")
+      .style("gap", "6px");
+
+    // iterate over themes
+    Object.entries(themes).forEach(([themeName, theme]) => {
+      const row = themeLegend.append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "12px");
+
+      // theme label
+      row.append("span")
+        .style("padding", "4px 10px")
+        .style("border-radius", "999px")
+        .style("background-color", ringColor.get(themeName))
+        .style("color", "#fff")
+        .style("font-size", "14px")
+        .style("font-weight", "bold")
+        .style("white-space", "nowrap")
+        .text(themeName.replace("_", " | ").toUpperCase());
+
+      // words associated with theme
+      row.append("span")
+        .style("font-size", "14px")
+        .style("color", theme.color)
+        .text(theme.words.join(" • "));
+    });
 
     // instruction footer
     description.append("div")
@@ -211,7 +290,7 @@
     const hint = toggle_g.append("div")
       .text("Click to toggle")
       .attr("class", "toggle-hint")
-      .style("font-size", "12px")
+      .style("font-size", "14px")
       .style("padding", "4px")
       .style("border-radius", "8px")
       .style("margin-top", "6px")
@@ -261,6 +340,7 @@
       .attr("class", "atla-btn")
       .classed("inactive", !isActive)
       .style("color", "var(--ink-faded)")
+      .style("font-size", "16px")
       .style("width", "100%")
       .on("click", () => {
 
@@ -297,7 +377,7 @@
     items.append("text")
       .attr("x", 14)
       .attr("y", 9)
-      .style("font-size", "12px")
+      .style("font-size", "15px")
       .style("fill", "#333")
       .text(d => ringLabel.get(d) || d);
   }
@@ -314,16 +394,16 @@
       .enter()
       .append("line")
       .attr("x1", d => Math.cos((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter - 5))
-      .attr("y1", d => Math.sin((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter - 5))
+      .attr("y1", d => Math.sin((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter - 2))
       .attr("x2", d => Math.cos((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 10))
       .attr("y2", d => Math.sin((d - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 10))
       .attr("stroke", "var(--ink)")
       .attr("stroke-width", 1);
 
     const labels = [
-      { chap: 1, text: "Book 1" },
-      { chap: 21, text: "Book 2" },
-      { chap: 41, text: "Book 3" },
+      { chap: 1, text: "Book 1: Water" },
+      { chap: 21, text: "Book 2: Earth" },
+      { chap: 41, text: "Book 3: Fire" },
     ];
 
     g.append("g")
@@ -332,8 +412,8 @@
       .data(labels)
       .enter()
       .append("text")
-      .attr("x", d => Math.cos((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 45))
-      .attr("y", d => Math.sin((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 22))
+      .attr("x", d => Math.cos((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 40))
+      .attr("y", d => Math.sin((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 32))
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
       .style("font-size", "14px")
@@ -349,7 +429,7 @@
     </div>
     <div style="font-size:14px; color:#2c1f0e; line-height:1.2;">
       <p style="margin:4px 0;">
-        <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Theme:</span> ${prettyChar(d.word)}
+        <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Theme:</span> ${d.word.replace("_", " | ").toUpperCase()}
       </p>
       <p style="margin:4px 0;">
         <span style="font-size:12px;color:#5a3e22;text-transform:uppercase;letter-spacing:0.05em;">Book:</span> ${d.book_num}
@@ -444,9 +524,9 @@
         .attr("dominant-baseline", "hanging")
         .attr("y", -HEIGHT / 2 + 40)
         .attr("x", WIDTH / 2 - 100)
-        .style("font-size", "12px")
+        .style("font-size", "14px")
         .style("fill", "#666")
-        .text("Hover for details");
+        .text("Hover data for details");
 
       // Ring radii
       const rOuterAll = Math.min(WIDTH, HEIGHT) / 2 - margin - 20;
@@ -491,8 +571,8 @@
       // Circle placeholder
 			buttons.append("div")
 				.attr("class", "char-circle mx-auto atla-btn")
-				.style("width", "64px")
-				.style("height", "64px")
+				.style("width", "80px")
+				.style("height", "80px")
 				.style("border-radius", "50%")
 				.style("background", "white")
 				.style("border", "2px solid transparent")

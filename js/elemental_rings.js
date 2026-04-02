@@ -93,12 +93,20 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			.attr("font-size", "11px")
 			.attr("fill", "#999");
 
-		vis.description = vis.svg.append('text')
+		vis.description_g = vis.svg.append("g")
+			.attr("display", "none")
+
+		vis.description = vis.description_g.append('text')
 			.attr("text-anchor", "middle")
 			.attr("y", vis.height / 2 - 30)
-			.attr("display", "none")
 			.attr("fill", "var(--ink-faded)")
 			.text(`Scroll down to see the character's element mentions!`)
+		vis.description_g.append("image")
+			.attr("href", "../img/down_arrow.svg")
+			.attr("width", "100px")
+			.attr("height", "80px")
+			.attr("x", -vis.width / 2 + 150) 
+			.attr("y", vis.height / 2 -85); 
 		
 
 			
@@ -227,13 +235,13 @@ constructor(fullData, svg, width, height, innerRadius = 100, outerRadius = 320) 
 			// erase visualization if no character/data
 			if (vis.displayData.length === 0) {
 				erase()
-				vis.description.attr("display", "none")
+				vis.description_g.attr("display", "none")
 				// vis.legend.style("display", "none")
 				return
 			}
 
 			// otherwise show elemental ring vis
-			vis.description.attr("display", "")
+			vis.description_g.attr("display", "")
 			// vis.legend.style("display", "none")
 
 			var drawRing = function(i) {
