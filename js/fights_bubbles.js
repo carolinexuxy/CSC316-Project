@@ -468,6 +468,11 @@ Promise.all([
             `)
             .style('visibility', 'visible')
             .style('opacity', 1);
+
+            // Cross-highlight characters in the network
+            if (window.characterNetwork && window.characterNetwork.highlightFromMap) {
+                window.characterNetwork.highlightFromMap(d.all_characters || [], d.color);
+            }
         })
         .on('mousemove', function(event, d) {
             const selected = Array.from(selectedCharacters);
@@ -499,6 +504,11 @@ Promise.all([
                 .attr('stroke', '#e8d9b5');
 
             tooltip.style('opacity', 0).style('visibility', 'hidden');
+
+            // Clear network cross-highlight
+            if (window.characterNetwork && window.characterNetwork.clearMapHighlight) {
+                window.characterNetwork.clearMapHighlight();
+            }
         });
 
     // zoom controls for the map

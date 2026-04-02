@@ -427,6 +427,27 @@ function createCharacterNetwork(fightsData) {
         d.fy = null;
     }
 
+    // Cross-highlight called by the map on bubble hover
+    window.characterNetwork.highlightFromMap = function(charNames, ringColor = '#f5c842') {
+        if (!nodeElements) return;
+        const nameSet = new Set(charNames);
+
+        nodeElements.selectAll('.node-stroke')
+            .attr('stroke', d => nameSet.has(d.id) ? ringColor : (selectedCharacters.has(d.id) ? '#2c1f0e' : '#e8d9b5'))
+            .attr('stroke-width', d => nameSet.has(d.id) ? 3.5 : (selectedCharacters.has(d.id) ? 3 : 1.5))
+            .attr('opacity', 1);
+
+        if (selectedCharacters.size === 0) {
+            nodeElements.selectAll('.node-ring, .node-image')
+                .attr('opacity', d => nameSet.has(d.id) ? 1 : 0.25);
+        }
+    };
+
+    window.characterNetwork.clearMapHighlight = function() {
+        if (!nodeElements) return;
+        updateNetworkHighlights();   // resets to whatever click-filter state we're in
+    };
+
     return { nodes: networkNodes, links: networkLinks, simulation };
 }
 
