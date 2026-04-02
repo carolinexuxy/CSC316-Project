@@ -401,9 +401,18 @@
       .attr("stroke-width", 1);
 
     const labels = [
-      { chap: 1, text: "Book 1: Water" },
-      { chap: 21, text: "Book 2: Earth" },
-      { chap: 41, text: "Book 3: Fire" },
+      { chap: 1, text: "Book 1: Water", 
+        "x": Math.cos((0) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 40),
+        "y": Math.sin((0) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 30) + 5
+      },
+      { chap: 21, text: "Book 2: Earth",
+        "x": Math.cos((20) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 40) + 3,
+        "y": Math.sin((20) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 30) + 15
+      },
+      { chap: 41, text: "Book 3: Fire",
+        "x": Math.cos((40) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 40) - 5,
+        "y": Math.sin((40) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 30) + 15
+      },
     ];
 
     g.append("g")
@@ -412,8 +421,8 @@
       .data(labels)
       .enter()
       .append("text")
-      .attr("x", d => Math.cos((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 40))
-      .attr("y", d => Math.sin((d.chap - 1) / totalChaps * 2 * Math.PI - Math.PI / 2) * (rOuter + 32))
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
       .style("font-size", "14px")
