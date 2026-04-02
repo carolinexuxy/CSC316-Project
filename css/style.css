@@ -205,8 +205,12 @@ svg {
 	display: flex;
 	justify-content: center;
 	gap: 10px;
-	flex-flow: row wrap;
-	margin-bottom: 16px;
+	flex-wrap: wrap;
+	margin: 20px auto -4px;
+	max-width: 1400px;
+	width: 100%;
+	position: relative;
+	z-index: 10;
 }
 
 .atla-btn {
@@ -290,3 +294,78 @@ svg {
 	line-height: 1.5;
 }
 
+/* help icon */
+.atla-help-icon {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 28px;
+	height: 28px;
+	border: 1.5px solid var(--ink-faded);
+	border-radius: 50%;
+	background: rgb(255 255 255 / 30%);
+	color: var(--ink-faded);
+	font-family: "Uncial Antiqua", cursive;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+	margin-left: 8px;
+	user-select: none;
+}
+
+.atla-help-icon:hover {
+	transform: translateY(-1px);
+	background: rgb(255 255 255 / 50%);
+}
+
+.atla-help-icon.active {
+	background: rgb(255 255 255 / 60%);
+	box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
+}
+
+/* instructional tooltips on chart */
+.atla-instruction-tooltip rect {
+	opacity: 0.95;
+}
+
+.atla-instruction-tooltip text {
+	pointer-events: none;
+}
+
+/* Brush selection */
+.brush {
+	cursor: crosshair;
+}
+
+.brush .overlay {
+	cursor: crosshair;
+}
+
+.brush .selection {
+	stroke: #fff;
+	stroke-width: 1.5;
+	fill: rgb(90 62 34 / 45%);
+	opacity: 1;
+}
+
+.brush .handle {
+	display: none;
+}
+
+/* Stats panel */
+#atla-stats-panel {
+	line-height: 1.6;
+	font-size: 13px;
+	box-shadow: 2px 2px 6px rgb(0 0 0 / 20%);
+	margin: 0 auto;
+}
+
+/* Summary section */
+#summary {
+	width: 100%;
+	background-color: var(--parchment);
+	padding: 20px 0 0 0;
+	margin: -20px 0 0 0;
+}

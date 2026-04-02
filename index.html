@@ -11,8 +11,25 @@
     <!-- loading  stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <title>CSC316 PROJECT</title>
+    <style>
+        #audio-control:hover #volume-slider {
+            width: 100px !important;
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 <body>
+
+<!-- Background Audio -->
+<audio id="bg-audio" autoplay loop style="display: none;">
+    <source src="img/ATLA-Music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Audio Control Button -->
+<div id="audio-control" style="position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; align-items: center; gap: 8px; background: rgba(90, 62, 34, 0.8); padding: 8px 12px; border-radius: 20px; transition: width 0.3s ease;">
+    <button id="audio-toggle" style="padding: 0; background: none; border: none; color: #e8d9b5; font-size: 16px; cursor: pointer; flex-shrink: 0;">🔊</button>
+    <input id="volume-slider" type="range" min="0" max="100" value="30" style="width: 0px; opacity: 0; cursor: pointer; accent-color: #b84e10; transition: width 0.3s ease, opacity 0.3s ease;">
+</div>
 
 <!-- load boostrap script-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -41,6 +58,9 @@
 
 <div class="vignette"></div>
 
+<!-- Summary Section -->
+<div id="summary"></div>
+
 <!-- Load D3 -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
@@ -55,9 +75,57 @@
 <script src="js/element_bending.js"></script>
 <script src="js/themes_timeline.js"></script>
 <script src="js/themes.js"></script>
+<script src="js/summary.js"></script>
 
 <script>
+// Background Audio Toggle and Volume Control
+const bgAudio = document.getElementById("bg-audio");
+const audioToggle = document.getElementById("audio-toggle");
+const volumeSlider = document.getElementById("volume-slider");
+let isPlaying = true;
 
+// Set initial volume
+bgAudio.volume = 0.3;
+
+// Try to autoplay (browsers require user interaction for audio)
+bgAudio.play().catch(() => {
+    isPlaying = false;
+    audioToggle.textContent = "🔇";
+});
+
+// Toggle mute/unmute
+audioToggle.addEventListener("click", () => {
+    if (isPlaying) {
+        bgAudio.pause();
+        audioToggle.textContent = "🔇";
+        isPlaying = false;
+    } else {
+        bgAudio.play();
+        audioToggle.textContent = "🔊";
+        isPlaying = true;
+    }
+});
+
+// Volume slider control
+volumeSlider.addEventListener("input", (e) => {
+    const volume = e.target.value / 100;
+    bgAudio.volume = volume;
+    
+    // Update icon based on volume
+    if (volume === 0) {
+        audioToggle.textContent = "🔇";
+    } else if (volume < 0.5) {
+        audioToggle.textContent = "🔉";
+    } else {
+        audioToggle.textContent = "🔊";
+    }
+});
+
+// Update button state if audio ends
+bgAudio.addEventListener("ended", () => {
+    bgAudio.currentTime = 0;
+    bgAudio.play();
+});
 </script>
 
 </body>

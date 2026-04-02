@@ -162,6 +162,16 @@ class Timeline {
 
         this._mount = mount;
 
+        // vis title
+        const title = document.createElement("div");
+        title.style.fontFamily = "'Uncial Antiqua', cursive";
+        title.style.fontSize = "28px";
+        title.style.color = "#5a3e22";
+        title.style.letterSpacing = "0.06em";
+        title.style.marginBottom = "20px";
+        title.style.marginTop = "0";
+        title.textContent = "Thematic Weight Across The Show";
+
         // vis description
         const description = document.createElement("div");
 
@@ -218,6 +228,7 @@ class Timeline {
         container.style.width = "100%";
         container.style.textAlign = "center";
 
+        container.appendChild(title);
         container.appendChild(description);
         mount.prepend(container);
 
@@ -262,16 +273,6 @@ class Timeline {
             .style("width", "100%")
 
         const { margin, W, H } = this;
-
-        this.svg.append("text")
-            .attr("x", W / 2)
-            .attr("y", 22)
-            .attr("text-anchor", "middle")
-            .attr("font-family", "'Uncial Antiqua', cursive")
-            .attr("font-size", 28)
-            .attr("fill", "#5a3e22")
-            .attr("letter-spacing", "0.06em")
-            .text("Thematic Weight Across The Show");
 
         // Y-axis label
         this.svg.append("text")
@@ -658,7 +659,7 @@ class Timeline {
         statsPanel.style.background = "rgba(255,255,255,0.3)";
         statsPanel.style.borderRadius = "8px";
         statsPanel.style.maxWidth = "900px";
-        statsPanel.style.margin = "-120px auto 20px auto";
+        statsPanel.style.margin = "-100px auto 8px auto";
         statsPanel.style.fontFamily = "'Philosopher', serif";
         statsPanel.style.color = "#5a3e22";
         statsPanel.style.textAlign = "center";
