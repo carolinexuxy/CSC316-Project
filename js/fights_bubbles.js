@@ -430,7 +430,7 @@ Promise.all([
             const hasActiveFilter = selected.length > 0;
             const isMatch = !hasActiveFilter || (
                 d.all_characters &&
-                d.all_characters.some(c => selected.includes(c))
+                selected.every(c => d.all_characters.includes(c))
             );
 
             if (!isMatch) return;
@@ -479,7 +479,7 @@ Promise.all([
             const hasActiveFilter = selected.length > 0;
             const isMatch = !hasActiveFilter || (
                 d.all_characters &&
-                d.all_characters.some(c => selected.includes(c))
+                selected.every(c => d.all_characters.includes(c))
             );
 
             if (!isMatch) return;
@@ -493,7 +493,7 @@ Promise.all([
             const hasActiveFilter = selected.length > 0;
             const isMatch = !hasActiveFilter || (
                 d.all_characters &&
-                d.all_characters.some(c => selected.includes(c))
+                selected.every(c => d.all_characters.includes(c))
             );
 
             const k = d3.zoomTransform(svg.node()).k;
