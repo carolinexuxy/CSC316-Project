@@ -5,7 +5,7 @@ This data visualization project explores _Avatar: The Last Airbender_ through mu
 ### Project Links
 - Website: https://anslau.github.io/CSC316-Project/ 
 - Process Book: https://docs.google.com/document/d/1cV0PRwkoy0EmeucEcbYWhu2EpdRbCtlLl4LC3lgW4m4/edit?usp=sharing 
-- Video Demo: PUT LINK HERE
+- Video Demo: https://www.youtube.com/watch?v=zDxW_iqVwsY
 
 ## Project Structure
 ```plaintext
