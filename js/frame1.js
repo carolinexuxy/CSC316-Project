@@ -11,7 +11,7 @@
                 body: 'Avatar: The Last Airbender aired on Nickelodeon from 2005 to 2008. Set across four nations — each tied to a classical element — the story follows Aang, the last surviving Airbender, on his journey to master all four elements and end a century of war.',
             },
             {
-                heading: 'The Question',
+                heading: 'Explore',
                 type: 'quote',
                 body: 'Marketed to children, yet beloved by adults worldwide — explore the magic system, conflicts, character growth and thematic arcs to understand exactly how this show transcends its target audience ',
             },
